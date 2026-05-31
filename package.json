@@ -4,7 +4,10 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "generate:zine-manifest": "node scripts/generate-zine-manifest.mjs",
+    "predev": "npm run generate:zine-manifest",
     "dev": "vite",
+    "prebuild": "npm run generate:zine-manifest",
     "build": "vite build",
     "preview": "vite preview"
   },

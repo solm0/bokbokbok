@@ -1,21 +1,19 @@
 import { useEffect, useState } from "react";
 
-function buildZineAssets(id, pageCount = 0) {
-  const cover = `/images/zines/${id}_cover.png`;
-  const pages = Array.from({ length: pageCount }, (_, index) => `/images/zines/${id}_page-${index + 1}.png`);
+function buildZineAssets(id, manifest) {
+  const pages = manifest[String(id)] ?? [];
+  const cover = pages[0] ?? `/images/zines/${id}_cover.png`;
 
   return {
     cover,
-    pages: [cover, ...pages]
+    pages: pages.length ? pages : [cover]
   };
 }
 
-function hydrateZine(zine) {
-  const pageCount = Number.isFinite(zine.pageCount) ? zine.pageCount : 0;
-
+function hydrateZine(zine, manifest) {
   return {
     ...zine,
-    ...buildZineAssets(zine.id, pageCount)
+    ...buildZineAssets(zine.id, manifest)
   };
 }
 
@@ -30,13 +28,27 @@ export function useZines() {
     async function loadZines() {
       try {
         setStatus("loading");
-        const response = await fetch("/zines.json");
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}`);
+
+        const [zinesResponse, manifestResponse] = await Promise.all([
+          fetch("/zines.json"),
+          fetch("/images/zines/manifest.json")
+        ]);
+
+        if (!zinesResponse.ok) {
+          throw new Error(`HTTP ${zinesResponse.status}`);
         }
-        const data = await response.json();
+
+        if (!manifestResponse.ok) {
+          throw new Error(`HTTP ${manifestResponse.status}`);
+        }
+
+        const [zinesData, manifestData] = await Promise.all([
+          zinesResponse.json(),
+          manifestResponse.json()
+        ]);
+
         if (!ignore) {
-          setZines(data.map(hydrateZine));
+          setZines(zinesData.map((zine) => hydrateZine(zine, manifestData)));
           setStatus("ready");
         }
       } catch (loadError) {

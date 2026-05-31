@@ -4,11 +4,9 @@ import ZineImage from "./ZineImage";
 export default function ZineViewer({ zine }) {
   const pages = zine?.pages?.length ? zine.pages : [zine.cover];
   const [pageIndex, setPageIndex] = useState(0);
-  const [direction, setDirection] = useState("forward");
 
   useEffect(() => {
     setPageIndex(0);
-    setDirection("forward");
   }, [zine.id]);
 
   const pageLabel = `${pageIndex + 1} / ${pages.length}`;
@@ -18,7 +16,6 @@ export default function ZineViewer({ zine }) {
       return;
     }
 
-    setDirection(nextIndex > pageIndex ? "forward" : "backward");
     setPageIndex(nextIndex);
   }
 
@@ -30,7 +27,7 @@ export default function ZineViewer({ zine }) {
       </div>
 
       <div className="viewer-stage">
-        <div key={`${zine.id}-${pageIndex}`} className={`viewer-page ${direction}`}>
+        <div className="viewer-page">
           <ZineImage src={pages[pageIndex]} alt={`${zine.title} page ${pageIndex + 1}`} />
         </div>
       </div>

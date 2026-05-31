@@ -1,5 +1,22 @@
 import { useEffect, useRef } from "react";
 
+const MD_BREAKPOINT = 768;
+const XL_BREAKPOINT = 1280;
+const XL_MAX_MODEL_WIDTH = 640;
+const MODEL_SCALE_RATIO = 0.7;
+
+function getTargetModelWidth(viewportWidth) {
+  if (viewportWidth >= XL_BREAKPOINT) {
+    return Math.min(viewportWidth * 0.5, XL_MAX_MODEL_WIDTH);
+  }
+
+  if (viewportWidth >= MD_BREAKPOINT) {
+    return viewportWidth * 0.5;
+  }
+
+  return viewportWidth * 0.8;
+}
+
 export default function HomePage() {
   const containerRef = useRef(null);
 
@@ -43,17 +60,33 @@ export default function HomePage() {
       scene.add(light);
 
       let bokModel = null;
+      let baseModelScale = 1;
+      let baseModelWidth = 1;
       const loader = new GLTFLoader();
+
+      const fitModelToViewport = () => {
+        if (!bokModel || !baseModelWidth) {
+          return;
+        }
+
+        baseModelScale = (getTargetModelWidth(window.innerWidth) / baseModelWidth) * MODEL_SCALE_RATIO;
+        bokModel.scale.set(baseModelScale, baseModelScale, baseModelScale);
+      };
+
       loader.load(
-        "/images/bok3.gltf",
+        "/images/bokno3.gltf",
         (gltf) => {
           bokModel = gltf.scene;
-          bokModel.scale.set(1300, 1300, 1300);
+          const box = new THREE.Box3().setFromObject(bokModel);
+          const size = box.getSize(new THREE.Vector3());
+
+          baseModelWidth = size.x || 1;
+          fitModelToViewport();
           scene.add(bokModel);
         },
         undefined,
         (error) => {
-          console.error("bok3.gltf load failed:", error);
+          console.error("bokno3.gltf load failed:", error);
         }
       );
 
@@ -61,6 +94,7 @@ export default function HomePage() {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
+        fitModelToViewport();
       };
 
       cleanupResize = () => window.removeEventListener("resize", onResize);
@@ -77,7 +111,11 @@ export default function HomePage() {
           bokModel.position.y = bounce * 42 - 12;
           bokModel.rotation.y = Math.sin(t * 2.2) * 0.32;
           bokModel.rotation.z = Math.sin(t * 3.4) * 0.08;
-          bokModel.scale.set(1300 + squash * 90, 1300 - squash * 120, 1300 + squash * 90);
+          bokModel.scale.set(
+            baseModelScale + squash * baseModelScale * 0.07,
+            baseModelScale - squash * baseModelScale * 0.09,
+            baseModelScale + squash * baseModelScale * 0.07
+          );
         }
 
         renderer.render(scene, camera);

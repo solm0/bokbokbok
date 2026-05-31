@@ -194,12 +194,13 @@ button{
 .dig-search{
  display:flex;
  align-items:center;
+ position:relative;
 }
 
 .dig-search input{
  width:min(320px, 46vw);
  min-height:38px;
- padding:0 14px;
+ padding:0 38px 0 14px;
  border:1px solid #111;
  background:#fffef8;
  color:#111;
@@ -212,6 +213,23 @@ button{
 
 .dig-search input:focus{
  box-shadow:0 0 0 2px rgba(17,17,17,0.08);
+}
+
+.dig-search-clear{
+ position:absolute;
+ right:10px;
+ top:50%;
+ width:20px;
+ height:20px;
+ padding:0;
+ border:0;
+ background:transparent;
+ color:rgba(17,17,17,0.72);
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ transform:translateY(-50%);
+ cursor:pointer;
 }
 
 .dig-controls{
@@ -261,7 +279,7 @@ button{
 .dig-empty{
  position:absolute;
  left:32px;
- top:136px;
+ top:52px;
  margin:0;
  font-size:14px;
  font-weight:700;
@@ -271,7 +289,7 @@ button{
  position:fixed;
  left:50%;
  bottom:24px;
- z-index:160;
+ z-index:9999;
  display:flex;
  justify-content:center;
  transform:translateX(-50%);
@@ -340,6 +358,54 @@ button{
 
 .dig-card:hover{
  z-index:200 !important;
+}
+
+@media (max-width: 767px){
+ .dig-header{
+  gap:12px;
+  padding:12px 12px 8px;
+ }
+
+ .dig-toolbar{
+  width:100%;
+  gap:12px;
+  justify-content:flex-start;
+ }
+
+ .dig-search{
+  width:100%;
+ }
+
+ .dig-search input{
+  width:100%;
+ }
+
+ .dig-controls{
+  gap:6px;
+ }
+
+ .mode-btn,
+ .mode-link{
+  padding:0 12px;
+ }
+
+ .dig-canvas{
+  padding-bottom:12px;
+ }
+
+ .scatter-mode .dig-canvas{
+  padding-bottom:0;
+ }
+
+ .dig-empty{
+  left:12px;
+  top:40px;
+ }
+
+ .dig-shuffle-wrap{
+  bottom:12px;
+  padding:0 12px;
+ }
 }
 
 .dig-card-cover{
@@ -487,7 +553,6 @@ button{
 }
 
 .viewer-stage{
- perspective:1400px;
  min-height:540px;
  display:grid;
  place-items:center;
@@ -502,12 +567,6 @@ button{
  border:1px solid #111;
  background:#fff;
  box-shadow:18px 24px 0 rgba(0,0,0,0.16);
- animation:page-flip 0.45s ease;
- transform-origin:left center;
-}
-
-.viewer-page.backward{
- transform-origin:right center;
 }
 
 .viewer-page img{
@@ -530,17 +589,6 @@ button{
  border:1px solid #111;
  background:#fffef8;
  cursor:pointer;
-}
-
-@keyframes page-flip{
- 0%{
-  opacity:0;
-  transform:rotateY(-32deg) translateX(12px);
- }
- 100%{
-  opacity:1;
-  transform:rotateY(0) translateX(0);
- }
 }
 
 /* CART */

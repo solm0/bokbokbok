@@ -1,0 +1,22 @@
+{
+  "1": [
+    "/images/zines/1_cover.png",
+    "/images/zines/1_page-1.png",
+    "/images/zines/1_page-2.png"
+  ],
+  "2": [
+    "/images/zines/2_cover.png",
+    "/images/zines/2_page-1.png",
+    "/images/zines/2_page-2.png"
+  ],
+  "3": [
+    "/images/zines/3_cover.png",
+    "/images/zines/3_page-1.png",
+    "/images/zines/3_page-2.png"
+  ],
+  "4": [
+    "/images/zines/4_cover.png",
+    "/images/zines/4_page-1.png",
+    "/images/zines/4_page-2.png"
+  ]
+}

@@ -1,13 +1,15 @@
 import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
-import { Shuffle } from "lucide-react";
+import { Shuffle, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import ZineImage from "../components/ZineImage";
 
 const CARD_WIDTH = 144;
 const CARD_HEIGHT = 192;
+const MOBILE_BREAKPOINT = 768;
+const MOBILE_SCATTER_SAMPLE_SIZE = 8;
 const SCATTER_SAMPLE_SIZE = 15;
 const GRID_GAP = 20;
-const SCATTER_TOP = 116;
+const SCATTER_TOP = 32;
 const SCATTER_BOTTOM = 120;
 const SCATTER_SIDE = 56;
 const RESIZE_SETTLE_MS = 180;
@@ -129,7 +131,9 @@ export default function CatalogPage({ zines }) {
   const navigate = useNavigate();
   const deferredQuery = useDeferredValue(query);
   const dragRef = useRef(null);
+  const searchInputRef = useRef(null);
   const suppressClickRef = useRef("");
+  const scatterSampleSize = viewport.width < MOBILE_BREAKPOINT ? MOBILE_SCATTER_SAMPLE_SIZE : SCATTER_SAMPLE_SIZE;
 
   useEffect(() => {
     let timeoutId = 0;
@@ -162,8 +166,8 @@ export default function CatalogPage({ zines }) {
   }, [availableZines, normalizedQuery]);
 
   useEffect(() => {
-    setScatterZines(getRandomSample(filteredZines, SCATTER_SAMPLE_SIZE));
-  }, [filteredZines]);
+    setScatterZines(getRandomSample(filteredZines, scatterSampleSize));
+  }, [filteredZines, scatterSampleSize]);
 
   useEffect(() => {
     setScatterOverrides({});
@@ -173,7 +177,12 @@ export default function CatalogPage({ zines }) {
   }, [scatterZines]);
 
   const handleShuffle = () => {
-    setScatterZines(getRandomSample(filteredZines, SCATTER_SAMPLE_SIZE));
+    setScatterZines(getRandomSample(filteredZines, scatterSampleSize));
+  };
+
+  const handleClearQuery = () => {
+    setQuery("");
+    searchInputRef.current?.focus();
   };
 
   const displayedZines = viewMode === "grid" ? filteredZines : scatterZines;
@@ -283,12 +292,25 @@ export default function CatalogPage({ zines }) {
           <label className="dig-search">
             <span className="sr-only">Search zines</span>
             <input
-              type="search"
+              ref={searchInputRef}
+              type="text"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
+              onInput={(event) => setQuery(event.currentTarget.value)}
               placeholder="Search titles"
               aria-label="Search titles"
             />
+            {query ? (
+              <button
+                type="button"
+                className="dig-search-clear"
+                aria-label="Clear search"
+                onMouseDown={(event) => event.preventDefault()}
+                onClick={handleClearQuery}
+              >
+                <X size={14} strokeWidth={2.2} aria-hidden="true" />
+              </button>
+            ) : null}
           </label>
           <div className="dig-controls" role="tablist" aria-label="Display mode">
             <button
@@ -358,7 +380,7 @@ export default function CatalogPage({ zines }) {
               aria-label="Shuffle random zines"
             >
               <Shuffle size={16} strokeWidth={2.2} aria-hidden="true" />
-              Shuffle 15
+              {`Shuffle ${scatterSampleSize}`}
             </button>
           </div>
         ) : null}
