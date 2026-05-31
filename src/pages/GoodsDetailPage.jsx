@@ -5,23 +5,25 @@ import { GhostLink } from "../components/ui";
 import { useCart } from "../lib/cart-context";
 import { useI18n } from "../lib/i18n";
 
-export default function ZineDetailPage({ zines }) {
+export default function GoodsDetailPage({ goods }) {
   const { id } = useParams();
   const { addItem, hasItem } = useCart();
   const { t, getLocalized, language } = useI18n();
-  const zine = zines.find((item) => item.id === id);
-  const saved = zine ? hasItem(zine.id, "zine") : false;
-  const title = zine ? getLocalized(zine.title) : "";
-  const author = zine ? getLocalized(zine.author) || t("common.unknownAuthor") : "";
-  const description = zine ? getLocalized(zine.description) : "";
+  const good = goods.find((item) => item.id === id);
+  const saved = good ? hasItem(good.id, "good") : false;
+  const title = good ? getLocalized(good.title) : "";
+  const maker = good
+    ? getLocalized(good.author) || getLocalized(good.brand) || t("common.unknownMaker")
+    : "";
+  const description = good ? getLocalized(good.description) : "";
 
-  if (!zine) {
+  if (!good) {
     return (
-      <main className="min-h-screen mt-6 bg-stone-100 p-7 pt-14 ">
+      <main className="min-h-screen mt-6 bg-white p-7 pt-14">
         <div className="grid items-start gap-7 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
-          <p>{t("detail.notFound", { id })}</p>
-          <GhostLink to="/dig">
-            {t("detail.backToDig")}
+          <p>{t("goodsDetail.notFound", { id })}</p>
+          <GhostLink to="/goods">
+            {t("goodsDetail.backToGoods")}
           </GhostLink>
         </div>
       </main>
@@ -29,25 +31,25 @@ export default function ZineDetailPage({ zines }) {
   }
 
   return (
-    <main className="min-h-screen pt-14 p-7">
+    <main className="min-h-screen bg-white p-7 pt-14">
       <div className="mb-5 flex flex-wrap justify-between gap-3">
-        <GhostLink to="/dig">
-          {t("detail.backToDig")}
+        <GhostLink to="/goods">
+          {t("goodsDetail.backToGoods")}
         </GhostLink>
       </div>
 
       <div className="grid items-start gap-7 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
         <ProductDetailPanel
-          item={{ ...zine, title, description }}
-          subtitle={author}
+          item={{ ...good, title, description }}
+          subtitle={maker}
           language={language}
-          availabilityLabel={zine.available === false ? t("detail.unavailable") : t("detail.available")}
+          availabilityLabel={good.available === false ? t("detail.unavailable") : t("detail.available")}
           actionLabel={saved ? t("detail.savedInCart") : t("detail.addToCart")}
           actionDisabled={saved}
-          onAction={() => addItem(zine.id, "zine")}
+          onAction={() => addItem(good.id, "good")}
         />
 
-        <ZineViewer zine={zine} />
+        <ZineViewer zine={{ ...good, title }} />
       </div>
     </main>
   );

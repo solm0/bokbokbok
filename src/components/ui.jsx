@@ -30,7 +30,7 @@ export function Panel({ as: Tag = "div", className = "", children, ...props }) {
 
 export function GhostLink({ className = "", children, ...props }) {
   return (
-    <Link className={cx(baseSurfaceButton, "min-h-[42px] no-underline", className)} {...props}>
+    <Link className={cx(baseSurfaceButton, "py-1 no-underline", className)} {...props}>
       {children}
     </Link>
   );

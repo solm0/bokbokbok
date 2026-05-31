@@ -1,0 +1,56 @@
+[
+  {
+    "id": "g1",
+    "title": {
+      "ko": "BOK 로고 티",
+      "en": "BOK Logo Tee"
+    },
+    "author": {
+      "ko": "BOK³ Zine",
+      "en": "BOK³ Zine"
+    },
+    "description": {
+      "ko": "앞면에 BOK 로고가 프린트된 부드러운 코튼 티셔츠입니다.",
+      "en": "Soft cotton t-shirt with the BOK logo printed on the front."
+    },
+    "price": 28000,
+    "available": true,
+    "cover": "/images/bok.png"
+  },
+  {
+    "id": "g2",
+    "title": {
+      "ko": "포켓 토트",
+      "en": "Pocket Tote"
+    },
+    "author": {
+      "ko": "BOK³ Zine",
+      "en": "BOK³ Zine"
+    },
+    "description": {
+      "ko": "진, 노트, 작은 소지품을 담기 좋은 컴팩트한 토트백입니다.",
+      "en": "Compact tote bag for carrying zines, notebooks, and small daily tools."
+    },
+    "price": 22000,
+    "available": true,
+    "cover": "/images/bok.png"
+  },
+  {
+    "id": "g3",
+    "title": {
+      "ko": "스티커 팩",
+      "en": "Sticker Pack"
+    },
+    "author": {
+      "ko": "BOK³ Zine",
+      "en": "BOK³ Zine"
+    },
+    "description": {
+      "ko": "노트북, 스케치북, 포장에 붙이기 좋은 BOK 테마 스티커 세트입니다.",
+      "en": "A small set of BOK-themed stickers for laptops, sketchbooks, and packaging."
+    },
+    "price": 6000,
+    "available": true,
+    "cover": "/images/bok.png"
+  }
+]

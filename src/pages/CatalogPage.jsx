@@ -1,8 +1,9 @@
 import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import { Shuffle, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import ZineImage from "../components/ZineImage";
+import ProductCardContent from "../components/ProductCardContent";
 import { GhostButton, cx } from "../components/ui";
+import { useI18n } from "../lib/i18n";
 
 const CARD_WIDTH = 200;
 const CARD_HEIGHT = 300;
@@ -125,6 +126,7 @@ function getGridLayout(zines, width) {
 }
 
 export default function CatalogPage({ zines }) {
+  const { t, getLocalized } = useI18n();
   const [viewMode, setViewMode] = useState("scatter");
   const [query, setQuery] = useState("");
   const [scatterZines, setScatterZines] = useState([]);
@@ -168,8 +170,10 @@ export default function CatalogPage({ zines }) {
       return availableZines;
     }
 
-    return availableZines.filter((zine) => zine.title.toLowerCase().includes(normalizedQuery));
-  }, [availableZines, normalizedQuery]);
+    return availableZines.filter((zine) =>
+      String(getLocalized(zine.title)).toLowerCase().includes(normalizedQuery)
+    );
+  }, [availableZines, getLocalized, normalizedQuery]);
 
   useEffect(() => {
     setScatterZines(getRandomSample(filteredZines, scatterSampleSize));
@@ -303,7 +307,7 @@ export default function CatalogPage({ zines }) {
         style={{ paddingInlineStart: `${headerPaddingX}px`, paddingInlineEnd: SCATTER_SIDE }}
       >
         <div className="flex w-full flex-wrap items-start justify-start gap-3 md:w-auto md:justify-end">
-          <div className="flex flex-col items-start gap-1" role="tablist" aria-label="Display mode">
+          <div className="flex flex-col items-start gap-1" role="tablist" aria-label={t("catalog.displayMode")}>
             <div className="flex gap-2 items-center">
               <button
                 type="button"
@@ -313,13 +317,13 @@ export default function CatalogPage({ zines }) {
                 )}
                 onClick={() => setViewMode("scatter")}
               >
-                Scatter
+                {t("catalog.scatter")}
               </button>
               {viewMode === "scatter" ? (
                 <GhostButton
                   className="pointer-events-auto"
                   onClick={handleShuffle}
-                  aria-label="Shuffle random zines"
+                  aria-label={t("catalog.shuffle")}
                 >
                   <Shuffle size={16} strokeWidth={2.2} aria-hidden="true" />
                 </GhostButton>
@@ -333,14 +337,14 @@ export default function CatalogPage({ zines }) {
               )}
               onClick={() => setViewMode("grid")}
             >
-              Grid
+              {t("catalog.grid")}
             </button>
           </div>
         </div>
         <div className="flex">
           <div className="relative flex w-full text-sm items-center md:w-auto">
             <label htmlFor="catalog-search" className="sr-only">
-              Search zines
+              {t("catalog.searchZines")}
             </label>
             <input
               id="catalog-search"
@@ -349,14 +353,14 @@ export default function CatalogPage({ zines }) {
               type="text"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search"
-              aria-label="Search titles"
+              placeholder={t("common.search")}
+              aria-label={t("catalog.searchTitles")}
             />
             {query ? (
               <button
                 type="button"
                 className="absolute top-1/2 right-2.5 z-10 inline-flex h-5 w-5 -translate-y-1/2 items-center justify-center border-0 bg-transparent p-0 text-neutral-700"
-                aria-label="Clear search"
+                aria-label={t("catalog.clearSearch")}
                 onMouseDown={(event) => event.preventDefault()}
                 onClick={handleClearQuery}
               >
@@ -375,15 +379,13 @@ export default function CatalogPage({ zines }) {
             ? "min-h-[calc(100vh-90px)] overflow-y-auto pb-24 md:pb-24"
             : "h-[calc(100vh-90px)] overflow-hidden pb-0"
         )}
-        aria-label="Zine display"
+        aria-label={t("catalog.stageLabel")}
       >
         <div className="relative min-h-full" style={{ height: `${stageHeight}px` }}>
           {displayedZines.map((zine, index) => {
             const scatter = scatterOverrides[zine.id] ?? scatterPositionMap[zine.id];
             const grid = gridLayout.positions[index];
             const active = viewMode === "grid" ? grid : scatter;
-            const isGrid = viewMode === "grid";
-
             return (
               <button
                 key={zine.id}
@@ -411,36 +413,19 @@ export default function CatalogPage({ zines }) {
                   navigate(`/page/${zine.id}`);
                 }}
               >
-                <span
-                  className={cx(
-                    "block transition duration-200 group-hover:opacity-80",
-                    isGrid
-                      ? "aspect-3/4 overflow-hidden bg-black"
-                      : "aspect-square overflow-visible flex items-center justify-center"
-                  )}
-                >
-                  <ZineImage
-                    className={cx(
-                      isGrid
-                        ? "h-full w-full object-contain p-3"
-                        : "h-auto w-full max-w-none"
-                    )}
-                    src={zine.cover}
-                    alt={zine.title}
-                  />
-                </span>
-                {viewMode === 'grid' &&
-                  <>
-                    <span className="text-xs font-bold mt-2">{zine.title}</span>
-                    <span className="text-xs">{zine.author ?? 'unknown author'}</span>
-                  </>
-                }
+                <ProductCardContent
+                  title={getLocalized(zine.title)}
+                  subtitle={getLocalized(zine.author) || t("common.unknownAuthor")}
+                  cover={zine.cover}
+                  mode={viewMode}
+                  imageBackgroundClassName="bg-black"
+                />
               </button>
             );
           })}
           {displayedZines.length === 0 ? (
             <p className="absolute top-10 left-3 text-sm md:top-[52px] md:left-8">
-              No zines match that title.
+              {t("catalog.empty")}
             </p>
           ) : null}
         </div>

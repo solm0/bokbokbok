@@ -3,7 +3,10 @@
     "id": "1",
     "title": "Moment",
     "author": "Daeun Lee",
-    "description": "최근 구매한 빈티지 디지털 카메라로 부지런히 기록한 순간들 중, 파란 색감을 가진 장면들만을 골라 엮은 미니 사진집입니다. 실제 카메라 디스플레이 스크린과 유사한 판형으로 제작되었으며, 진을 펼치고 넘기는 동안 카메라의 전원을 켜고 사진을 촬영한 뒤 다시 끄는 일련의 동작을 함께 재현합니다. 덧) 동명의 캐논 EOS M 캠페인송 <Moment>를 좋아합니다.",
+    "description": {
+      "ko": "최근 구매한 빈티지 디지털 카메라로 부지런히 기록한 순간들 중, 파란 색감을 가진 장면들만을 골라 엮은 미니 사진집입니다. 실제 카메라 디스플레이 스크린과 유사한 판형으로 제작되었으며, 진을 펼치고 넘기는 동안 카메라의 전원을 켜고 사진을 촬영한 뒤 다시 끄는 일련의 동작을 함께 재현합니다. 덧) 동명의 캐논 EOS M 캠페인송 <Moment>를 좋아합니다.",
+      "en": "A miniature photo zine collecting only the blue-toned scenes from moments carefully documented with a recently purchased vintage digital camera. Its trim size echoes the proportions of an actual camera display, and the act of opening and flipping through it recreates the sequence of turning the camera on, taking a photo, and switching it off again. P.S. I love the Canon EOS M campaign song with the same title, Moment."
+    },
     "price": 12000,
     "available": true,
     "metadata": [

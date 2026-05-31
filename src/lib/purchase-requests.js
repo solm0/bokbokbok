@@ -1,8 +1,10 @@
-export async function submitPurchaseRequest(form, items) {
+import { getLocalizedValue } from "./i18n";
+
+export async function submitPurchaseRequest(form, items, language = "ko") {
   const endpoint = import.meta.env.VITE_PURCHASE_REQUEST_ENDPOINT;
 
   if (!endpoint) {
-    throw new Error("Apps Script endpoint is not configured yet.");
+    throw new Error("purchase_request_endpoint_missing");
   }
 
   const payload = {
@@ -15,10 +17,11 @@ export async function submitPurchaseRequest(form, items) {
       extraContact: form.extraContact.trim()
     },
     items: items.map((item) => ({
-      id: item.zine.id,
-      title: item.zine.title,
-      description: item.zine.description,
-      price: item.zine.price
+      id: item.product.id,
+      type: item.type,
+      title: getLocalizedValue(item.product.title, language),
+      description: getLocalizedValue(item.product.description, language),
+      price: item.product.price
     })),
     createdAt: new Date().toISOString()
   };
@@ -36,6 +39,6 @@ export async function submitPurchaseRequest(form, items) {
   // In no-cors mode the browser returns an opaque response that cannot
   // be inspected, so reaching this point means the request was dispatched.
   if (!response) {
-    throw new Error("Request could not be sent.");
+    throw new Error("purchase_request_dispatch_failed");
   }
 }

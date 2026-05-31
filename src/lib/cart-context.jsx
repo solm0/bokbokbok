@@ -10,7 +10,13 @@ function readCart() {
 
   try {
     const stored = window.localStorage.getItem(CART_KEY);
-    return stored ? JSON.parse(stored) : [];
+    const parsed = stored ? JSON.parse(stored) : [];
+    return Array.isArray(parsed)
+      ? parsed.map((item) => ({
+          ...item,
+          type: item.type ?? "zine"
+        }))
+      : [];
   } catch {
     return [];
   }
@@ -26,21 +32,23 @@ export function CartProvider({ children }) {
   const value = useMemo(
     () => ({
       items,
-      addItem(id) {
+      addItem(id, type = "zine") {
         setItems((currentItems) => {
-          const existing = currentItems.find((item) => item.id === id);
+          const existing = currentItems.find((item) => item.id === id && item.type === type);
           if (existing) {
             return currentItems;
           }
 
-          return [...currentItems, { id }];
+          return [...currentItems, { id, type }];
         });
       },
-      removeItem(id) {
-        setItems((currentItems) => currentItems.filter((item) => item.id !== id));
+      removeItem(id, type = "zine") {
+        setItems((currentItems) =>
+          currentItems.filter((item) => item.id !== id || item.type !== type)
+        );
       },
-      hasItem(id) {
-        return items.some((item) => item.id === id);
+      hasItem(id, type = "zine") {
+        return items.some((item) => item.id === id && item.type === type);
       },
       clearCart() {
         setItems([]);

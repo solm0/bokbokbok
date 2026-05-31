@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useOutletContext } from "react-router-dom";
+import { useI18n } from "../lib/i18n";
 
 const MD_BREAKPOINT = 768;
 const XL_BREAKPOINT = 1280;
@@ -20,7 +21,8 @@ function getTargetModelWidth(viewportWidth) {
 
 export default function HomePage() {
   const containerRef = useRef(null);
-  const { revealNav } = useOutletContext();
+  const { toggleNav } = useOutletContext();
+  const { t } = useI18n();
 
   useEffect(() => {
     const container = containerRef.current;
@@ -147,12 +149,12 @@ export default function HomePage() {
         className="fixed inset-0 z-10 cursor-pointer border-0 bg-transparent p-0 outline-none"
         role="button"
         tabIndex={0}
-        aria-label="Reveal menu"
-        onClick={revealNav}
+        aria-label={t("home.toggleMenu")}
+        onClick={toggleNav}
         onKeyDown={(event) => {
           if (event.key === "Enter" || event.key === " ") {
             event.preventDefault();
-            revealNav();
+            toggleNav();
           }
         }}
       />
