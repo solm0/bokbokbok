@@ -51,12 +51,12 @@
 }
 
 @theme inline {
-  --font-bok: "Bok", "Pretendard", sans-serif;
+  --font-bok: "Bok", "newfont.regular", "Pretendard", sans-serif;
 }
 
 @layer utilities {
   .font-bok {
-    font-family: "Bok", "Pretendard", sans-serif;
+    font-family: "Bok", "newfont.regular", "Pretendard", sans-serif;
     font-size: 20px;
   }
 
