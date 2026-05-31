@@ -148,7 +148,6 @@ export default function CartPage({ zines, goods }) {
             <div className="grid gap-[1.4em]">
               <p>{t("common.total")}</p>
               <strong className="font-normal">{formatPrice(totalPrice, language)}</strong>
-              <p className="text-neutral-600">{t("cart.helper")}</p>
             </div>
             <PrimaryButton onClick={() => setFormOpen((current) => !current)}>
               {t("cart.request")}
