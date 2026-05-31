@@ -1,5 +1,6 @@
 import { Suspense, lazy } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
+import { StatusScreen } from "./components/ui";
 import { CartProvider, useCart } from "./lib/cart-context";
 import { useZines } from "./hooks/useZines";
 import AppShell from "./components/AppShell";
@@ -17,15 +18,15 @@ function AppRoutes() {
   const cartCount = items.length;
 
   if (status === "loading") {
-    return <div className="app-status">Loading zines...</div>;
+    return <StatusScreen>Loading zines...</StatusScreen>;
   }
 
   if (status === "error") {
-    return <div className="app-status">Could not load zines: {error}</div>;
+    return <StatusScreen>Could not load zines: {error}</StatusScreen>;
   }
 
   return (
-    <Suspense fallback={<div className="app-status">Loading page...</div>}>
+    <Suspense fallback={<StatusScreen>Loading page...</StatusScreen>}>
       <Routes>
         <Route element={<AppShell cartCount={cartCount} />}>
           <Route path="/" element={<HomePage />} />

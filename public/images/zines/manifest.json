@@ -18,5 +18,17 @@
     "/images/zines/4_cover.png",
     "/images/zines/4_page-1.png",
     "/images/zines/4_page-2.png"
+  ],
+  "5": [
+    "/images/zines/5_cover.png"
+  ],
+  "6": [
+    "/images/zines/6_cover.png"
+  ],
+  "7": [
+    "/images/zines/7_cover.png"
+  ],
+  "8": [
+    "/images/zines/8_cover.png"
   ]
 }

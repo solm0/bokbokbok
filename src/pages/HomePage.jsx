@@ -140,11 +140,11 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="home-page">
+    <div className="relative min-h-screen overflow-hidden">
       <div
         id="three-container"
         ref={containerRef}
-        className="three-trigger"
+        className="fixed inset-0 z-10 cursor-pointer border-0 bg-transparent p-0 outline-none"
         role="button"
         tabIndex={0}
         aria-label="Reveal menu"

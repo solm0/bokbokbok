@@ -1,6 +1,7 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ZineViewer from "../components/ZineViewer";
 import ZineImage from "../components/ZineImage";
+import { Eyebrow, GhostLink, Panel, PrimaryButton } from "../components/ui";
 import { useCart } from "../lib/cart-context";
 import { formatPrice } from "../lib/format";
 
@@ -12,49 +13,53 @@ export default function ZineDetailPage({ zines }) {
 
   if (!zine) {
     return (
-      <main className="detail-page-shell">
-        <div className="detail-layout">
+      <main className="min-h-screen bg-stone-100 p-7">
+        <div className="grid items-start gap-7 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
           <p>Could not find zine #{id}.</p>
-          <Link className="ghost-link" to="/dig">
+          <GhostLink to="/dig">
             Back to DIG
-          </Link>
+          </GhostLink>
         </div>
       </main>
     );
   }
 
   return (
-    <main className="detail-page-shell">
-      <div className="detail-topbar">
-        <Link className="ghost-link" to="/dig">
+    <main className="min-h-screen bg-stone-100 p-7">
+      <div className="mb-5 flex flex-wrap justify-between gap-3">
+        <GhostLink to="/dig">
           Back to DIG
-        </Link>
-        <Link className="ghost-link" to="/cart">
+        </GhostLink>
+        <GhostLink to="/cart">
           Cart
-        </Link>
+        </GhostLink>
       </div>
 
-      <div className="detail-layout">
-        <div className="detail-meta">
-          <ZineImage className="detail-cover" src={zine.cover} alt={zine.title} />
-          <div className="detail-copy">
-            <p className="detail-id">ZINE {zine.id}</p>
-            <h1>{zine.title}</h1>
-            <p>{zine.description}</p>
-            <p className="detail-availability">{zine.available === false ? "Unavailable" : "Available"}</p>
-            <p className="detail-price">{formatPrice(zine.price)}</p>
-            <div className="detail-actions">
-              <button
-                type="button"
-                id="addCartBtn"
+      <div className="grid items-start gap-7 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
+        <Panel className="grid gap-5 p-6 md:grid-cols-[160px_minmax(0,1fr)]">
+          <ZineImage
+            className="aspect-[3/4] w-full border border-neutral-950 object-cover"
+            src={zine.cover}
+            alt={zine.title}
+          />
+          <div>
+            <Eyebrow>ZINE {zine.id}</Eyebrow>
+            <h1 className="mt-1.5 mb-3.5 text-[40px] leading-[0.94] font-black">{zine.title}</h1>
+            <p className="max-w-[42ch] leading-6">{zine.description}</p>
+            <p className="mt-3 text-xs font-black uppercase tracking-[0.04em]">
+              {zine.available === false ? "Unavailable" : "Available"}
+            </p>
+            <p className="my-[18px] text-2xl font-black">{formatPrice(zine.price)}</p>
+            <div className="flex flex-wrap items-center gap-2.5">
+              <PrimaryButton
                 onClick={() => addItem(zine.id)}
                 disabled={zine.available === false || saved}
               >
                 {saved ? "Saved in Cart" : "Add to Cart"}
-              </button>
+              </PrimaryButton>
             </div>
           </div>
-        </div>
+        </Panel>
 
         <ZineViewer zine={zine} />
       </div>

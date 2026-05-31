@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import ZineImage from "../components/ZineImage";
+import { Eyebrow, FieldLabel, GhostButton, GhostLink, Panel, PrimaryButton, cx } from "../components/ui";
 import { useCart } from "../lib/cart-context";
 import { formatPrice } from "../lib/format";
 import { submitPurchaseRequest } from "../lib/purchase-requests";
@@ -70,118 +71,165 @@ export default function CartPage({ zines }) {
   }
 
   return (
-    <main className="cart-page">
-      <div className="cart-head">
+    <main className="min-h-screen bg-stone-100 p-7">
+      <div className="mb-6 flex flex-wrap items-start justify-between gap-4">
         <div>
-          <p className="detail-id">Local Cart</p>
-          <h1>Cart</h1>
+          <Eyebrow>Local Cart</Eyebrow>
+          <h1 className="mt-1.5 text-5xl leading-[0.92] font-black">Cart</h1>
         </div>
-        <div className="cart-head-links">
-          <Link className="ghost-link" to="/dig">
+        <div className="flex flex-wrap gap-2.5">
+          <GhostLink to="/dig">
             Continue Browsing
-          </Link>
+          </GhostLink>
           {detailedItems.length > 0 ? (
-            <button type="button" className="ghost-link button-link" onClick={clearCart}>
+            <GhostButton onClick={clearCart}>
               Clear Cart
-            </button>
+            </GhostButton>
           ) : null}
         </div>
       </div>
 
       {detailedItems.length === 0 ? (
-        <section className="cart-empty">
+        <Panel as="section" className="grid gap-4 p-6">
           <p>Your cart is empty.</p>
-          <Link className="ghost-link" to="/dig">
+          <GhostLink className="w-fit" to="/dig">
             Go to DIG
-          </Link>
-        </section>
+          </GhostLink>
+        </Panel>
       ) : (
         <>
-          <section className="cart-list">
+          <section className="grid gap-4">
             {detailedItems.map((item) => (
-              <article key={item.id} className="cart-item">
-                <Link to={`/page/${item.zine.id}`} className="cart-thumb">
-                  <ZineImage src={item.zine.cover} alt={item.zine.title} />
+              <Panel
+                key={item.id}
+                as="article"
+                className="grid items-start gap-[18px] p-[18px] md:grid-cols-[120px_minmax(0,1fr)_auto]"
+              >
+                <Link to={`/page/${item.zine.id}`} className="block overflow-hidden border border-neutral-950">
+                  <ZineImage className="aspect-[3/4] w-full object-cover" src={item.zine.cover} alt={item.zine.title} />
                 </Link>
-                <div className="cart-copy">
-                  <Link to={`/page/${item.zine.id}`} className="cart-title">
+                <div>
+                  <Link
+                    to={`/page/${item.zine.id}`}
+                    className="mb-2 inline-block text-2xl font-black no-underline"
+                  >
                     {item.zine.title}
                   </Link>
-                  <p>{item.zine.description}</p>
-                  <p className="cart-price">{formatPrice(item.zine.price)}</p>
+                  <p className="leading-[1.45]">{item.zine.description}</p>
+                  <p className="mt-3 font-black">{formatPrice(item.zine.price)}</p>
                 </div>
-                <div className="cart-actions">
-                  <button type="button" className="ghost-link button-link" onClick={() => removeItem(item.id)}>
+                <div className="grid justify-items-start gap-3 md:justify-items-end">
+                  <GhostButton onClick={() => removeItem(item.id)}>
                     Remove
-                  </button>
+                  </GhostButton>
                 </div>
-              </article>
+              </Panel>
             ))}
           </section>
 
-          <section className="cart-summary">
+          <Panel as="section" className="mt-5 flex flex-col gap-4 p-6 lg:flex-row lg:items-baseline lg:justify-between">
             <div>
               <p>Total</p>
-              <strong>{formatPrice(totalPrice)}</strong>
-              <p className="cart-note">Cart holds each zine once, like a request list or favorites list.</p>
+              <strong className="text-3xl font-black">{formatPrice(totalPrice)}</strong>
+              <p className="text-neutral-600">Cart holds each zine once, like a request list or favorites list.</p>
             </div>
-            <button type="button" className="request-btn" onClick={() => setFormOpen((current) => !current)}>
+            <PrimaryButton onClick={() => setFormOpen((current) => !current)}>
               Request for Purchase
-            </button>
-          </section>
+            </PrimaryButton>
+          </Panel>
 
           {submitMessage ? (
-            <p className={`submit-message ${submitState}`}>{submitMessage}</p>
+            <p
+              className={cx(
+                "mt-3.5 text-sm font-bold",
+                submitState === "success" && "text-green-800",
+                submitState === "error" && "text-red-700"
+              )}
+            >
+              {submitMessage}
+            </p>
           ) : null}
 
           {formOpen ? (
-            <section className="request-form-shell">
-              <form className="request-form" onSubmit={onSubmit}>
-                <div className="request-form-head">
+            <section className="mt-5">
+              <Panel as="form" className="grid gap-[18px] p-6" onSubmit={onSubmit}>
+                <div className="flex flex-wrap items-start justify-between gap-4">
                   <div>
-                    <p className="detail-id">Purchase Request</p>
-                    <h2>Request for Purchase</h2>
+                    <Eyebrow>Purchase Request</Eyebrow>
+                    <h2 className="mt-1.5 text-[32px] leading-[0.96] font-black">Request for Purchase</h2>
                   </div>
-                  <button type="button" className="ghost-link button-link" onClick={() => setFormOpen(false)}>
+                  <GhostButton onClick={() => setFormOpen(false)}>
                     Close
-                  </button>
+                  </GhostButton>
                 </div>
 
-                <div className="request-grid">
-                  <label>
+                <div className="grid gap-3.5 md:grid-cols-2">
+                  <FieldLabel>
                     <span>Name</span>
-                    <input name="name" value={formState.name} onChange={updateField} required />
-                  </label>
-                  <label>
+                    <input
+                      className="w-full border border-neutral-950 bg-white p-3"
+                      name="name"
+                      value={formState.name}
+                      onChange={updateField}
+                      required
+                    />
+                  </FieldLabel>
+                  <FieldLabel>
                     <span>One-line Note</span>
-                    <input name="note" value={formState.note} onChange={updateField} required />
-                  </label>
-                  <label>
+                    <input
+                      className="w-full border border-neutral-950 bg-white p-3"
+                      name="note"
+                      value={formState.note}
+                      onChange={updateField}
+                      required
+                    />
+                  </FieldLabel>
+                  <FieldLabel>
                     <span>Email</span>
-                    <input name="email" type="email" value={formState.email} onChange={updateField} required />
-                  </label>
-                  <label>
+                    <input
+                      className="w-full border border-neutral-950 bg-white p-3"
+                      name="email"
+                      type="email"
+                      value={formState.email}
+                      onChange={updateField}
+                      required
+                    />
+                  </FieldLabel>
+                  <FieldLabel>
                     <span>Phone</span>
-                    <input name="phone" value={formState.phone} onChange={updateField} required />
-                  </label>
-                  <label className="full">
+                    <input
+                      className="w-full border border-neutral-950 bg-white p-3"
+                      name="phone"
+                      value={formState.phone}
+                      onChange={updateField}
+                      required
+                    />
+                  </FieldLabel>
+                  <FieldLabel className="md:col-span-2">
                     <span>Address</span>
-                    <textarea name="address" value={formState.address} onChange={updateField} required />
-                  </label>
-                  <label className="full">
+                    <textarea
+                      className="min-h-[110px] w-full resize-y border border-neutral-950 bg-white p-3"
+                      name="address"
+                      value={formState.address}
+                      onChange={updateField}
+                      required
+                    />
+                  </FieldLabel>
+                  <FieldLabel className="md:col-span-2">
                     <span>Extra Contact</span>
                     <input
+                      className="w-full border border-neutral-950 bg-white p-3"
                       name="extraContact"
                       value={formState.extraContact}
                       onChange={updateField}
                       placeholder="Instagram ID, KakaoTalk ID, etc."
                     />
-                  </label>
+                  </FieldLabel>
                 </div>
 
-                <div className="request-preview">
-                  <p className="detail-id">Requested Zines</p>
-                  <ul>
+                <div className="border border-neutral-950 bg-white p-4">
+                  <Eyebrow>Requested Zines</Eyebrow>
+                  <ul className="mt-2.5 grid list-disc gap-1.5 pl-[18px]">
                     {detailedItems.map((item) => (
                       <li key={item.id}>
                         {item.zine.title} · {formatPrice(item.zine.price)}
@@ -190,10 +238,10 @@ export default function CartPage({ zines }) {
                   </ul>
                 </div>
 
-                <button type="submit" className="request-btn" disabled={submitState === "submitting"}>
+                <PrimaryButton type="submit" disabled={submitState === "submitting"}>
                   {submitState === "submitting" ? "Submitting..." : "Submit Request"}
-                </button>
-              </form>
+                </PrimaryButton>
+              </Panel>
             </section>
           ) : null}
         </>

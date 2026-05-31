@@ -2,6 +2,7 @@ import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import { Shuffle, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import ZineImage from "../components/ZineImage";
+import { GhostButton, cx } from "../components/ui";
 
 const CARD_WIDTH = 144;
 const CARD_HEIGHT = 192;
@@ -285,14 +286,20 @@ export default function CatalogPage({ zines }) {
   }, [maxScatterX, maxScatterY, scatterPositionMap]);
 
   return (
-    <main className={`dig-page ${viewMode === "grid" ? "grid-mode" : "scatter-mode"}`}>
-      <header className="dig-header">
-        <h1 className="dig-title">DIG</h1>
-        <div className="dig-toolbar">
-          <label className="dig-search">
+    <main
+      className={cx(
+        "relative min-h-screen w-full bg-slate-300",
+        viewMode === "grid" ? "grid-mode" : "scatter-mode"
+      )}
+    >
+      <header className="sticky top-12 z-100 flex flex-col items-start justify-between gap-3 bg-linear-to-b from-slate-300/98 via-slate-300/82 to-slate-300/0 px-3 pt-3 pb-2 backdrop-blur-sm md:flex-row md:gap-5 md:px-8 md:pt-7 md:pb-3">
+        
+        <div className="flex w-full flex-wrap items-start justify-start gap-3 md:w-auto md:justify-end">
+          <label className="relative flex w-full items-center md:w-auto">
             <span className="sr-only">Search zines</span>
             <input
               ref={searchInputRef}
+              className="min-h-[38px] w-full border border-neutral-950 bg-stone-50 py-0 pr-9 pl-3.5 outline-none placeholder:text-neutral-500 focus:ring-2 focus:ring-neutral-950/8 md:w-[min(320px,46vw)]"
               type="text"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
@@ -303,7 +310,7 @@ export default function CatalogPage({ zines }) {
             {query ? (
               <button
                 type="button"
-                className="dig-search-clear"
+                className="absolute top-1/2 right-2.5 inline-flex h-5 w-5 -translate-y-1/2 items-center justify-center border-0 bg-transparent p-0 text-neutral-700"
                 aria-label="Clear search"
                 onMouseDown={(event) => event.preventDefault()}
                 onClick={handleClearQuery}
@@ -312,17 +319,23 @@ export default function CatalogPage({ zines }) {
               </button>
             ) : null}
           </label>
-          <div className="dig-controls" role="tablist" aria-label="Display mode">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2" role="tablist" aria-label="Display mode">
             <button
               type="button"
-              className={`mode-btn ${viewMode === "scatter" ? "selected" : ""}`}
+              className={cx(
+                "inline-flex min-h-9 items-center justify-center border border-neutral-950 bg-stone-50 px-3 text-sm font-black",
+                viewMode === "scatter" && "bg-neutral-950 text-white"
+              )}
               onClick={() => setViewMode("scatter")}
             >
               Scatter
             </button>
             <button
               type="button"
-              className={`mode-btn ${viewMode === "grid" ? "selected" : ""}`}
+              className={cx(
+                "inline-flex min-h-9 items-center justify-center border border-neutral-950 bg-stone-50 px-3 text-sm font-black",
+                viewMode === "grid" && "bg-neutral-950 text-white"
+              )}
               onClick={() => setViewMode("grid")}
             >
               Grid
@@ -331,8 +344,16 @@ export default function CatalogPage({ zines }) {
         </div>
       </header>
 
-      <section className="dig-canvas" aria-label="Zine display">
-        <div className="dig-stage" style={{ height: `${stageHeight}px` }}>
+      <section
+        className={cx(
+          "overflow-x-hidden",
+          viewMode === "grid"
+            ? "min-h-[calc(100vh-92px)] overflow-y-auto pb-24 md:pb-24"
+            : "h-[calc(100vh-92px)] overflow-hidden pb-0"
+        )}
+        aria-label="Zine display"
+      >
+        <div className="relative min-h-full" style={{ height: `${stageHeight}px` }}>
           {displayedZines.map((zine, index) => {
             const scatter = scatterOverrides[zine.id] ?? scatterPositionMap[zine.id];
             const grid = gridLayout.positions[index];
@@ -342,7 +363,12 @@ export default function CatalogPage({ zines }) {
               <button
                 key={zine.id}
                 type="button"
-                className={`dig-card ${draggingId === zine.id ? "dragging" : ""}`}
+                className={cx(
+                  "group absolute top-0 left-0 grid gap-2.5 border-0 bg-transparent p-0 text-left text-neutral-950 select-none [touch-action:none]",
+                  "transition-[transform,opacity] duration-600 ease-[cubic-bezier(0.22,1,0.36,1)]",
+                  viewMode === "scatter" ? "cursor-grab" : "cursor-pointer",
+                  draggingId === zine.id && viewMode === "scatter" && "cursor-grabbing transition-none"
+                )}
                 draggable="false"
                 style={{
                   width: `${CARD_WIDTH}px`,
@@ -360,28 +386,29 @@ export default function CatalogPage({ zines }) {
                   navigate(`/page/${zine.id}`);
                 }}
               >
-                <span className="dig-card-cover">
-                  <ZineImage src={zine.cover} alt={zine.title} />
+                <span className="block aspect-[3/4] overflow-hidden border border-neutral-950 bg-white shadow-[6px_8px_0_rgba(0,0,0,0.14)] transition duration-200 group-hover:-translate-y-1.5 group-hover:shadow-[8px_14px_0_rgba(0,0,0,0.2)]">
+                  <ZineImage className="h-full w-full object-cover" src={zine.cover} alt={zine.title} />
                 </span>
-                <span className="dig-card-title">{zine.title}</span>
+                <span className="text-xs leading-[1.3] font-bold">{zine.title}</span>
               </button>
             );
           })}
           {displayedZines.length === 0 ? (
-            <p className="dig-empty">No zines match that title.</p>
+            <p className="absolute top-10 left-3 text-sm font-bold md:top-[52px] md:left-8">
+              No zines match that title.
+            </p>
           ) : null}
         </div>
         {viewMode === "scatter" ? (
-          <div className="dig-shuffle-wrap">
-            <button
-              type="button"
-              className="dig-shuffle-btn"
+          <div className="pointer-events-none fixed bottom-3 left-1/2 z-[9999] flex -translate-x-1/2 justify-center px-3 md:bottom-6 md:px-6">
+            <GhostButton
+              className="pointer-events-auto min-h-11 rounded-full bg-stone-50/95 px-[18px] shadow-[0_10px_24px_rgba(0,0,0,0.14)] backdrop-blur-[10px]"
               onClick={handleShuffle}
               aria-label="Shuffle random zines"
             >
               <Shuffle size={16} strokeWidth={2.2} aria-hidden="true" />
               {`Shuffle ${scatterSampleSize}`}
-            </button>
+            </GhostButton>
           </div>
         ) : null}
       </section>
