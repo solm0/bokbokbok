@@ -24,13 +24,13 @@ function init3D() {
  scene.add(light);
 
  const loader = new GLTFLoader();
- loader.load('images/bokno3.gltf',(gltf)=>{
+ loader.load('images/bok3.gltf',(gltf)=>{
   bokModel = gltf.scene;
   bokModel.scale.set(1300,1300,1300);
   scene.add(bokModel);
   animate();
  }, undefined, (error)=>{
-  console.error('bokno3.gltf load failed:', error);
+  console.error('bok3.gltf load failed:', error);
  });
 
  window.addEventListener('resize', onResize);

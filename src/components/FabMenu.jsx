@@ -9,42 +9,36 @@ const menuItems = [
   { label: "INSTAGRAM", href: "https://www.instagram.com/bok3books/" }
 ];
 
-export default function FabMenu({ open, onToggle, onClose, cartCount = 0 }) {
+export default function FabMenu({ visible, cartCount = 0 }) {
   const location = useLocation();
 
   return (
-    <div className={`fab-container ${open ? "active" : ""}`}>
-      <div className="fab-menu">
-        {menuItems.map((item) =>
-          item.href ? (
-            <a
-              key={item.label}
-              className="fab-item"
-              href={item.href}
-              target="_blank"
-              rel="noreferrer"
-              onClick={onClose}
-            >
-              {item.label}
-            </a>
-          ) : (
-            <Link
-              key={item.label}
-              className={`fab-item ${location.pathname === item.to ? "current" : ""}`}
-              to={item.to}
-              onClick={onClose}
-            >
-              {item.label}
-              {item.to === "/cart" && cartCount > 0 ? (
-                <span className="fab-badge">{cartCount}</span>
-              ) : null}
-            </Link>
-          )
-        )}
-      </div>
-      <button type="button" className="fab-main" onClick={onToggle} aria-label="Toggle menu">
-        +
-      </button>
-    </div>
+    <nav className={`site-nav ${visible ? "visible" : ""}`} aria-label="Primary">
+      {menuItems.map((item) => {
+        const label = item.to === "/cart" && cartCount > 0 ? `${item.label} ${cartCount}` : item.label;
+
+        return item.href ? (
+          <a
+            key={item.label}
+            className="site-nav-link"
+            href={item.href}
+            target="_blank"
+            rel="noreferrer"
+            style={{ opacity: 0.4 }}
+          >
+            {label}
+          </a>
+        ) : (
+          <Link
+            key={item.label}
+            className="site-nav-link"
+            to={item.to}
+            style={{ opacity: location.pathname === item.to ? 1 : 0.4 }}
+          >
+            {label}
+          </Link>
+        );
+      })}
+    </nav>
   );
 }

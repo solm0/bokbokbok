@@ -45,78 +45,44 @@ button{
  position:fixed;
  inset:0;
  z-index:10;
- pointer-events:none;
+ pointer-events:auto;
 }
 
-/* FAB */
-.fab-container{
- position:fixed;
- right:40px;
- bottom:40px;
- z-index:9999;
- display:flex;
- flex-direction:column;
- align-items:flex-end;
-}
-
-.fab-main{
- width:60px;
- height:60px;
+.three-trigger{
  border:0;
- border-radius:50%;
- background:#000;
- color:#fff;
- display:flex;
- align-items:center;
- justify-content:center;
- font-size:30px;
+ background:transparent;
+ padding:0;
  cursor:pointer;
 }
 
-.fab-menu{
- margin-bottom:15px;
- opacity:0;
- pointer-events:none;
- display:flex;
- flex-direction:column;
- gap:10px;
+.three-trigger:focus{
+ outline:none;
 }
 
-.fab-container.active .fab-menu{
+/* NAV */
+.site-nav{
+ position:fixed;
+ top:32px;
+ left:32px;
+ right:32px;
+ z-index:400;
+ display:flex;
+ align-items:center;
+ gap:14px;
+ opacity:0;
+ pointer-events:none;
+ transition:opacity 0.35s ease;
+}
+
+.site-nav.visible{
  opacity:1;
  pointer-events:auto;
 }
 
-.fab-item{
- background:#000;
- color:#fff;
- padding:10px 20px;
- border-radius:20px;
- cursor:pointer;
+.site-nav-link{
+ color:#111;
  text-decoration:none;
- display:flex;
- align-items:center;
- gap:8px;
- border:0;
-}
-
-.fab-item.current{
- background:#ff4d00;
- color:#111;
-}
-
-.fab-badge{
- min-width:20px;
- height:20px;
- padding:0 6px;
- border-radius:999px;
- background:#fff;
- color:#111;
- display:inline-flex;
- align-items:center;
- justify-content:center;
- font-size:11px;
- font-weight:900;
+ transition:opacity 0.2s ease;
 }
 
 /* HOME */
@@ -135,13 +101,6 @@ button{
  border:1px solid #111;
  background:rgba(248,247,242,0.92);
  box-shadow:10px 12px 0 rgba(0,0,0,0.12);
-}
-
-.home-kicker{
- font-size:12px;
- font-weight:900;
- letter-spacing:0.04em;
- text-transform:uppercase;
 }
 
 .home-copy h1{
@@ -1150,9 +1109,12 @@ button{
 }
 
 @media (max-width: 760px){
- .fab-container{
-  right:24px;
-  bottom:24px;
+ .site-nav{
+  top:12px;
+  left:12px;
+  right:12px;
+  gap:10px;
+  flex-wrap:wrap;
  }
 
  .home-copy{

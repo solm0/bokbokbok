@@ -3,22 +3,17 @@ import { Outlet, useLocation } from "react-router-dom";
 import FabMenu from "./FabMenu";
 
 export default function AppShell({ cartCount }) {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [navVisible, setNavVisible] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
-    setMenuOpen(false);
+    setNavVisible(location.pathname !== "/");
   }, [location.pathname]);
 
   return (
     <>
-      <Outlet />
-      <FabMenu
-        open={menuOpen}
-        onToggle={() => setMenuOpen((current) => !current)}
-        onClose={() => setMenuOpen(false)}
-        cartCount={cartCount}
-      />
+      <Outlet context={{ revealNav: () => setNavVisible(true) }} />
+      <FabMenu visible={navVisible} cartCount={cartCount} />
     </>
   );
 }

@@ -1,9 +1,10 @@
 import { useEffect, useRef } from "react";
+import { useOutletContext } from "react-router-dom";
 
 const MD_BREAKPOINT = 768;
 const XL_BREAKPOINT = 1280;
 const XL_MAX_MODEL_WIDTH = 640;
-const MODEL_SCALE_RATIO = 0.7;
+const MODEL_SCALE_RATIO = 0.42;
 
 function getTargetModelWidth(viewportWidth) {
   if (viewportWidth >= XL_BREAKPOINT) {
@@ -19,6 +20,7 @@ function getTargetModelWidth(viewportWidth) {
 
 export default function HomePage() {
   const containerRef = useRef(null);
+  const { revealNav } = useOutletContext();
 
   useEffect(() => {
     const container = containerRef.current;
@@ -74,19 +76,21 @@ export default function HomePage() {
       };
 
       loader.load(
-        "/images/bokno3.gltf",
+        "/images/bok3.gltf",
         (gltf) => {
           bokModel = gltf.scene;
           const box = new THREE.Box3().setFromObject(bokModel);
           const size = box.getSize(new THREE.Vector3());
+          const center = box.getCenter(new THREE.Vector3());
 
+          bokModel.position.sub(center);
           baseModelWidth = size.x || 1;
           fitModelToViewport();
           scene.add(bokModel);
         },
         undefined,
         (error) => {
-          console.error("bokno3.gltf load failed:", error);
+          console.error("bok3.gltf load failed:", error);
         }
       );
 
@@ -108,7 +112,7 @@ export default function HomePage() {
           const bounce = Math.abs(Math.sin(t * 2.8));
           const squash = Math.pow(1 - bounce, 2);
 
-          bokModel.position.y = bounce * 42 - 12;
+          bokModel.position.y = bounce * 22;
           bokModel.rotation.y = Math.sin(t * 2.2) * 0.32;
           bokModel.rotation.z = Math.sin(t * 3.4) * 0.08;
           bokModel.scale.set(
@@ -137,15 +141,21 @@ export default function HomePage() {
 
   return (
     <div className="home-page">
-      <div id="three-container" ref={containerRef} />
-
-      <section className="home-copy">
-        <p className="home-kicker">Seoul-based zine store</p>
-        <h1>BOK³</h1>
-        <p>
-          A scattered shelf of independent zines, tactile browsing, and quiet printed things.
-        </p>
-      </section>
+      <div
+        id="three-container"
+        ref={containerRef}
+        className="three-trigger"
+        role="button"
+        tabIndex={0}
+        aria-label="Reveal menu"
+        onClick={revealNav}
+        onKeyDown={(event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            revealNav();
+          }
+        }}
+      />
     </div>
   );
 }
