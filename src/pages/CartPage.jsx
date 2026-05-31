@@ -171,7 +171,6 @@ export default function CartPage({ zines, goods }) {
               <Panel as="form" className="grid gap-[18px] p-6 text-sm" onSubmit={onSubmit}>
                 <div className="flex flex-wrap items-start justify-between gap-4">
                   <div className="grid gap-1.5">
-                    <Eyebrow>{t("cart.request")}</Eyebrow>
                     <h2>{t("cart.requestTitle")}</h2>
                   </div>
                   <GhostButton onClick={() => setFormOpen(false)}>
