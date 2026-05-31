@@ -1,4 +1,14 @@
 @import "tailwindcss";
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css");
+
+@font-face {
+  font-family: "newfont.regular";
+  src: url("/fonts/newfont.regular.woff2") format("woff2"),
+       url("/fonts/newfont.regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 @font-face {
   font-family: "Bok";
@@ -21,7 +31,7 @@
   body {
     overflow: auto;
     color: #111;
-    font-family: Inter, sans-serif;
+    font-family: "newfont.regular", "Pretendard", "Apple SD Gothic Neo", "AppleGothic", "Malgun Gothic", "맑은 고딕", sans-serif;
   }
 
   a {
@@ -41,12 +51,12 @@
 }
 
 @theme inline {
-  --font-bok: "Bok", sans-serif;
+  --font-bok: "Bok", "Pretendard", sans-serif;
 }
 
 @layer utilities {
   .font-bok {
-    font-family: "Bok", sans-serif;
+    font-family: "Bok", "Pretendard", sans-serif;
     font-size: 20px;
   }
 
