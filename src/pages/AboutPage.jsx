@@ -12,6 +12,7 @@ export default function AboutPage() {
           BOK³ is a Seoul-based zine shop for personal publishing, quiet collections, and small
           printed objects that reward slow browsing.
         </p>
+        <a href="https://www.instagram.com/bok3books/">인스타그램</a>
       </Panel>
     </main>
   );

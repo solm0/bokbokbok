@@ -4,17 +4,19 @@ import { useNavigate } from "react-router-dom";
 import ZineImage from "../components/ZineImage";
 import { GhostButton, cx } from "../components/ui";
 
-const CARD_WIDTH = 144;
-const CARD_HEIGHT = 192;
+const CARD_WIDTH = 200;
+const CARD_HEIGHT = 300;
 const MOBILE_BREAKPOINT = 768;
 const MOBILE_SCATTER_SAMPLE_SIZE = 8;
 const SCATTER_SAMPLE_SIZE = 15;
-const GRID_GAP = 20;
+const GRID_GAP = 10;
+const MAX_GRID_COLUMNS = 5;
 const SCATTER_TOP = 32;
-const SCATTER_BOTTOM = 120;
-const SCATTER_SIDE = 56;
+const SCATTER_BOTTOM = 3;
+const SCATTER_SIDE = 50;
 const RESIZE_SETTLE_MS = 180;
 const DRAG_MOVE_THRESHOLD = 6;
+const MAX_SCATTER_ROTATION = 20;
 
 function hashSeed(value) {
   return String(value).split("").reduce((sum, char) => sum + char.charCodeAt(0), 0);
@@ -84,7 +86,7 @@ function getScatterLayout(zines, width, height) {
       }
     }
 
-    const rotation = ((seed * 29) % 18) - 9;
+    const rotation = ((seed * 31) % (MAX_SCATTER_ROTATION * 2 + 1)) - MAX_SCATTER_ROTATION;
     placedCards.push(bestCandidate);
 
     return {
@@ -96,7 +98,10 @@ function getScatterLayout(zines, width, height) {
 }
 
 function getGridLayout(zines, width) {
-  const columns = Math.max(2, Math.floor((width - SCATTER_SIDE * 2 + GRID_GAP) / (CARD_WIDTH + GRID_GAP)));
+  const columns = Math.min(
+    MAX_GRID_COLUMNS,
+    Math.max(2, Math.floor((width - SCATTER_SIDE * 2 + GRID_GAP) / (CARD_WIDTH + GRID_GAP)))
+  );
   const leftOffset = Math.max(
     SCATTER_SIDE,
     Math.floor((width - columns * CARD_WIDTH - (columns - 1) * GRID_GAP) / 2)
@@ -116,7 +121,7 @@ function getGridLayout(zines, width) {
   const rows = Math.ceil(zines.length / columns);
   const totalHeight = SCATTER_TOP + rows * (CARD_HEIGHT + 44) + 60;
 
-  return { positions, totalHeight };
+  return { positions, totalHeight, sidePadding: leftOffset };
 }
 
 export default function CatalogPage({ zines }) {
@@ -195,6 +200,7 @@ export default function CatalogPage({ zines }) {
     () => getGridLayout(filteredZines, viewport.width),
     [filteredZines, viewport.width]
   );
+  const headerPaddingX = gridLayout.sidePadding;
   const scatterPositionMap = useMemo(
     () =>
       scatterZines.reduce((positions, zine, index) => {
@@ -288,53 +294,42 @@ export default function CatalogPage({ zines }) {
   return (
     <main
       className={cx(
-        "relative min-h-screen w-full bg-slate-300",
+        "relative min-h-screen w-full",
         viewMode === "grid" ? "grid-mode" : "scatter-mode"
       )}
     >
-      <header className="sticky top-12 z-100 flex flex-col items-start justify-between gap-3 bg-linear-to-b from-slate-300/98 via-slate-300/82 to-slate-300/0 px-3 pt-3 pb-2 backdrop-blur-sm md:flex-row md:gap-5 md:px-8 md:pt-7 md:pb-3">
-        
+      <header
+        className="items-start sticky top-14 z-[100] flex w-full items-center justify-between gap-3"
+        style={{ paddingInlineStart: `${headerPaddingX}px`, paddingInlineEnd: SCATTER_SIDE }}
+      >
         <div className="flex w-full flex-wrap items-start justify-start gap-3 md:w-auto md:justify-end">
-          <label className="relative flex w-full items-center md:w-auto">
-            <span className="sr-only">Search zines</span>
-            <input
-              ref={searchInputRef}
-              className="min-h-[38px] w-full border border-neutral-950 bg-stone-50 py-0 pr-9 pl-3.5 outline-none placeholder:text-neutral-500 focus:ring-2 focus:ring-neutral-950/8 md:w-[min(320px,46vw)]"
-              type="text"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              onInput={(event) => setQuery(event.currentTarget.value)}
-              placeholder="Search titles"
-              aria-label="Search titles"
-            />
-            {query ? (
+          <div className="flex flex-col items-start gap-1" role="tablist" aria-label="Display mode">
+            <div className="flex gap-2 items-center">
               <button
                 type="button"
-                className="absolute top-1/2 right-2.5 inline-flex h-5 w-5 -translate-y-1/2 items-center justify-center border-0 bg-transparent p-0 text-neutral-700"
-                aria-label="Clear search"
-                onMouseDown={(event) => event.preventDefault()}
-                onClick={handleClearQuery}
+                className={cx(
+                  "text-sm transition-opacity",
+                  viewMode === "scatter" ? 'opacity-100' : 'opacity-40 hover:opacity-80'
+                )}
+                onClick={() => setViewMode("scatter")}
               >
-                <X size={14} strokeWidth={2.2} aria-hidden="true" />
+                Scatter
               </button>
-            ) : null}
-          </label>
-          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2" role="tablist" aria-label="Display mode">
+              {viewMode === "scatter" ? (
+                <GhostButton
+                  className="pointer-events-auto"
+                  onClick={handleShuffle}
+                  aria-label="Shuffle random zines"
+                >
+                  <Shuffle size={16} strokeWidth={2.2} aria-hidden="true" />
+                </GhostButton>
+              ) : null}
+            </div>
             <button
               type="button"
               className={cx(
-                "inline-flex min-h-9 items-center justify-center border border-neutral-950 bg-stone-50 px-3 text-sm font-black",
-                viewMode === "scatter" && "bg-neutral-950 text-white"
-              )}
-              onClick={() => setViewMode("scatter")}
-            >
-              Scatter
-            </button>
-            <button
-              type="button"
-              className={cx(
-                "inline-flex min-h-9 items-center justify-center border border-neutral-950 bg-stone-50 px-3 text-sm font-black",
-                viewMode === "grid" && "bg-neutral-950 text-white"
+                "text-sm transition-opacity",
+                viewMode === "grid" ? 'opacity-100' : 'opacity-40 hover:opacity-80'
               )}
               onClick={() => setViewMode("grid")}
             >
@@ -342,14 +337,43 @@ export default function CatalogPage({ zines }) {
             </button>
           </div>
         </div>
+        <div className="flex">
+          <div className="relative flex w-full text-sm items-center md:w-auto">
+            <label htmlFor="catalog-search" className="sr-only">
+              Search zines
+            </label>
+            <input
+              id="catalog-search"
+              ref={searchInputRef}
+              className="min-h-[38px] w-full py-0 pr-9 outline-none placeholder:text-neutral-500 opacity-80 focus:opacity-100 md:w-[min(320px,46vw)]"
+              type="text"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Search"
+              aria-label="Search titles"
+            />
+            {query ? (
+              <button
+                type="button"
+                className="absolute top-1/2 right-2.5 z-10 inline-flex h-5 w-5 -translate-y-1/2 items-center justify-center border-0 bg-transparent p-0 text-neutral-700"
+                aria-label="Clear search"
+                onMouseDown={(event) => event.preventDefault()}
+                onClick={handleClearQuery}
+              >
+                <X size={14} strokeWidth={2.2} aria-hidden="true" />
+              </button>
+            ) : null}
+          </div>
+        </div>
+        
       </header>
 
       <section
         className={cx(
-          "overflow-x-hidden",
+          "relative z-0 overflow-x-hidden pt-8",
           viewMode === "grid"
-            ? "min-h-[calc(100vh-92px)] overflow-y-auto pb-24 md:pb-24"
-            : "h-[calc(100vh-92px)] overflow-hidden pb-0"
+            ? "min-h-[calc(100vh-90px)] overflow-y-auto pb-24 md:pb-24"
+            : "h-[calc(100vh-90px)] overflow-hidden pb-0"
         )}
         aria-label="Zine display"
       >
@@ -358,13 +382,14 @@ export default function CatalogPage({ zines }) {
             const scatter = scatterOverrides[zine.id] ?? scatterPositionMap[zine.id];
             const grid = gridLayout.positions[index];
             const active = viewMode === "grid" ? grid : scatter;
+            const isGrid = viewMode === "grid";
 
             return (
               <button
                 key={zine.id}
                 type="button"
                 className={cx(
-                  "group absolute top-0 left-0 grid gap-2.5 border-0 bg-transparent p-0 text-left text-neutral-950 select-none [touch-action:none]",
+                  "group absolute top-0 left-0 grid gap-0.5 text-left text-neutral-950 select-none [touch-action:none]",
                   "transition-[transform,opacity] duration-600 ease-[cubic-bezier(0.22,1,0.36,1)]",
                   viewMode === "scatter" ? "cursor-grab" : "cursor-pointer",
                   draggingId === zine.id && viewMode === "scatter" && "cursor-grabbing transition-none"
@@ -386,31 +411,40 @@ export default function CatalogPage({ zines }) {
                   navigate(`/page/${zine.id}`);
                 }}
               >
-                <span className="block aspect-[3/4] overflow-hidden border border-neutral-950 bg-white shadow-[6px_8px_0_rgba(0,0,0,0.14)] transition duration-200 group-hover:-translate-y-1.5 group-hover:shadow-[8px_14px_0_rgba(0,0,0,0.2)]">
-                  <ZineImage className="h-full w-full object-cover" src={zine.cover} alt={zine.title} />
+                <span
+                  className={cx(
+                    "block transition duration-200 group-hover:opacity-80",
+                    isGrid
+                      ? "aspect-3/4 overflow-hidden bg-black"
+                      : "aspect-square overflow-visible flex items-center justify-center"
+                  )}
+                >
+                  <ZineImage
+                    className={cx(
+                      isGrid
+                        ? "h-full w-full object-contain p-3"
+                        : "h-auto w-full max-w-none"
+                    )}
+                    src={zine.cover}
+                    alt={zine.title}
+                  />
                 </span>
-                <span className="text-xs leading-[1.3] font-bold">{zine.title}</span>
+                {viewMode === 'grid' &&
+                  <>
+                    <span className="text-xs font-bold mt-2">{zine.title}</span>
+                    <span className="text-xs">{zine.author ?? 'unknown author'}</span>
+                  </>
+                }
               </button>
             );
           })}
           {displayedZines.length === 0 ? (
-            <p className="absolute top-10 left-3 text-sm font-bold md:top-[52px] md:left-8">
+            <p className="absolute top-10 left-3 text-sm md:top-[52px] md:left-8">
               No zines match that title.
             </p>
           ) : null}
         </div>
-        {viewMode === "scatter" ? (
-          <div className="pointer-events-none fixed bottom-3 left-1/2 z-[9999] flex -translate-x-1/2 justify-center px-3 md:bottom-6 md:px-6">
-            <GhostButton
-              className="pointer-events-auto min-h-11 rounded-full bg-stone-50/95 px-[18px] shadow-[0_10px_24px_rgba(0,0,0,0.14)] backdrop-blur-[10px]"
-              onClick={handleShuffle}
-              aria-label="Shuffle random zines"
-            >
-              <Shuffle size={16} strokeWidth={2.2} aria-hidden="true" />
-              {`Shuffle ${scatterSampleSize}`}
-            </GhostButton>
-          </div>
-        ) : null}
+        
       </section>
     </main>
   );

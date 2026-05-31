@@ -2,12 +2,10 @@ import { Link, useLocation } from "react-router-dom";
 import { cx } from "./ui";
 
 const menuItems = [
-  { label: "HOME", to: "/" },
-  { label: "DIG", to: "/dig" },
-  { label: "ABOUT", to: "/about" },
-  { label: "MAKE ZINE", to: "/zine" },
-  { label: "CART", to: "/cart" },
-  { label: "INSTAGRAM", href: "https://www.instagram.com/bok3books/" }
+  { label: "About Us", to: "/about" },
+  { label: "Goods+Apparel", to: "/goods" },
+  { label: "Digging Zone", to: "/dig" },
+  { label: "DIY", to: "/zine" },
 ];
 
 export default function FabMenu({ visible, cartCount = 0 }) {
@@ -16,37 +14,55 @@ export default function FabMenu({ visible, cartCount = 0 }) {
   return (
     <nav
       className={cx(
-        "fixed top-3 right-3 left-3 z-[400] flex flex-wrap items-center gap-2.5 px-3 py-2 transition-opacity duration-300 sm:top-8 sm:right-8 sm:left-8 sm:gap-3.5 sm:px-0 sm:py-0",
+        "fixed z-400 flex items-start justify-between transition-opacity duration-300 sm:top-3 sm:right-3 sm:left-3 sm:gap-3.5 sm:px-0 sm:py-0",
         visible ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
       )}
       aria-label="Primary"
     >
-      {menuItems.map((item) => {
-        const label = item.to === "/cart" && cartCount > 0 ? `${item.label} ${cartCount}` : item.label;
-        const itemClass = "text-sm font-black tracking-[0.02em] no-underline transition-opacity duration-200";
+      <Link
+        className="flex flex-col left-0 text-sm transition-opacity duration-200"
+        to={'/'}
+      >
+        <span>BOK³</span>
+        <span>Zine</span>
+      </Link>
+      <div className="flex items-center gap-10">
+        {menuItems.map((item) => {
+          const label = item.to === "/cart" && cartCount > 0 ? `${item.label} ${cartCount}` : item.label;
+          
 
-        return item.href ? (
-          <a
-            key={item.label}
-            className={itemClass}
-            href={item.href}
-            target="_blank"
-            rel="noreferrer"
-            style={{ opacity: 0.4 }}
-          >
-            {label}
-          </a>
-        ) : (
-          <Link
-            key={item.label}
-            className={itemClass}
-            to={item.to}
-            style={{ opacity: location.pathname === item.to ? 1 : 0.4 }}
-          >
-            {label}
-          </Link>
-        );
-      })}
+          return item.href ? (
+            <a
+              key={item.label}
+              className="text-sm transition-opacity duration-200"
+              href={item.href}
+              target="_blank"
+              rel="noreferrer"
+              style={{ opacity: 0.4 }}
+            >
+              {label}
+            </a>
+          ) : (
+            <Link
+              key={item.label}
+              className={`
+                text-sm transition-opacity duration-200 transition-opacity
+                ${location.pathname === item.to ? 'opacity-100' : 'opacity-40 hover:opacity-80'}
+              `}
+              to={item.to}
+            >
+              {label}
+            </Link>
+          );
+        })}
+      </div>
+
+      <Link
+        className="flex flex-col left-0 text-sm transition-opacity duration-200 hover:opacity-50 transition-opacity"
+        to={'/cart'}
+      >
+        <img src="/images/cart.png" className="w-12" />
+      </Link>
     </nav>
   );
 }

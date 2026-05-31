@@ -13,7 +13,7 @@ export default function ZineDetailPage({ zines }) {
 
   if (!zine) {
     return (
-      <main className="min-h-screen bg-stone-100 p-7">
+      <main className="min-h-screen mt-6 bg-stone-100 p-7">
         <div className="grid items-start gap-7 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
           <p>Could not find zine #{id}.</p>
           <GhostLink to="/dig">
@@ -25,31 +25,35 @@ export default function ZineDetailPage({ zines }) {
   }
 
   return (
-    <main className="min-h-screen bg-stone-100 p-7">
+    <main className="min-h-screen pt-14 p-7">
       <div className="mb-5 flex flex-wrap justify-between gap-3">
         <GhostLink to="/dig">
           Back to DIG
         </GhostLink>
-        <GhostLink to="/cart">
-          Cart
-        </GhostLink>
       </div>
 
       <div className="grid items-start gap-7 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
-        <Panel className="grid gap-5 p-6 md:grid-cols-[160px_minmax(0,1fr)]">
+        <Panel className="grid gap-5 p-6 md:grid-cols-[160px_minmax(0,1fr)] text-sm">
           <ZineImage
-            className="aspect-[3/4] w-full border border-neutral-950 object-cover"
+            className="aspect-square w-full object-contain"
             src={zine.cover}
             alt={zine.title}
           />
-          <div>
-            <Eyebrow>ZINE {zine.id}</Eyebrow>
-            <h1 className="mt-1.5 mb-3.5 text-[40px] leading-[0.94] font-black">{zine.title}</h1>
-            <p className="max-w-[42ch] leading-6">{zine.description}</p>
-            <p className="mt-3 text-xs font-black uppercase tracking-[0.04em]">
-              {zine.available === false ? "Unavailable" : "Available"}
-            </p>
-            <p className="my-[18px] text-2xl font-black">{formatPrice(zine.price)}</p>
+          <div className="flex flex-col gap-[1.6em]">
+            <h1 className="font-bold">{zine.title}</h1>
+            <h1 className="">{zine.author ?? 'unknown author'}</h1>
+            <p className="max-w-[42ch]">{zine.description}</p>
+            <div className="flex flex-col">
+              {zine.metadata &&
+                zine.metadata.map((m, i) => 
+                  <span key={i}>
+                    {m}
+                  </span>
+                )
+              }
+            </div>
+            <p>{zine.available === false ? "Unavailable" : "Available"}</p>
+            <p>{formatPrice(zine.price)}</p>
             <div className="flex flex-wrap items-center gap-2.5">
               <PrimaryButton
                 onClick={() => addItem(zine.id)}

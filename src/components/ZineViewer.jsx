@@ -21,14 +21,14 @@ export default function ZineViewer({ zine }) {
   }
 
   return (
-    <Panel className="bg-slate-300 p-6" as="section" aria-label={`${zine.title} viewer`}>
+    <Panel className="p-6" as="section" aria-label={`${zine.title} viewer`}>
       <div className="mb-3.5 flex items-center justify-between gap-3">
         <Eyebrow>Preview</Eyebrow>
         <span>{pageLabel}</span>
       </div>
 
-      <div className="grid min-h-[360px] place-items-center overflow-hidden border border-neutral-950 bg-slate-400 md:min-h-[540px]">
-        <div className="aspect-[3/4] w-full max-w-[380px] border border-neutral-950 bg-white shadow-[18px_24px_0_rgba(0,0,0,0.16)]">
+      <div className="grid min-h-[360px] place-items-center overflow-hidden  md:min-h-[540px]">
+        <div className="aspect-[3/4] w-full max-w-[380px]">
           <ZineImage
             className="h-full w-full object-cover"
             src={pages[pageIndex]}

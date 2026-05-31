@@ -57,7 +57,7 @@ export default function HomePage() {
       container.appendChild(renderer.domElement);
 
       scene.add(new THREE.AmbientLight(0xffffff, 3));
-      const light = new THREE.DirectionalLight(0xffffff, 2);
+      const light = new THREE.DirectionalLight(0xffffff, 20);
       light.position.set(100, 100, 200);
       scene.add(light);
 

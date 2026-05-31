@@ -1,4 +1,4 @@
-const FALLBACK_SRC = "/images/bok.png";
+const FALLBACK_SRC = "/images/zines/6_cover.png";
 
 export default function ZineImage({ src, alt, className = "" }) {
   return (

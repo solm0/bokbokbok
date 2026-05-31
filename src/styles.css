@@ -36,12 +36,12 @@
 
 html,
 body,
-body * {
+/* body * {
   cursor: url("/images/staple/cursor-staple2.png") 4 4, auto !important;
-}
+} */
 
 html:active,
 html:active body,
-html:active body * {
+/* html:active body * {
   cursor: url("/images/staple/cursor-staple.png") 4 4, auto !important;
-}
+} */

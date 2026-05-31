@@ -319,7 +319,7 @@ export default function ZineMakerPage() {
         </aside>
 
         <section
-          className="grid min-h-[70vh] min-w-0 justify-items-center overflow-auto bg-[linear-gradient(90deg,rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:32px_32px] bg-slate-300 p-6 [align-items:start] md:min-h-screen md:place-items-center md:p-12"
+          className="grid min-h-[70vh] min-w-0 justify-items-center overflow-auto bg-[linear-gradient(90deg,rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:32px_32px] p-6 [align-items:start] md:min-h-screen md:place-items-center md:p-12"
           aria-label="Zine editor"
         >
           <div className="origin-top-center scale-[0.72] p-3 md:scale-100 md:p-[30px]">

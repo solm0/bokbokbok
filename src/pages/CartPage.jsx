@@ -71,13 +71,10 @@ export default function CartPage({ zines }) {
   }
 
   return (
-    <main className="min-h-screen bg-stone-100 p-7">
-      <div className="mb-6 flex flex-wrap items-start justify-between gap-4">
-        <div>
-          <Eyebrow>Local Cart</Eyebrow>
-          <h1 className="mt-1.5 text-5xl leading-[0.92] font-black">Cart</h1>
-        </div>
-        <div className="flex flex-wrap gap-2.5">
+    <main className="min-h-screen p-7">
+      <div className="my-6 flex flex-wrap items-start justify-between gap-4">
+
+        <div className="flex flex-wrap gap-2">
           <GhostLink to="/dig">
             Continue Browsing
           </GhostLink>
@@ -105,7 +102,7 @@ export default function CartPage({ zines }) {
                 as="article"
                 className="grid items-start gap-[18px] p-[18px] md:grid-cols-[120px_minmax(0,1fr)_auto]"
               >
-                <Link to={`/page/${item.zine.id}`} className="block overflow-hidden border border-neutral-950">
+                <Link to={`/page/${item.zine.id}`} className="block overflow-hidden  -neutral-950">
                   <ZineImage className="aspect-[3/4] w-full object-cover" src={item.zine.cover} alt={item.zine.title} />
                 </Link>
                 <div>
@@ -167,7 +164,7 @@ export default function CartPage({ zines }) {
                   <FieldLabel>
                     <span>Name</span>
                     <input
-                      className="w-full border border-neutral-950 bg-white p-3"
+                      className="w-full  p-3"
                       name="name"
                       value={formState.name}
                       onChange={updateField}
@@ -177,7 +174,7 @@ export default function CartPage({ zines }) {
                   <FieldLabel>
                     <span>One-line Note</span>
                     <input
-                      className="w-full border border-neutral-950 bg-white p-3"
+                      className="w-full  p-3"
                       name="note"
                       value={formState.note}
                       onChange={updateField}
@@ -187,7 +184,7 @@ export default function CartPage({ zines }) {
                   <FieldLabel>
                     <span>Email</span>
                     <input
-                      className="w-full border border-neutral-950 bg-white p-3"
+                      className="w-full  p-3"
                       name="email"
                       type="email"
                       value={formState.email}
@@ -198,7 +195,7 @@ export default function CartPage({ zines }) {
                   <FieldLabel>
                     <span>Phone</span>
                     <input
-                      className="w-full border border-neutral-950 bg-white p-3"
+                      className="w-full  p-3"
                       name="phone"
                       value={formState.phone}
                       onChange={updateField}
@@ -208,7 +205,7 @@ export default function CartPage({ zines }) {
                   <FieldLabel className="md:col-span-2">
                     <span>Address</span>
                     <textarea
-                      className="min-h-[110px] w-full resize-y border border-neutral-950 bg-white p-3"
+                      className="min-h-[110px] w-full resize-y  p-3"
                       name="address"
                       value={formState.address}
                       onChange={updateField}
@@ -218,7 +215,7 @@ export default function CartPage({ zines }) {
                   <FieldLabel className="md:col-span-2">
                     <span>Extra Contact</span>
                     <input
-                      className="w-full border border-neutral-950 bg-white p-3"
+                      className="w-full  p-3"
                       name="extraContact"
                       value={formState.extraContact}
                       onChange={updateField}
@@ -227,7 +224,7 @@ export default function CartPage({ zines }) {
                   </FieldLabel>
                 </div>
 
-                <div className="border border-neutral-950 bg-white p-4">
+                <div className=" p-4">
                   <Eyebrow>Requested Zines</Eyebrow>
                   <ul className="mt-2.5 grid list-disc gap-1.5 pl-[18px]">
                     {detailedItems.map((item) => (
