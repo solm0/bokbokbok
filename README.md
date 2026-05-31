@@ -13,6 +13,7 @@
 ## 1. 자주 수정하는 파일
 
 운영 중 가장 자주 손대는 파일은 아래 4개입니다.
+솔미 짱! ///
 
 - 진 목록 데이터: [public/zines.json](/Users/solmi/Downloads/bokbokbok/public/zines.json)
 - 구매 요청 전송 URL 설정: [.env](/Users/solmi/Downloads/bokbokbok/.env)
