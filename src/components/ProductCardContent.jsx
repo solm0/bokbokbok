@@ -6,7 +6,7 @@ export default function ProductCardContent({
   subtitle,
   cover,
   mode = "grid",
-  imageBackgroundClassName = "bg-black"
+  imageBackgroundClassName = "bg-neutral-900"
 }) {
   const isGrid = mode === "grid";
 

@@ -184,7 +184,7 @@ export default function CartPage({ zines, goods }) {
                   <FieldLabel>
                     <span>{t("cart.fields.name")}</span>
                     <input
-                      className="w-full bg-stone-50 p-3 text-sm"
+                      className="w-full  p-3 text-sm"
                       name="name"
                       value={formState.name}
                       onChange={updateField}
@@ -194,7 +194,7 @@ export default function CartPage({ zines, goods }) {
                   <FieldLabel>
                     <span>{t("cart.fields.note")}</span>
                     <input
-                      className="w-full bg-stone-50 p-3 text-sm"
+                      className="w-full  p-3 text-sm"
                       name="note"
                       value={formState.note}
                       onChange={updateField}
@@ -204,7 +204,7 @@ export default function CartPage({ zines, goods }) {
                   <FieldLabel>
                     <span>{t("cart.fields.email")}</span>
                     <input
-                      className="w-full bg-stone-50 p-3 text-sm"
+                      className="w-full  p-3 text-sm"
                       name="email"
                       type="email"
                       value={formState.email}
@@ -215,7 +215,7 @@ export default function CartPage({ zines, goods }) {
                   <FieldLabel>
                     <span>{t("cart.fields.phone")}</span>
                     <input
-                      className="w-full bg-stone-50 p-3 text-sm"
+                      className="w-full  p-3 text-sm"
                       name="phone"
                       value={formState.phone}
                       onChange={updateField}
@@ -225,7 +225,7 @@ export default function CartPage({ zines, goods }) {
                   <FieldLabel className="md:col-span-2">
                     <span>{t("cart.fields.address")}</span>
                     <textarea
-                      className="min-h-[110px] w-full resize-y bg-stone-50 p-3 text-sm"
+                      className="min-h-[110px] w-full resize-y  p-3 text-sm"
                       name="address"
                       value={formState.address}
                       onChange={updateField}
@@ -235,7 +235,7 @@ export default function CartPage({ zines, goods }) {
                   <FieldLabel className="md:col-span-2">
                     <span>{t("cart.fields.extraContact")}</span>
                     <input
-                      className="w-full bg-stone-50 p-3 text-sm"
+                      className="w-full  p-3 text-sm"
                       name="extraContact"
                       value={formState.extraContact}
                       onChange={updateField}
@@ -244,7 +244,7 @@ export default function CartPage({ zines, goods }) {
                   </FieldLabel>
                 </div>
 
-                <div className="bg-stone-50 p-4">
+                <div className=" p-4">
                   <Eyebrow>{t("cart.requestedItems")}</Eyebrow>
                   <ul className="mt-2.5 grid list-disc gap-1.5 pl-[18px]">
                     {detailedItems.map((item) => (

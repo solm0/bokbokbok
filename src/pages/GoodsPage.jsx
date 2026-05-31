@@ -87,7 +87,7 @@ export default function GoodsPage({ goods }) {
   };
 
   return (
-    <main className="relative min-h-screen w-full bg-white">
+    <main className="relative min-h-screen w-full">
       <header
         className="sticky top-14 z-[100] flex w-full items-start justify-end gap-3"
         style={{ paddingInlineStart: `${gridLayout.sidePadding}px`, paddingInlineEnd: GRID_SIDE }}
@@ -148,7 +148,7 @@ export default function GoodsPage({ goods }) {
                   }
                   cover={item.cover}
                   mode="grid"
-                  imageBackgroundClassName="bg-white"
+                  imageBackgroundClassName="bg-neutral-100"
                 />
               </Link>
             );

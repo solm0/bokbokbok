@@ -293,7 +293,7 @@ export default function ZineMakerPage() {
     event.target.value = "";
   }
 
-  function exportCurrentPage() {
+  async function renderPageToCanvas(page) {
     const canvas = document.createElement("canvas");
     const scale = 2;
     canvas.width = stageSize.width * scale;
@@ -333,7 +333,7 @@ export default function ZineMakerPage() {
       context.setLineDash([]);
     }
 
-    const drawJobs = activePage.items.map((item) => {
+    const drawJobs = page.items.map((item) => {
       if (item.type === "text") {
         context.fillStyle = "#111";
         const fontSize = item.fontSize ?? 24;
@@ -355,19 +355,26 @@ export default function ZineMakerPage() {
       });
     });
 
-    Promise.all(drawJobs).then(() => {
+    await Promise.all(drawJobs);
+    return canvas;
+  }
+
+  async function exportAllPages() {
+    for (const [pageIndex, page] of pages.entries()) {
+      const canvas = await renderPageToCanvas(page);
       const link = document.createElement("a");
-      link.download = `bok-zine-page-${activePageIndex + 1}-${currentFormat}-${currentOrientation}.png`;
+      link.download = `bok-zine-page-${pageIndex + 1}-${currentFormat}-${currentOrientation}.png`;
       link.href = canvas.toDataURL("image/png");
       link.click();
-    });
+      await new Promise((resolve) => window.setTimeout(resolve, 120));
+    }
   }
 
   return (
     <main className="overflow-auto bg-neutral-200 text-neutral-950">
       <div className="grid min-h-screen md:grid-cols-[280px_minmax(0,1fr)]">
         <aside
-          className="top-0 flex h-auto flex-col gap-6 overflow-auto bg-stone-100 p-3 pt-16 md:sticky md:h-screen"
+          className="top-0 flex h-auto flex-col gap-6 overflow-auto p-3 pt-16 md:sticky md:h-screen"
           aria-label={t("zineMaker.tools")}
         >
           <div>
@@ -424,7 +431,7 @@ export default function ZineMakerPage() {
                   key={page.id}
                   type="button"
                   className={cx(
-                    "h-[38px] bg-stone-50 text-sm",
+                    "h-[38px] bg-white text-sm",
                     index === activePageIndex && "bg-orange-500 text-neutral-950"
                   )}
                   onClick={() => setActivePageIndex(index)}
@@ -487,7 +494,7 @@ export default function ZineMakerPage() {
           </div>
 
           <div className="mt-auto grid grid-cols-2 gap-2">
-            <PrimaryButton onClick={exportCurrentPage}>
+            <PrimaryButton onClick={exportAllPages}>
               {t("zineMaker.savePng")}
             </PrimaryButton>
             <GhostButton onClick={clearActivePage}>

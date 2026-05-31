@@ -17,7 +17,7 @@ export default function ZineDetailPage({ zines }) {
 
   if (!zine) {
     return (
-      <main className="min-h-screen mt-6 bg-stone-100 p-7 pt-14 ">
+      <main className="min-h-screen mt-6 p-7 pt-14 ">
         <div className="grid items-start gap-7 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
           <p>{t("detail.notFound", { id })}</p>
           <GhostLink to="/dig">

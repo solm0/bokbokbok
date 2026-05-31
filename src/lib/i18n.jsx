@@ -40,9 +40,7 @@ const dictionaries = {
       toggleMenu: "메뉴 토글"
     },
     about: {
-      heading:
-      body:
-        "각자의 취향과 시선이 담긴 진을 큐레이션하는 서울의 진 스토어취향과 시선이 담긴 진을 큐레이션하는 서울 기반 진 스토어..",
+      body:"각자의 취향과 시선이 담긴 진을 큐레이션하는 서울의 진 스토어취향과 시선이 담긴 진을 큐레이션하는 서울 기반 진 스토어..",
       instagram: "인스타그램"
     },
     catalog: {
@@ -168,8 +166,7 @@ const dictionaries = {
       toggleMenu: "Toggle menu"
     },
     about: {
-      heading: "Seoul-based zine store introducing zines shaped by personal tastes",
-      body:
+      body: "Seoul-based zine store introducing zines shaped by personal tastes",
       instagram: "Instagram"
     },
     catalog: {

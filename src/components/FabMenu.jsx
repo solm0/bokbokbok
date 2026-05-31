@@ -35,7 +35,7 @@ function LanguageToggle({ className = "" }) {
 
   return (
     <div
-      className={cx("inline-flex items-center gap-1 text-xs", className)}
+      className={cx("inline-flex items-center gap-1 text-sm", className)}
       role="group"
       aria-label={t("common.languageToggleLabel")}
     >
@@ -44,7 +44,7 @@ function LanguageToggle({ className = "" }) {
           key={code}
           type="button"
           className={cx(
-            "px-1.5 py-0.5 transition-opacity",
+            "px-1transition-opacity",
             language === code ? "opacity-100" : "opacity-40 hover:opacity-80"
           )}
           onClick={() => setLanguage(code)}
@@ -85,7 +85,7 @@ export default function FabMenu({
         onClick={onClose}
       >
         <nav
-          className="flex min-h-full flex-col items-center justify-center gap-6 px-6"
+          className="flex min-h-full flex-col items-center justify-center gap-6 px-6 font-bok text-[20px]!"
           aria-label={t("nav.primaryMobile")}
           onClick={(event) => event.stopPropagation()}
         >
@@ -117,7 +117,8 @@ export default function FabMenu({
 
       <nav
         className={cx(
-          "fixed top-3 right-3 left-3 z-400 hidden items-start justify-between gap-3.5 px-0 py-0 md:flex"
+          "fixed top-3 right-3 left-3 z-400 hidden items-start justify-between gap-3.5 px-0 py-0 font-bok text-[40px]! transition-opacity duration-300 md:flex",
+          desktopVisible ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         )}
         aria-label={t("nav.primary")}
       >
@@ -126,12 +127,7 @@ export default function FabMenu({
           <span>Zine</span>
         </Link>
         <div className="flex items-center gap-6">
-          <div
-            className={cx(
-              "flex items-center gap-10 transition-opacity duration-300",
-              desktopVisible ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
-            )}
-          >
+          <div className="flex items-center gap-10">
             {menuItems.map((item) => {
               const itemLabel = t(item.key);
               const label = item.to === "/cart" && cartCount > 0 ? `${itemLabel} ${cartCount}` : itemLabel;

@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Bok";
+  src: url("/fonts/bok.otf") format("opentype");
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   * {
     box-sizing: border-box;
@@ -13,7 +20,6 @@
 
   body {
     overflow: auto;
-    background: #f4f4f4;
     color: #111;
     font-family: Inter, sans-serif;
   }
@@ -34,14 +40,13 @@
   }
 }
 
-html,
-body,
-/* body * {
-  cursor: url("/images/staple/cursor-staple2.png") 4 4, auto !important;
-} */
+@theme inline {
+  --font-bok: "Bok", sans-serif;
+}
 
-html:active,
-html:active body,
-/* html:active body * {
-  cursor: url("/images/staple/cursor-staple.png") 4 4, auto !important;
-} */
+@layer utilities {
+  .font-bok {
+    font-family: "Bok", sans-serif;
+    font-size: 20px;
+  }
+}

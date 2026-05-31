@@ -418,7 +418,7 @@ export default function CatalogPage({ zines }) {
                   subtitle={getLocalized(zine.author) || t("common.unknownAuthor")}
                   cover={zine.cover}
                   mode={viewMode}
-                  imageBackgroundClassName="bg-black"
+                  imageBackgroundClassName="bg-neutral-900"
                 />
               </button>
             );

@@ -19,7 +19,7 @@ export default function GoodsDetailPage({ goods }) {
 
   if (!good) {
     return (
-      <main className="min-h-screen mt-6 bg-white p-7 pt-14">
+      <main className="min-h-screen mt-6 bg-neutral-100 p-7 pt-14">
         <div className="grid items-start gap-7 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
           <p>{t("goodsDetail.notFound", { id })}</p>
           <GhostLink to="/goods">
