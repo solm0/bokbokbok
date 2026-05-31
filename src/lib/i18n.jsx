@@ -40,9 +40,9 @@ const dictionaries = {
       toggleMenu: "메뉴 토글"
     },
     about: {
-      heading: "디깅할 가치가 있는 인쇄물들.",
+      heading:",
       body:
-        "BOK³는 서울을 기반으로 개인 출판, 조용한 수집, 그리고 천천히 둘러볼수록 재미가 살아나는 작은 인쇄물을 소개하는 진 숍입니다.",
+        "각자의 취향과 시선이 담긴 진을 큐레이션하는 서울의 진 스토어입니다.",
       instagram: "인스타그램"
     },
     catalog: {
@@ -168,9 +168,9 @@ const dictionaries = {
       toggleMenu: "Toggle menu"
     },
     about: {
-      heading: "Printed things worth digging for.",
+      heading: "Seoul-based zine store introducing zines shaped by personal tastes",
       body:
-        "BOK³ is a Seoul-based zine shop for personal publishing, quiet collections, and small printed objects that reward slow browsing.",
+       ,
       instagram: "Instagram"
     },
     catalog: {
