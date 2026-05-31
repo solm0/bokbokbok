@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>DIG</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<main class="dig-shop">
+  <section class="dig-zone" aria-label="Book pile">
+    <h1 class="dig-title">DIG</h1>
+    <div id="pile"></div>
+  </section>
+
+  <section class="shop-zone" aria-label="Book shelf">
+    <div class="shop-grid" id="shopGrid"></div>
+
+    <article class="book-info" id="bookInfo">
+      <img id="selectedImg" alt="">
+      <div>
+        <p id="selectedLabel"></p>
+        <h2 id="selectedTitle"></h2>
+        <p id="selectedDesc"></p>
+        <p id="selectedPrice"></p>
+        <button id="addCartBtn" type="button">Add to Cart</button>
+      </div>
+    </article>
+  </section>
+</main>
+
+<script src="dig.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAKE ZINE</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body class="zine-body">
+<main class="zine-maker">
+  <aside class="zine-tools" aria-label="Zine tools">
+    <a class="zine-home" href="index.html">BOK³</a>
+    <div>
+      <p class="tool-label">판형</p>
+      <div class="format-grid" id="formatGrid">
+        <button type="button" class="format-btn selected" data-format="a5">A5</button>
+        <button type="button" class="format-btn" data-format="a4">A4</button>
+        <button type="button" class="format-btn" data-format="square">SQUARE</button>
+        <button type="button" class="format-btn" data-format="mini">MINI</button>
+      </div>
+    </div>
+
+    <div>
+      <p class="tool-label">방향</p>
+      <div class="segmented">
+        <button type="button" class="segment-btn selected" data-orientation="portrait">세로</button>
+        <button type="button" class="segment-btn" data-orientation="landscape">가로</button>
+      </div>
+    </div>
+
+    <div>
+      <div class="tool-label-row">
+        <p class="tool-label">페이지</p>
+        <span id="pageTotalLabel">1 page</span>
+      </div>
+      <div class="page-list" id="pageList"></div>
+      <div class="page-actions">
+        <button type="button" class="tool-btn" id="addPageBtn">페이지 추가</button>
+        <button type="button" class="tool-btn" id="deletePageBtn">삭제</button>
+      </div>
+    </div>
+
+    <div class="tool-row">
+      <label class="toggle-line">
+        <input id="gridToggle" type="checkbox" checked>
+        <span>그리드</span>
+      </label>
+      <label class="toggle-line">
+        <input id="foldToggle" type="checkbox" checked>
+        <span>접지선</span>
+      </label>
+    </div>
+
+    <div>
+      <p class="tool-label">기본 / 스케치 스티커</p>
+      <label class="upload-btn">
+        이미지 불러오기
+        <input id="stickerInput" type="file" accept="image/*" multiple>
+      </label>
+      <div class="sticker-tray" id="stickerTray" aria-label="Uploaded stickers"></div>
+    </div>
+
+    <div>
+      <p class="tool-label">텍스트</p>
+      <button type="button" class="tool-btn" id="addTextBtn">텍스트 추가</button>
+    </div>
+
+    <div class="tool-actions">
+      <button type="button" class="tool-btn dark" id="exportBtn">현재 PNG 저장</button>
+      <button type="button" class="tool-btn" id="clearBtn">비우기</button>
+    </div>
+  </aside>
+
+  <section class="zine-workspace" aria-label="Zine editor">
+    <div class="zine-stage-wrap">
+      <div class="zine-stage grid-on fold-on" id="zineStage" data-format="a5" data-orientation="portrait">
+        <p class="empty-note" id="emptyNote">이미지를 불러오거나 텍스트를 추가해서 진을 만들어봐</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="zine.js"></script>
+</body>
+</html>

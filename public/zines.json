@@ -1,0 +1,402 @@
+[
+  {
+    "id": "1",
+    "title": "Placeholder Zine 01",
+    "description": "Placeholder description for zine 01. Replace this with the actual synopsis later.",
+    "price": 12000,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "2",
+    "title": "Placeholder Zine 02",
+    "description": "Placeholder description for zine 02. Replace this with the actual synopsis later.",
+    "price": 12500,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "3",
+    "title": "Placeholder Zine 03",
+    "description": "Placeholder description for zine 03. Replace this with the actual synopsis later.",
+    "price": 13000,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "4",
+    "title": "Placeholder Zine 04",
+    "description": "Placeholder description for zine 04. Replace this with the actual synopsis later.",
+    "price": 13500,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "5",
+    "title": "Placeholder Zine 05",
+    "description": "Placeholder description for zine 05. Replace this with the actual synopsis later.",
+    "price": 14000,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "6",
+    "title": "Placeholder Zine 06",
+    "description": "Placeholder description for zine 06. Replace this with the actual synopsis later.",
+    "price": 14500,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "7",
+    "title": "Placeholder Zine 07",
+    "description": "Placeholder description for zine 07. Replace this with the actual synopsis later.",
+    "price": 15000,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "8",
+    "title": "Placeholder Zine 08",
+    "description": "Placeholder description for zine 08. Replace this with the actual synopsis later.",
+    "price": 15500,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "9",
+    "title": "Placeholder Zine 09",
+    "description": "Placeholder description for zine 09. Replace this with the actual synopsis later.",
+    "price": 16000,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "10",
+    "title": "Placeholder Zine 10",
+    "description": "Placeholder description for zine 10. Replace this with the actual synopsis later.",
+    "price": 16500,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "11",
+    "title": "Placeholder Zine 11",
+    "description": "Placeholder description for zine 11. Replace this with the actual synopsis later.",
+    "price": 12000,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "12",
+    "title": "Placeholder Zine 12",
+    "description": "Placeholder description for zine 12. Replace this with the actual synopsis later.",
+    "price": 12500,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "13",
+    "title": "Placeholder Zine 13",
+    "description": "Placeholder description for zine 13. Replace this with the actual synopsis later.",
+    "price": 13000,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "14",
+    "title": "Placeholder Zine 14",
+    "description": "Placeholder description for zine 14. Replace this with the actual synopsis later.",
+    "price": 13500,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "15",
+    "title": "Placeholder Zine 15",
+    "description": "Placeholder description for zine 15. Replace this with the actual synopsis later.",
+    "price": 14000,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "16",
+    "title": "Placeholder Zine 16",
+    "description": "Placeholder description for zine 16. Replace this with the actual synopsis later.",
+    "price": 14500,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "17",
+    "title": "Placeholder Zine 17",
+    "description": "Placeholder description for zine 17. Replace this with the actual synopsis later.",
+    "price": 15000,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "18",
+    "title": "Placeholder Zine 18",
+    "description": "Placeholder description for zine 18. Replace this with the actual synopsis later.",
+    "price": 15500,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "19",
+    "title": "Placeholder Zine 19",
+    "description": "Placeholder description for zine 19. Replace this with the actual synopsis later.",
+    "price": 16000,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "20",
+    "title": "Placeholder Zine 20",
+    "description": "Placeholder description for zine 20. Replace this with the actual synopsis later.",
+    "price": 16500,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "21",
+    "title": "Placeholder Zine 21",
+    "description": "Placeholder description for zine 21. Replace this with the actual synopsis later.",
+    "price": 12000,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "22",
+    "title": "Placeholder Zine 22",
+    "description": "Placeholder description for zine 22. Replace this with the actual synopsis later.",
+    "price": 12500,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "23",
+    "title": "Placeholder Zine 23",
+    "description": "Placeholder description for zine 23. Replace this with the actual synopsis later.",
+    "price": 13000,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "24",
+    "title": "Placeholder Zine 24",
+    "description": "Placeholder description for zine 24. Replace this with the actual synopsis later.",
+    "price": 13500,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "25",
+    "title": "Placeholder Zine 25",
+    "description": "Placeholder description for zine 25. Replace this with the actual synopsis later.",
+    "price": 14000,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "26",
+    "title": "Placeholder Zine 26",
+    "description": "Placeholder description for zine 26. Replace this with the actual synopsis later.",
+    "price": 14500,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "27",
+    "title": "Placeholder Zine 27",
+    "description": "Placeholder description for zine 27. Replace this with the actual synopsis later.",
+    "price": 15000,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "28",
+    "title": "Placeholder Zine 28",
+    "description": "Placeholder description for zine 28. Replace this with the actual synopsis later.",
+    "price": 15500,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "29",
+    "title": "Placeholder Zine 29",
+    "description": "Placeholder description for zine 29. Replace this with the actual synopsis later.",
+    "price": 16000,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "30",
+    "title": "Placeholder Zine 30",
+    "description": "Placeholder description for zine 30. Replace this with the actual synopsis later.",
+    "price": 16500,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "31",
+    "title": "Placeholder Zine 31",
+    "description": "Placeholder description for zine 31. Replace this with the actual synopsis later.",
+    "price": 12000,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "32",
+    "title": "Placeholder Zine 32",
+    "description": "Placeholder description for zine 32. Replace this with the actual synopsis later.",
+    "price": 12500,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "33",
+    "title": "Placeholder Zine 33",
+    "description": "Placeholder description for zine 33. Replace this with the actual synopsis later.",
+    "price": 13000,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "34",
+    "title": "Placeholder Zine 34",
+    "description": "Placeholder description for zine 34. Replace this with the actual synopsis later.",
+    "price": 13500,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "35",
+    "title": "Placeholder Zine 35",
+    "description": "Placeholder description for zine 35. Replace this with the actual synopsis later.",
+    "price": 14000,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "36",
+    "title": "Placeholder Zine 36",
+    "description": "Placeholder description for zine 36. Replace this with the actual synopsis later.",
+    "price": 14500,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "37",
+    "title": "Placeholder Zine 37",
+    "description": "Placeholder description for zine 37. Replace this with the actual synopsis later.",
+    "price": 15000,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "38",
+    "title": "Placeholder Zine 38",
+    "description": "Placeholder description for zine 38. Replace this with the actual synopsis later.",
+    "price": 15500,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "39",
+    "title": "Placeholder Zine 39",
+    "description": "Placeholder description for zine 39. Replace this with the actual synopsis later.",
+    "price": 16000,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "40",
+    "title": "Placeholder Zine 40",
+    "description": "Placeholder description for zine 40. Replace this with the actual synopsis later.",
+    "price": 16500,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "41",
+    "title": "Placeholder Zine 41",
+    "description": "Placeholder description for zine 41. Replace this with the actual synopsis later.",
+    "price": 12000,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "42",
+    "title": "Placeholder Zine 42",
+    "description": "Placeholder description for zine 42. Replace this with the actual synopsis later.",
+    "price": 12500,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "43",
+    "title": "Placeholder Zine 43",
+    "description": "Placeholder description for zine 43. Replace this with the actual synopsis later.",
+    "price": 13000,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "44",
+    "title": "Placeholder Zine 44",
+    "description": "Placeholder description for zine 44. Replace this with the actual synopsis later.",
+    "price": 13500,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "45",
+    "title": "Placeholder Zine 45",
+    "description": "Placeholder description for zine 45. Replace this with the actual synopsis later.",
+    "price": 14000,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "46",
+    "title": "Placeholder Zine 46",
+    "description": "Placeholder description for zine 46. Replace this with the actual synopsis later.",
+    "price": 14500,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "47",
+    "title": "Placeholder Zine 47",
+    "description": "Placeholder description for zine 47. Replace this with the actual synopsis later.",
+    "price": 15000,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "48",
+    "title": "Placeholder Zine 48",
+    "description": "Placeholder description for zine 48. Replace this with the actual synopsis later.",
+    "price": 15500,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "49",
+    "title": "Placeholder Zine 49",
+    "description": "Placeholder description for zine 49. Replace this with the actual synopsis later.",
+    "price": 16000,
+    "available": true,
+    "pageCount": 0
+  },
+  {
+    "id": "50",
+    "title": "Placeholder Zine 50",
+    "description": "Placeholder description for zine 50. Replace this with the actual synopsis later.",
+    "price": 16500,
+    "available": true,
+    "pageCount": 0
+  }
+]
