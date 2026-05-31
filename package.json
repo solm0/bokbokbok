@@ -4,10 +4,12 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "generate:asset-manifest": "node scripts/generate-asset-manifest.mjs",
     "generate:zine-manifest": "node scripts/generate-zine-manifest.mjs",
-    "predev": "npm run generate:zine-manifest",
+    "generate:goods-manifest": "node scripts/generate-goods-manifest.mjs",
+    "predev": "npm run generate:asset-manifest -- zines goods",
     "dev": "vite",
-    "prebuild": "npm run generate:zine-manifest",
+    "prebuild": "npm run generate:asset-manifest -- zines goods",
     "build": "vite build",
     "preview": "vite preview"
   },

@@ -6,6 +6,17 @@ const MD_BREAKPOINT = 768;
 const XL_BREAKPOINT = 1280;
 const XL_MAX_MODEL_WIDTH = 640;
 const MODEL_SCALE_RATIO = 0.42;
+const MOUSE_IMAGE_COUNT = 3;
+
+function createMouseConfigs() {
+  return Array.from({ length: MOUSE_IMAGE_COUNT }, (_, index) => ({
+    id: index + 1,
+    delay: `${(Math.random() * 0.8 + index * 0.22).toFixed(2)}s`,
+    duration: `${(11.4 + Math.random() * 1.8).toFixed(2)}s`,
+    bottom: `${index * 6}px`,
+    scale: (1 - index * 0.04).toFixed(2),
+  }));
+}
 
 function getTargetModelWidth(viewportWidth) {
   if (viewportWidth >= XL_BREAKPOINT) {
@@ -21,6 +32,7 @@ function getTargetModelWidth(viewportWidth) {
 
 export default function HomePage() {
   const containerRef = useRef(null);
+  const miceRef = useRef(createMouseConfigs());
   const { toggleNav } = useOutletContext();
   const { t } = useI18n();
 
@@ -158,6 +170,24 @@ export default function HomePage() {
           }
         }}
       />
+      <div className="pointer-events-none fixed inset-x-0 bottom-0 z-20 h-36 overflow-hidden">
+        {miceRef.current.map((mouse, index) => (
+          <img
+            key={mouse.id}
+            src={`/images/mouse${mouse.id}.png`}
+            alt=""
+            aria-hidden="true"
+            className="home-mouse"
+            style={{
+              "--mouse-delay": mouse.delay,
+              "--mouse-duration": mouse.duration,
+              "--mouse-bottom": mouse.bottom,
+              "--mouse-scale": mouse.scale,
+              "--mouse-start-offset": `${index * 72}px`,
+            }}
+          />
+        ))}
+      </div>
     </div>
   );
 }
