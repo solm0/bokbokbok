@@ -122,7 +122,7 @@ export default function FabMenu({
         )}
         aria-label={t("nav.primary")}
       >
-        <Link className="flex flex-col left-0 text-sm transition-opacity duration-200" to="/">
+        <Link className="flex flex-col left-0 text-[20px] transition-opacity duration-200" to="/">
           <span>BOK³</span>
           <span>Zine</span>
         </Link>
@@ -135,7 +135,7 @@ export default function FabMenu({
               return item.href ? (
                 <a
                   key={item.key}
-                  className="text-sm transition-opacity duration-200"
+                  className="text-[20px] transition-opacity duration-200"
                   href={item.href}
                   target="_blank"
                   rel="noreferrer"
@@ -147,7 +147,7 @@ export default function FabMenu({
                 <Link
                   key={item.key}
                   className={cx(
-                    "text-sm transition-opacity duration-200",
+                    "text-[20px] transition-opacity duration-200",
                     location.pathname === item.to ? "opacity-100" : "opacity-40 hover:opacity-80"
                   )}
                   to={item.to}
