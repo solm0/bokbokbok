@@ -99,7 +99,7 @@ export default function GoodsPage({ goods }) {
           <input
             id="goods-search"
             ref={searchInputRef}
-            className="min-h-[38px] w-full py-0 pr-9 outline-none placeholder:text-neutral-500 opacity-80 focus:opacity-100 md:w-[min(320px,46vw)]"
+            className="min-h-[38px] w-full py-0 pr-9 outline-none placeholder:text-neutral-500 opacity-80 focus:opacity-100 md:w-[min(320px,46vw)] font-bok font-light"
             type="text"
             value={query}
             onChange={(event) => setQuery(event.target.value)}

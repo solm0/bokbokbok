@@ -61,7 +61,7 @@ export function PrimaryButton({ className = "", children, ...props }) {
 
 export function Eyebrow({ className = "", children }) {
   return (
-    <p className={cx("text-xs uppercase tracking-[0.04em]", className)}>{children}</p>
+    <p className={cx("text-xs", className)}>{children}</p>
   );
 }
 

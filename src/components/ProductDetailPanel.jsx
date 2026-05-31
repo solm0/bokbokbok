@@ -25,9 +25,11 @@ export default function ProductDetailPanel({
         </div>
         <p className="max-w-[42ch] break-keep">{item.description}</p>
         {item.metadata &&
-          item.metadata?.map((entry, index) => (
-            <span key={index}>{entry}</span>
-          ))
+          <div className="flex flex-col">
+            {item.metadata?.map((entry, index) => (
+              <span key={index}>{entry}</span>
+            ))}
+          </div>
         }
         <p>{availabilityLabel}</p>
         <p>{formatPrice(item.price, language)}</p>

@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
-const LANGUAGE_STORAGE_KEY = "bokbokbok.language";
-const DEFAULT_LANGUAGE = "ko";
+const DEFAULT_LANGUAGE = "en";
 const SUPPORTED_LANGUAGES = ["ko", "en"];
 
 const dictionaries = {
@@ -269,17 +268,7 @@ function getDictionaryValue(dictionary, key) {
 }
 
 function detectInitialLanguage() {
-  if (typeof window === "undefined") {
-    return DEFAULT_LANGUAGE;
-  }
-
-  const savedLanguage = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
-  if (SUPPORTED_LANGUAGES.includes(savedLanguage)) {
-    return savedLanguage;
-  }
-
-  const browserLanguage = window.navigator.language?.slice(0, 2).toLowerCase();
-  return SUPPORTED_LANGUAGES.includes(browserLanguage) ? browserLanguage : DEFAULT_LANGUAGE;
+  return DEFAULT_LANGUAGE;
 }
 
 export function getLocalizedValue(value, language, fallbackLanguage = DEFAULT_LANGUAGE) {
@@ -318,7 +307,6 @@ export function I18nProvider({ children }) {
       return;
     }
 
-    window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
     document.documentElement.lang = language;
   }, [language]);
 

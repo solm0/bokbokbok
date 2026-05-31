@@ -30,33 +30,6 @@ function BrandTrigger({ onClick, active, className = "" }) {
   );
 }
 
-function LanguageToggle({ className = "" }) {
-  const { language, setLanguage, t } = useI18n();
-
-  return (
-    <div
-      className={cx("inline-flex items-center gap-1 text-sm", className)}
-      role="group"
-      aria-label={t("common.languageToggleLabel")}
-    >
-      {["ko", "en"].map((code) => (
-        <button
-          key={code}
-          type="button"
-          className={cx(
-            "px-1transition-opacity",
-            language === code ? "opacity-100" : "opacity-40 hover:opacity-80"
-          )}
-          onClick={() => setLanguage(code)}
-          aria-pressed={language === code}
-        >
-          {code.toUpperCase()}
-        </button>
-      ))}
-    </div>
-  );
-}
-
 export default function FabMenu({
   desktopVisible,
   mobileOpen,
@@ -70,10 +43,7 @@ export default function FabMenu({
   return (
     <>
       <div className="fixed inset-x-0 top-4 z-400 flex justify-center md:hidden">
-        <div className="flex items-center gap-3">
-          <BrandTrigger onClick={onToggle} active={mobileOpen} />
-          <LanguageToggle />
-        </div>
+        <BrandTrigger onClick={onToggle} active={mobileOpen} />
       </div>
 
       <div
@@ -102,7 +72,6 @@ export default function FabMenu({
               {t(item.key)}
             </Link>
           ))}
-          <LanguageToggle className="mt-2" />
           <Link
             className="mt-2 flex flex-col items-center text-sm transition-opacity duration-200 hover:opacity-70"
             to="/cart"
@@ -126,38 +95,35 @@ export default function FabMenu({
           <span>BOK³</span>
           <span>Zine</span>
         </Link>
-        <div className="flex items-center gap-6">
-          <div className="flex items-center gap-10">
-            {menuItems.map((item) => {
-              const itemLabel = t(item.key);
-              const label = item.to === "/cart" && cartCount > 0 ? `${itemLabel} ${cartCount}` : itemLabel;
+        <div className="flex items-center gap-10">
+          {menuItems.map((item) => {
+            const itemLabel = t(item.key);
+            const label = item.to === "/cart" && cartCount > 0 ? `${itemLabel} ${cartCount}` : itemLabel;
 
-              return item.href ? (
-                <a
-                  key={item.key}
-                  className="text-[20px] transition-opacity duration-200"
-                  href={item.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  style={{ opacity: 0.4 }}
-                >
-                  {label}
-                </a>
-              ) : (
-                <Link
-                  key={item.key}
-                  className={cx(
-                    "text-[20px] transition-opacity duration-200",
-                    location.pathname === item.to ? "opacity-100" : "opacity-40 hover:opacity-80"
-                  )}
-                  to={item.to}
-                >
-                  {label}
-                </Link>
-              );
-            })}
-          </div>
-          <LanguageToggle />
+            return item.href ? (
+              <a
+                key={item.key}
+                className="text-[20px] transition-opacity duration-200"
+                href={item.href}
+                target="_blank"
+                rel="noreferrer"
+                style={{ opacity: 0.4 }}
+              >
+                {label}
+              </a>
+            ) : (
+              <Link
+                key={item.key}
+                className={cx(
+                  "text-[20px] transition-opacity duration-200",
+                  location.pathname === item.to ? "opacity-100" : "opacity-40 hover:opacity-80"
+                )}
+                to={item.to}
+              >
+                {label}
+              </Link>
+            );
+          })}
         </div>
 
         <Link

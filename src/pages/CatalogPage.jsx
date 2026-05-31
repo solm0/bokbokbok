@@ -307,12 +307,12 @@ export default function CatalogPage({ zines }) {
         style={{ paddingInlineStart: `${headerPaddingX}px`, paddingInlineEnd: SCATTER_SIDE }}
       >
         <div className="flex w-full flex-wrap items-start justify-start gap-3 md:w-auto md:justify-end">
-          <div className="flex flex-col items-start gap-1" role="tablist" aria-label={t("catalog.displayMode")}>
+          <div className="flex flex-col items-start gap-1 font-bok" role="tablist" aria-label={t("catalog.displayMode")}>
             <div className="flex gap-2 items-center">
               <button
                 type="button"
                 className={cx(
-                  "text-sm transition-opacity",
+                  "transition-opacity",
                   viewMode === "scatter" ? 'opacity-100' : 'opacity-40 hover:opacity-80'
                 )}
                 onClick={() => setViewMode("scatter")}
@@ -332,7 +332,7 @@ export default function CatalogPage({ zines }) {
             <button
               type="button"
               className={cx(
-                "text-sm transition-opacity",
+                "transition-opacity",
                 viewMode === "grid" ? 'opacity-100' : 'opacity-40 hover:opacity-80'
               )}
               onClick={() => setViewMode("grid")}
@@ -349,7 +349,7 @@ export default function CatalogPage({ zines }) {
             <input
               id="catalog-search"
               ref={searchInputRef}
-              className="min-h-[38px] w-full py-0 pr-9 outline-none placeholder:text-neutral-500 opacity-80 focus:opacity-100 md:w-[min(320px,46vw)]"
+              className="min-h-[38px] w-full py-0 pr-9 outline-none placeholder:text-neutral-500 opacity-80 focus:opacity-100 md:w-[min(320px,46vw)] font-bok font-light"
               type="text"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
