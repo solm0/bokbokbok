@@ -32,7 +32,7 @@ export default function ProductDetailPanel({
       </PrimaryButton>
     ) : null);
   const title = detailPath ? (
-    <Link to={detailPath} className="inline-block leading-[1.35] underline underline-offset-2 hover:opacity-50">
+    <Link to={detailPath} className="inline-block leading-[1.35] underline underline-offset-4 decoration-dotted decoration-1 hover:opacity-50">
       {item.title}
     </Link>
   ) : (
@@ -51,7 +51,7 @@ export default function ProductDetailPanel({
       <div className="flex min-w-0 flex-col gap-3 md:gap-[1.4em]">
         <div className="flex items-start justify-between gap-3">
           <div className="flex min-w-0 flex-1 flex-col gap-1">
-            {title}
+            <p className="text-lg">{title}</p>
             <p>{subtitle}</p>
           </div>
           {resolvedHeaderAction ? (

@@ -167,7 +167,7 @@ export default function CartPage({ zines, goods }) {
 
   return (
     <main className="flex h-screen flex-col overflow-hidden p-4 pt-18 md:p-3 md:pt-22">
-      <div className="shrink-0 flex flex-wrap w-full lg:w-2/3 justify-end gap-4">
+      <div className="shrink-0 flex flex-wrap w-full lg:w-2/3 justify-start gap-4">
         {detailedItems.length > 0 ? (
           <GhostButtonUnderline onClick={clearCart}>
             {t("cart.clearCart")}
