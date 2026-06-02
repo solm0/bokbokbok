@@ -24,7 +24,7 @@ export default function ZineViewer({ zine }) {
   }
 
   return (
-    <Panel className="" as="section" aria-label={t("viewer.viewerLabel", { title })}>
+    <Panel className="mt-20 md:mt-0" as="section" aria-label={t("viewer.viewerLabel", { title })}>
       <div className="grid bg-neutral-100 min-h-[360px] place-items-center overflow-hidden  md:min-h-[540px]">
         <div className="aspect-[3/4] w-full max-w-[380px]">
           <ZineImage

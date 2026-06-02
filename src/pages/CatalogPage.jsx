@@ -13,7 +13,7 @@ const SCATTER_SAMPLE_SIZE = 15;
 const GRID_GAP = 10;
 const MAX_GRID_COLUMNS = 5;
 const SCATTER_TOP = 0;
-const SCATTER_BOTTOM = 3;
+const SCATTER_BOTTOM = 8;
 const SCATTER_SIDE = 50;
 const MOBILE_PAGE_PADDING = 16;
 const RESIZE_SETTLE_MS = 180;
@@ -150,7 +150,12 @@ export default function CatalogPage({ zines }) {
   const deferredQuery = useDeferredValue(query);
   const dragRef = useRef(null);
   const searchInputRef = useRef(null);
+  const stageViewportRef = useRef(null);
   const suppressClickRef = useRef("");
+  const [scatterViewport, setScatterViewport] = useState({
+    width: typeof window === "undefined" ? 1280 : window.innerWidth,
+    height: typeof window === "undefined" ? 900 : window.innerHeight
+  });
   const isMobile = viewport.width < MOBILE_BREAKPOINT;
   const scatterSampleSize = viewport.width < MOBILE_BREAKPOINT ? MOBILE_SCATTER_SAMPLE_SIZE : SCATTER_SAMPLE_SIZE;
 
@@ -179,6 +184,32 @@ export default function CatalogPage({ zines }) {
       window.removeEventListener("resize", onResize);
     };
   }, []);
+
+  useEffect(() => {
+    const node = stageViewportRef.current;
+    if (!node) {
+      return undefined;
+    }
+
+    const updateBounds = () => {
+      setScatterViewport({
+        width: node.clientWidth,
+        height: node.clientHeight
+      });
+    };
+
+    updateBounds();
+
+    const observer = new ResizeObserver(() => {
+      updateBounds();
+    });
+
+    observer.observe(node);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [isMobile, viewMode]);
 
   const availableZines = useMemo(() => zines.filter((zine) => zine.available !== false), [zines]);
   const normalizedQuery = deferredQuery.trim().toLowerCase();
@@ -215,8 +246,8 @@ export default function CatalogPage({ zines }) {
   const effectiveViewMode = isMobile ? "grid" : viewMode;
   const displayedZines = effectiveViewMode === "grid" ? filteredZines : scatterZines;
   const scatterPositions = useMemo(
-    () => getScatterLayout(scatterZines, viewport.width, viewport.height),
-    [scatterZines, viewport.height, viewport.width]
+    () => getScatterLayout(scatterZines, scatterViewport.width, scatterViewport.height),
+    [scatterViewport.height, scatterViewport.width, scatterZines]
   );
   const gridLayout = useMemo(
     () => getGridLayout(filteredZines, viewport.width),
@@ -231,9 +262,9 @@ export default function CatalogPage({ zines }) {
       }, {}),
     [scatterPositions, scatterZines]
   );
-  const stageHeight = effectiveViewMode === "grid" ? gridLayout.totalHeight : viewport.height;
-  const maxScatterX = Math.max(SCATTER_SIDE, viewport.width - SCATTER_SIDE - CARD_WIDTH);
-  const maxScatterY = Math.max(SCATTER_TOP, viewport.height - SCATTER_BOTTOM - CARD_HEIGHT);
+  const stageHeight = effectiveViewMode === "grid" ? gridLayout.totalHeight : scatterViewport.height;
+  const maxScatterX = Math.max(SCATTER_SIDE, scatterViewport.width - SCATTER_SIDE - CARD_WIDTH);
+  const maxScatterY = Math.max(SCATTER_TOP, scatterViewport.height - SCATTER_BOTTOM - CARD_HEIGHT);
 
   const handleScatterPointerDown = (event, zineId) => {
     if (viewMode !== "scatter") {
@@ -400,6 +431,7 @@ export default function CatalogPage({ zines }) {
       </header>
 
       <section
+        ref={stageViewportRef}
         className={cx(
           "relative z-0 min-h-0 flex-1 overflow-x-hidden pt-18",
           effectiveViewMode === "grid"

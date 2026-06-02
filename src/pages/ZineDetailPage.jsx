@@ -45,6 +45,7 @@ export default function ZineDetailPage({ zines }) {
           actionLabel={saved ? t("detail.savedInCart") : t("detail.addToCart")}
           actionDisabled={saved}
           onAction={() => addItem(zine.id, "zine")}
+          smallImage
         />
 
         <ZineViewer zine={zine} />

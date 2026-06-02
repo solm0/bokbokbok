@@ -24,8 +24,16 @@ const RESIZE_HANDLES = {
   se: { sx: 1, sy: 1 }
 };
 
+function createId() {
+  if (globalThis.crypto?.randomUUID) {
+    return globalThis.crypto.randomUUID();
+  }
+
+  return `id-${Date.now()}-${Math.random().toString(36).slice(2, 11)}`;
+}
+
 function createPage() {
-  return { id: crypto.randomUUID(), items: [] };
+  return { id: createId(), items: [] };
 }
 
 export default function ZineMakerPage() {
@@ -69,7 +77,7 @@ export default function ZineMakerPage() {
     updateActivePage((items) => [
       ...items,
       {
-        id: crypto.randomUUID(),
+        id: createId(),
         type: "image",
         src,
         aspectRatio,
@@ -84,7 +92,7 @@ export default function ZineMakerPage() {
     updateActivePage((items) => [
       ...items,
       {
-        id: crypto.randomUUID(),
+        id: createId(),
         type: "text",
         text: t("zineMaker.defaultText"),
         x: 42 + items.length * 18,

@@ -16,10 +16,11 @@ export default function ProductDetailPanel({
   className = "",
   imageBackgroundClassName,
   short = false,
+  smallImage = false,
 }) {
   const imageClassName = cx(
-    "aspect-3/4 object-contain",
-    short ? 'w-full': 'w-1/2',
+    "aspect-3/4 object-contain p-3",
+    smallImage ? 'w-1/2 md:w-full': 'w-full',
     imageBackgroundClassName ?? (item.type === "good" ? "bg-neutral-100" : "bg-neutral-900")
   );
   const image = <ZineImage className={imageClassName} src={item.cover} alt={item.title} />;
