@@ -60,7 +60,7 @@ export default function CartPage({ zines, goods }) {
     try {
       await submitPurchaseRequest(formState, detailedItems, language);
       setSubmitState("success");
-      setSubmitMessage(t("cart.success"));
+      setSubmitMessage(t("cart.successCheckEmail"));
       setFormState({
         name: "",
         note: "",
@@ -69,7 +69,6 @@ export default function CartPage({ zines, goods }) {
         address: "",
         extraContact: ""
       });
-      setFormOpen(false);
     } catch (error) {
       setSubmitState("error");
       if (error instanceof Error && error.message === "purchase_request_endpoint_missing") {
@@ -152,6 +151,17 @@ export default function CartPage({ zines, goods }) {
           {submitState === "submitting" ? t("cart.submitting") : t("cart.submit")}
         </PrimaryButton>
       </div>
+      {submitMessage ? (
+        <p
+          className={cx(
+            "text-sm font-bold",
+            submitState === "success" && "text-green-800",
+            submitState === "error" && "text-red-700"
+          )}
+        >
+          {submitMessage}
+        </p>
+      ) : null}
     </Panel>
   );
 
@@ -213,18 +223,6 @@ export default function CartPage({ zines, goods }) {
                   {t("cart.request")}
                 </PrimaryButton>
               </Panel>
-
-              {submitMessage ? (
-                <p
-                  className={cx(
-                    "mt-3.5 shrink-0 text-sm font-bold",
-                    submitState === "success" && "text-green-800",
-                    submitState === "error" && "text-red-700"
-                  )}
-                >
-                  {submitMessage}
-                </p>
-              ) : null}
             </>
           )}
         </div>
