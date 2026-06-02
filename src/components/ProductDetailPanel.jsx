@@ -14,10 +14,12 @@ export default function ProductDetailPanel({
   headerAction,
   detailPath,
   className = "",
-  imageBackgroundClassName
+  imageBackgroundClassName,
+  short = false,
 }) {
   const imageClassName = cx(
-    "aspect-3/4 w-full object-contain",
+    "aspect-3/4 object-contain",
+    short ? 'w-full': 'w-1/2',
     imageBackgroundClassName ?? (item.type === "good" ? "bg-neutral-100" : "bg-neutral-900")
   );
   const image = <ZineImage className={imageClassName} src={item.cover} alt={item.title} />;
@@ -55,8 +57,8 @@ export default function ProductDetailPanel({
             <div className="shrink-0 self-start text-right">{resolvedHeaderAction}</div>
           ) : null}
         </div>
-        {item.description ? <p className="max-w-[42ch] break-words break-keep leading-[1.45]">{item.description}</p> : null}
-        {item.metadata?.length ? (
+        {item.description && !short ? <p className="max-w-[42ch] break-words break-keep leading-[1.45]">{item.description}</p> : null}
+        {item.metadata?.length && !short ? (
           <div className="flex flex-col gap-0.5">
             {item.metadata?.map((entry, index) => (
               <span key={index}>{entry}</span>

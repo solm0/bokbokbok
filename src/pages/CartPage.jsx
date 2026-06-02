@@ -210,6 +210,7 @@ export default function CartPage({ zines, goods }) {
                         {t("common.remove")}
                       </PrimaryButton>
                     }
+                    short={true}
                   />
                 ))}
               </section>

@@ -4,8 +4,8 @@ import { useI18n } from "../lib/i18n";
 
 const menuItems = [
   { key: "nav.about", to: "/about" },
-  { key: "nav.goods", to: "/goods" },
   { key: "nav.digging", to: "/dig" },
+  { key: "nav.goods", to: "/goods" },
   { key: "nav.diy", to: "/zine" }
 ];
 
