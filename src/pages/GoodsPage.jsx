@@ -1,5 +1,4 @@
 import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
-import { X } from "lucide-react";
 import { Link } from "react-router-dom";
 import ProductCardContent from "../components/ProductCardContent";
 import { cx } from "../components/ui";
@@ -10,33 +9,44 @@ const CARD_HEIGHT = 300;
 const GRID_GAP = 10;
 const GRID_TOP = 32;
 const GRID_SIDE = 50;
+const MOBILE_BREAKPOINT = 768;
+const MOBILE_PAGE_PADDING = 16;
 const MAX_GRID_COLUMNS = 5;
 const RESIZE_SETTLE_MS = 180;
 
 function getGridLayout(items, width) {
-  const columns = Math.min(
-    MAX_GRID_COLUMNS,
-    Math.max(2, Math.floor((width - GRID_SIDE * 2 + GRID_GAP) / (CARD_WIDTH + GRID_GAP)))
-  );
-  const leftOffset = Math.max(
-    GRID_SIDE,
-    Math.floor((width - columns * CARD_WIDTH - (columns - 1) * GRID_GAP) / 2)
-  );
+  const isMobile = width < MOBILE_BREAKPOINT;
+  const columns = isMobile
+    ? 2
+    : Math.min(
+        MAX_GRID_COLUMNS,
+        Math.max(2, Math.floor((width - GRID_SIDE * 2 + GRID_GAP) / (CARD_WIDTH + GRID_GAP)))
+      );
+  const cardWidth = isMobile
+    ? Math.floor((width - MOBILE_PAGE_PADDING * 2 - GRID_GAP) / columns)
+    : CARD_WIDTH;
+  const leftOffset = isMobile
+    ? 0
+    : Math.max(
+        GRID_SIDE,
+        Math.floor((width - columns * cardWidth - (columns - 1) * GRID_GAP) / 2)
+      );
+  const rowHeight = Math.ceil(cardWidth * (CARD_HEIGHT / CARD_WIDTH)) + 44;
 
   const positions = items.map((_, index) => {
     const column = index % columns;
     const row = Math.floor(index / columns);
 
     return {
-      x: leftOffset + column * (CARD_WIDTH + GRID_GAP),
-      y: GRID_TOP + row * (CARD_HEIGHT + 44)
+      x: leftOffset + column * (cardWidth + GRID_GAP),
+      y: GRID_TOP + row * rowHeight
     };
   });
 
   const rows = Math.ceil(items.length / columns);
-  const totalHeight = GRID_TOP + rows * (CARD_HEIGHT + 44) + 60;
+  const totalHeight = GRID_TOP + rows * rowHeight + 60;
 
-  return { positions, totalHeight, sidePadding: leftOffset };
+  return { positions, totalHeight, sidePadding: isMobile ? 0 : leftOffset, cardWidth };
 }
 
 export default function GoodsPage({ goods }) {
@@ -47,6 +57,7 @@ export default function GoodsPage({ goods }) {
   );
   const searchInputRef = useRef(null);
   const deferredQuery = useDeferredValue(query);
+  const isMobile = viewportWidth < MOBILE_BREAKPOINT;
 
   useEffect(() => {
     let timeoutId = 0;
@@ -87,10 +98,13 @@ export default function GoodsPage({ goods }) {
   };
 
   return (
-    <main className="relative min-h-screen w-full">
+    <main className="relative flex h-screen flex-col overflow-hidden p-4 md:p-7">
       <header
         className="sticky top-14 z-[100] flex w-full items-start justify-end gap-3"
-        style={{ paddingInlineStart: `${gridLayout.sidePadding}px`, paddingInlineEnd: GRID_SIDE }}
+        style={{
+          paddingInlineStart: `${gridLayout.sidePadding}px`,
+          paddingInlineEnd: isMobile ? 0 : GRID_SIDE
+        }}
       >
         <div className="relative flex w-full items-center text-sm md:w-auto">
           <label htmlFor="goods-search" className="sr-only">
@@ -105,6 +119,7 @@ export default function GoodsPage({ goods }) {
             onChange={(event) => setQuery(event.target.value)}
             placeholder={t("goods.searchPlaceholder")}
             aria-label={t("goods.searchGoods")}
+            spellCheck={false}
           />
           {query ? (
             <button
@@ -114,16 +129,13 @@ export default function GoodsPage({ goods }) {
               onMouseDown={(event) => event.preventDefault()}
               onClick={handleClearQuery}
             >
-              <X size={14} strokeWidth={2.2} aria-hidden="true" />
+              X
             </button>
           ) : null}
         </div>
       </header>
 
-      <section
-        className="relative z-0 min-h-[calc(100vh-90px)] overflow-x-hidden overflow-y-auto pt-8 pb-24 md:pb-24"
-        aria-label={t("goods.stageLabel")}
-      >
+      <section className="relative z-0 min-h-0 flex-1 overflow-x-hidden overflow-y-auto pt-18 md:pt-18 pb-24 md:pb-24" aria-label={t("goods.stageLabel")}>
         <div className="relative min-h-full" style={{ height: `${gridLayout.totalHeight}px` }}>
           {filteredGoods.map((item, index) => {
             const grid = gridLayout.positions[index];
@@ -136,7 +148,7 @@ export default function GoodsPage({ goods }) {
                   "transition-[transform,opacity] duration-600 ease-[cubic-bezier(0.22,1,0.36,1)]"
                 )}
                 style={{
-                  width: `${CARD_WIDTH}px`,
+                  width: `${gridLayout.cardWidth}px`,
                   transform: `translate3d(${grid.x}px, ${grid.y}px, 0)`
                 }}
                 to={`/goods/${item.id}`}
@@ -154,7 +166,7 @@ export default function GoodsPage({ goods }) {
             );
           })}
           {filteredGoods.length === 0 ? (
-            <p className="absolute top-10 left-3 text-sm md:top-[52px] md:left-8">
+            <p className="absolute w-full flex justify-center top-10 left-3 text-xl md:top-[52px] md:left-8">
               {t("goods.empty")}
             </p>
           ) : null}

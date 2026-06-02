@@ -5,7 +5,7 @@ export function cx(...classes) {
 }
 
 const baseSurfaceButton =
-  "inline-flex items-center justify-center text-sm transition hover:opacity-50 disabled:cursor-not-allowed disabled:opacity-35";
+  "inline-flex items-center justify-center text-base transition hover:opacity-50 disabled:cursor-not-allowed disabled:opacity-35";
 
 export function StatusScreen({ children }) {
   return (
@@ -30,7 +30,7 @@ export function Panel({ as: Tag = "div", className = "", children, ...props }) {
 
 export function GhostLink({ className = "", children, ...props }) {
   return (
-    <Link className={cx(baseSurfaceButton, "py-1 no-underline", className)} {...props}>
+    <Link className={cx(baseSurfaceButton, "py-0.5 underline underline-offset-4 decoration-1 decoration-dotted text-base", className)} {...props}>
       {children}
     </Link>
   );
@@ -44,12 +44,20 @@ export function GhostButton({ className = "", children, ...props }) {
   );
 }
 
+export function GhostButtonUnderline({ className = "", children, ...props }) {
+  return (
+    <button type="button" className={cx(baseSurfaceButton, "py-0.5 underline underline-offset-4 decoration-1 decoration-dotted text-base", className)} {...props}>
+      {children}
+    </button>
+  );
+}
+
 export function PrimaryButton({ className = "", children, ...props }) {
   return (
     <button
       type="button"
       className={cx(
-        "inline-flex py-1 px-2 items-center justify-center bg-neutral-950 text-sm text-white transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-35",
+        "inline-flex py-1 px-2 md:px-3 items-center justify-center bg-neutral-950 text-base text-white transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-35",
         className
       )}
       {...props}
@@ -67,7 +75,7 @@ export function Eyebrow({ className = "", children }) {
 
 export function FieldLabel({ className = "", children, ...props }) {
   return (
-    <label className={cx("grid gap-2 text-xs uppercase", className)} {...props}>
+    <label className={cx("flex items-start gap-4 text-base uppercase", className)} {...props}>
       {children}
     </label>
   );

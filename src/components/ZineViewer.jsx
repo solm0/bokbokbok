@@ -24,11 +24,7 @@ export default function ZineViewer({ zine }) {
   }
 
   return (
-    <Panel className="p-6" as="section" aria-label={t("viewer.viewerLabel", { title })}>
-      <div className="mb-3.5 flex items-center justify-between gap-3 text-sm">
-        <span>{pageLabel}</span>
-      </div>
-
+    <Panel className="" as="section" aria-label={t("viewer.viewerLabel", { title })}>
       <div className="grid bg-neutral-100 min-h-[360px] place-items-center overflow-hidden  md:min-h-[540px]">
         <div className="aspect-[3/4] w-full max-w-[380px]">
           <ZineImage
@@ -39,17 +35,20 @@ export default function ZineViewer({ zine }) {
         </div>
       </div>
 
-      <div className="mt-4 flex justify-end gap-2">
-        <GhostButton className="min-w-21" onClick={() => moveTo(pageIndex - 1)} disabled={pageIndex === 0}>
-          {t("viewer.prev")}
-        </GhostButton>
-        <GhostButton
-          className="min-w-21"
-          onClick={() => moveTo(pageIndex + 1)}
-          disabled={pageIndex === pages.length - 1}
-        >
-          {t("viewer.next")}
-        </GhostButton>
+      <div className="mt-1 flex justify-between text-xs">
+        <span>{pageLabel}</span>
+        <div className="flex gap-4">
+          <GhostButton className="" onClick={() => moveTo(pageIndex - 1)} disabled={pageIndex === 0}>
+            {`<`}
+          </GhostButton>
+          <GhostButton
+            className=""
+            onClick={() => moveTo(pageIndex + 1)}
+            disabled={pageIndex === pages.length - 1}
+          >
+            {`>`}
+          </GhostButton>
+        </div>
       </div>
     </Panel>
   );

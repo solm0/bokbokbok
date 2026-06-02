@@ -12,7 +12,7 @@ const formats = {
 
 const defaultStickers = [{ src: "/images/bok.png", label: "BOK" }];
 const toolButtonClass =
-  "inline-flex py-1 items-center justify-center px-2 text-sm text-neutral-950 transition hover:opacity-50 disabled:cursor-not-allowed disabled:opacity-35";
+  "inline-flex py-1 items-center bg-neutral-50 justify-center px-2 text-sm text-neutral-950 transition hover:opacity-50 disabled:cursor-not-allowed disabled:opacity-35";
 const selectedToolButtonClass = "bg-neutral-950 text-white";
 const MIN_STICKER_WIDTH = 54;
 const MIN_TEXT_WIDTH = 90;
@@ -374,7 +374,7 @@ export default function ZineMakerPage() {
     <main className="overflow-auto bg-neutral-200 text-neutral-950">
       <div className="grid min-h-screen md:grid-cols-[280px_minmax(0,1fr)]">
         <aside
-          className="top-0 flex h-auto flex-col gap-6 overflow-auto p-3 pt-16 md:sticky md:h-screen"
+          className="top-0 flex h-auto flex-col gap-7 overflow-auto p-3 pt-20 md:sticky md:h-screen"
           aria-label={t("zineMaker.tools")}
         >
           <div>
@@ -398,7 +398,7 @@ export default function ZineMakerPage() {
 
           <div>
             <Eyebrow className="mb-2.5">{t("zineMaker.orientation")}</Eyebrow>
-            <div className="grid grid-cols-2">
+            <div className="grid grid-cols-2 gap-2">
               {["portrait", "landscape"].map((orientation) => (
                 <button
                   key={orientation}
@@ -417,25 +417,20 @@ export default function ZineMakerPage() {
 
           <div>
             <div className="mb-2.5 flex items-center justify-between gap-2.5">
-              <Eyebrow>{t("zineMaker.pages")}</Eyebrow>
-              <span className="text-xs text-neutral-500">
-                {t("zineMaker.pageCount", {
-                  count: pages.length,
-                  suffix: pages.length > 1 ? "s" : ""
-                })}
-              </span>
+              <Eyebrow>{`${t("zineMaker.pages")} (${pages.length})`}</Eyebrow>
+              
             </div>
             <div className="mb-2 grid grid-cols-4 gap-2">
               {pages.map((page, index) => (
-                <button
-                  key={page.id}
-                  type="button"
-                  className={cx(
-                    "h-[38px] bg-white text-sm",
-                    index === activePageIndex && "bg-orange-500 text-neutral-950"
-                  )}
-                  onClick={() => setActivePageIndex(index)}
-                >
+                  <button
+                    key={page.id}
+                    type="button"
+                    className={cx(
+                      "h-[38px] text-sm",
+                      index === activePageIndex ? "bg-orange-500 text-neutral-950" : "bg-white"
+                    )}
+                    onClick={() => setActivePageIndex(index)}
+                  >
                   {String(index + 1).padStart(2, "0")}
                 </button>
               ))}
@@ -455,23 +450,31 @@ export default function ZineMakerPage() {
             </div>
           </div>
 
-          <div className="grid gap-2.5">
-            <label className="flex cursor-pointer items-center gap-2.5 text-sm">
-              <input type="checkbox" checked={gridOn} onChange={(event) => setGridOn(event.target.checked)} />
+          <div className="grid">
+            <label className="flex cursor-pointer items-center gap-2 text-sm">
+              <input
+                spellCheck={false}
+                type="checkbox"
+                className="accent-neutral-900"
+                checked={gridOn}
+                onChange={(event) => setGridOn(event.target.checked)}
+              />
               <span>{t("zineMaker.grid")}</span>
             </label>
             <label className="flex cursor-pointer items-center gap-2.5 text-sm">
-              <input type="checkbox" checked={foldOn} onChange={(event) => setFoldOn(event.target.checked)} />
+              <input
+                type="checkbox"
+                className="accent-neutral-900"
+                checked={foldOn}
+                onChange={(event) => setFoldOn(event.target.checked)}
+                spellCheck={false}
+              />
               <span>{t("zineMaker.fold")}</span>
             </label>
           </div>
 
           <div>
             <Eyebrow className="mb-2.5">{t("zineMaker.stickers")}</Eyebrow>
-            <label className={cx(toolButtonClass, "cursor-pointer")}>
-              {t("zineMaker.uploadImage")}
-              <input type="file" accept="image/*" multiple hidden onChange={onStickerUpload} />
-            </label>
             <div className="mt-2.5 grid min-h-[92px] grid-cols-3 gap-2">
               {stickerTray.map((sticker) => (
                 <button
@@ -484,6 +487,16 @@ export default function ZineMakerPage() {
                 </button>
               ))}
             </div>
+            <label className={cx(toolButtonClass, "cursor-pointer")}>
+              {t("zineMaker.uploadImage")}
+              <input
+                type="file"
+                accept="image/*"
+                multiple hidden
+                onChange={onStickerUpload}
+                spellCheck={false}
+              />
+            </label>
           </div>
 
           <div>
@@ -494,12 +507,12 @@ export default function ZineMakerPage() {
           </div>
 
           <div className="mt-auto grid grid-cols-2 gap-2">
-            <PrimaryButton onClick={exportAllPages}>
-              {t("zineMaker.savePng")}
-            </PrimaryButton>
             <GhostButton onClick={clearActivePage}>
               {t("zineMaker.clearPage")}
             </GhostButton>
+            <PrimaryButton onClick={exportAllPages}>
+              {t("zineMaker.savePng")}
+            </PrimaryButton>
           </div>
         </aside>
 

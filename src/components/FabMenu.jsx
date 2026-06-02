@@ -16,7 +16,7 @@ function BrandTrigger({ onClick, active, className = "" }) {
     <button
       type="button"
       className={cx(
-        "flex flex-col text-sm leading-none transition-opacity duration-200",
+        "pointer-events-auto flex flex-col leading-none transition-opacity duration-200 md:text-sm",
         active ? "opacity-100" : "opacity-80",
         className
       )}
@@ -42,20 +42,20 @@ export default function FabMenu({
 
   return (
     <>
-      <div className="fixed inset-x-0 top-4 z-400 flex justify-center md:hidden">
+      <div className="pointer-events-none fixed inset-x-0 top-4 z-400 flex justify-center md:hidden">
         <BrandTrigger onClick={onToggle} active={mobileOpen} />
       </div>
 
       <div
         className={cx(
-          "fixed inset-0 z-300 bg-white/10 backdrop-blur-xl transition-opacity duration-300 md:hidden",
+          "fixed inset-0 z-300 flex items-center justify-center bg-white/50 backdrop-blur-xl transition-opacity duration-300 md:hidden",
           mobileOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         )}
         aria-hidden={!mobileOpen}
         onClick={onClose}
       >
         <nav
-          className="flex min-h-full flex-col items-center justify-center gap-6 px-6 font-bok text-[20px]!"
+          className="flex flex-col items-center justify-center gap-6 px-6 font-bok text-[20px]!"
           aria-label={t("nav.primaryMobile")}
           onClick={(event) => event.stopPropagation()}
         >
@@ -63,8 +63,9 @@ export default function FabMenu({
             <Link
               key={item.key}
               className={cx(
-                "text-center text-xl transition-opacity duration-200",
-                location.pathname === item.to ? "opacity-100" : "opacity-60"
+                "text-center text-2xl transition-opacity duration-200",
+                location.pathname === item.to ? "opacity-100" : "opacity-60",
+                item.to === '/zine' ? 'hidden' : 'block'
               )}
               to={item.to}
               onClick={onClose}
@@ -79,7 +80,7 @@ export default function FabMenu({
             aria-label={t("nav.cart")}
           >
             <img src="/images/cart.png" className="w-12" />
-            {cartCount > 0 ? <span className="mt-2">{cartCount}</span> : null}
+            {cartCount > 0 ? <span className="mt-2">({cartCount})</span> : null}
           </Link>
         </nav>
       </div>

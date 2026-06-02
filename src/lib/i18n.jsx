@@ -73,17 +73,12 @@ const dictionaries = {
       addToCart: "카트에 담기"
     },
     viewer: {
-      prev: "이전",
-      next: "다음",
       viewerLabel: "{title} 뷰어",
       pageAlt: "{title} {page}페이지"
     },
     cart: {
-      continueBrowsing: "계속 둘러보기",
       clearCart: "카트 비우기",
       empty: "카트가 비어 있습니다.",
-      goToDig: "DIG로 가기",
-      requestTitle: "구매 요청서",
       requestedItems: "요청한 상품",
       submitting: "전송 중...",
       submit: "요청 보내기",
@@ -197,17 +192,13 @@ const dictionaries = {
       addToCart: "Add to Cart"
     },
     viewer: {
-      prev: "Prev",
-      next: "Next",
       viewerLabel: "{title} viewer",
       pageAlt: "{title} page {page}"
     },
     cart: {
-      continueBrowsing: "Continue Browsing",
       clearCart: "Clear Cart",
+      request: "Request for Purchase",
       empty: "Your cart is empty.",
-      goToDig: "Go to DIG",
-      requestTitle: "Request for Purchase",
       requestedItems: "Requested Items",
       submitting: "Submitting...",
       submit: "Submit Request",
@@ -217,7 +208,7 @@ const dictionaries = {
       requestDispatchFailed: "Request could not be sent.",
       fields: {
         name: "Name",
-        note: "One-line Note",
+        note: "Note",
         email: "Email",
         phone: "Phone",
         address: "Address",
@@ -238,11 +229,11 @@ const dictionaries = {
       deletePage: "Delete",
       grid: "Grid",
       fold: "Fold line",
-      stickers: "Default / sketch stickers",
+      stickers: "Stickers",
       uploadImage: "Upload Image",
       text: "Text",
       addText: "Add Text",
-      savePng: "Save All PNG",
+      savePng: "Save",
       clearPage: "Clear",
       editor: "Zine editor",
       emptyHint: "Upload an image or add text to start building a zine.",

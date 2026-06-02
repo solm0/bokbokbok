@@ -19,7 +19,7 @@ export default function GoodsDetailPage({ goods }) {
 
   if (!good) {
     return (
-      <main className="min-h-screen mt-6 bg-neutral-100 p-7 pt-14">
+      <main className="min-h-screen p-4 md:p-7 pt-18 md:pt-22">
         <div className="grid items-start gap-7 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
           <p>{t("goodsDetail.notFound", { id })}</p>
           <GhostLink to="/goods">
@@ -31,7 +31,7 @@ export default function GoodsDetailPage({ goods }) {
   }
 
   return (
-    <main className="min-h-screen bg-white p-7 pt-14">
+    <main className="min-h-screen bg-white p-4 md:p-7 pt-18 md:pt-22">
       <div className="mb-5 flex flex-wrap justify-between gap-3">
         <GhostLink to="/goods">
           {t("goodsDetail.backToGoods")}
@@ -40,7 +40,7 @@ export default function GoodsDetailPage({ goods }) {
 
       <div className="grid items-start gap-7 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
         <ProductDetailPanel
-          item={{ ...good, title, description }}
+          item={{ ...good, type: "good", title, description }}
           subtitle={maker}
           language={language}
           availabilityLabel={good.available === false ? t("detail.unavailable") : t("detail.available")}

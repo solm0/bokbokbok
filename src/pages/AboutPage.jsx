@@ -5,12 +5,14 @@ export default function AboutPage() {
   const { t } = useI18n();
 
   return (
-    <main className="grid min-h-screen place-items-center">
-      <Panel className="w-full max-w-[720px] p-7 pt-14 flex flex-col gap-7">
-        <p className="max-w-[42ch] leading-[1.55]">
+    <main className="min-h-screen flex items-center">
+      <Panel className="w-auto p-4 md:p-7 lg:p-18 flex flex-col gap-7 transition-all">
+        <p className="max-w-[30ch] leading-[1.55] text-3xl md:text-4xl">
           {t("about.body")}
         </p>
-        <a href="https://www.instagram.com/bok3books/">{t("about.instagram")}</a>
+        <a href="https://www.instagram.com/bok3books/" className="w-6 h-6 md:w-8 md:h-8">
+          <img src="/images/insta.png" />
+        </a>
       </Panel>
     </main>
   );
