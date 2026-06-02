@@ -352,7 +352,7 @@ export default function CatalogPage({ zines }) {
       )}
     >
       <header
-        className="items-start sticky top-14 z-[100] flex w-full items-center justify-between gap-3"
+        className="items-start sticky top-14 z-[100] flex w-full items-center justify-between gap-3 transition-[padding] duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
         style={{
           paddingInlineStart: `${headerPaddingX}px`,
           paddingInlineEnd: effectiveViewMode === "grid" && isMobile ? 0 : SCATTER_SIDE
