@@ -18,7 +18,7 @@ export default function ZineDetailPage({ zines }) {
   if (!zine) {
     return (
       <main className="min-h-screen p-4 md:p-7 pt-18 md:pt-22">
-        <div className="grid items-start gap-7 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
+        <div className="grid items-start gap-4 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
           <p>{t("detail.notFound", { id })}</p>
           <GhostLink to="/dig">
             {t("detail.backToDig")}
@@ -36,7 +36,7 @@ export default function ZineDetailPage({ zines }) {
         </GhostLink>
       </div>
 
-      <div className="grid items-start gap-7 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
+      <div className="grid items-start gap-4 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
         <ProductDetailPanel
           item={{ ...zine, type: "zine", title, description }}
           subtitle={author}

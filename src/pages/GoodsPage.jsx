@@ -7,7 +7,7 @@ import { useI18n } from "../lib/i18n";
 const CARD_WIDTH = 200;
 const CARD_HEIGHT = 300;
 const GRID_GAP = 10;
-const GRID_TOP = 32;
+const GRID_TOP = 0;
 const GRID_SIDE = 50;
 const MOBILE_BREAKPOINT = 768;
 const MOBILE_PAGE_PADDING = 16;
@@ -98,44 +98,53 @@ export default function GoodsPage({ goods }) {
   };
 
   return (
-    <main className="relative flex h-screen flex-col overflow-hidden p-4 md:p-7">
+    <main className="app-page-shell relative flex flex-col overflow-hidden p-4 md:p-7">
       <header
-        className="sticky top-14 z-[100] flex w-full items-start justify-end gap-3"
+        className="sticky z-[100] flex w-full items-center justify-between gap-3"
         style={{
+          top: isMobile ? "var(--app-mobile-search-top)" : "3.5rem",
           paddingInlineStart: `${gridLayout.sidePadding}px`,
           paddingInlineEnd: isMobile ? 0 : GRID_SIDE
         }}
       >
-        <div className="relative flex w-full items-center text-sm md:w-auto">
-          <label htmlFor="goods-search" className="sr-only">
-            {t("goods.searchGoods")}
-          </label>
-          <input
-            id="goods-search"
-            ref={searchInputRef}
-            className="min-h-[38px] w-full py-0 pr-9 outline-none placeholder:text-neutral-500 opacity-80 focus:opacity-100 md:w-[min(320px,46vw)] font-bok font-light"
-            type="text"
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder={t("goods.searchPlaceholder")}
-            aria-label={t("goods.searchGoods")}
-            spellCheck={false}
-          />
-          {query ? (
-            <button
-              type="button"
-              className="absolute top-1/2 right-2.5 z-10 inline-flex h-5 w-5 -translate-y-1/2 items-center justify-center border-0 bg-transparent p-0 text-neutral-700"
-              aria-label={t("goods.clearSearch")}
-              onMouseDown={(event) => event.preventDefault()}
-              onClick={handleClearQuery}
-            >
-              X
-            </button>
-          ) : null}
+        <div className="flex grow md:grow-0">
+          <div className="relative flex w-full items-center text-sm md:w-auto">
+            <label htmlFor="goods-search" className="sr-only">
+              {t("goods.searchGoods")}
+            </label>
+            <input
+              id="goods-search"
+              ref={searchInputRef}
+              className="min-h-[38px] w-full py-0 pr-9 outline-none placeholder:text-neutral-500 opacity-80 focus:opacity-100 md:w-[min(320px,46vw)] font-bok font-light"
+              type="text"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder={t("goods.searchPlaceholder")}
+              aria-label={t("goods.searchGoods")}
+              spellCheck={false}
+            />
+            {query ? (
+              <button
+                type="button"
+                className="absolute top-1/2 right-2.5 z-10 inline-flex h-5 w-5 -translate-y-1/2 items-center justify-center border-0 bg-transparent p-0 text-neutral-700"
+                aria-label={t("goods.clearSearch")}
+                onMouseDown={(event) => event.preventDefault()}
+                onClick={handleClearQuery}
+              >
+                X
+              </button>
+            ) : null}
+          </div>
         </div>
       </header>
 
-      <section className="relative z-0 min-h-0 flex-1 overflow-x-hidden overflow-y-auto pt-18 md:pt-18 pb-24 md:pb-24" aria-label={t("goods.stageLabel")}>
+      <section
+        className="relative z-0 min-h-0 flex-1 overflow-x-hidden overflow-y-auto pb-24 md:pt-18 md:pb-24"
+        style={{
+          paddingTop: isMobile ? "var(--app-mobile-stage-top)" : undefined
+        }}
+        aria-label={t("goods.stageLabel")}
+      >
         <div className="relative min-h-full" style={{ height: `${gridLayout.totalHeight}px` }}>
           {filteredGoods.map((item, index) => {
             const grid = gridLayout.positions[index];

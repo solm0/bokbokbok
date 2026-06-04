@@ -40,6 +40,12 @@
 }
 
 @layer base {
+  :root {
+    --app-safe-top: env(safe-area-inset-top, 0px);
+    --app-mobile-search-top: calc(var(--app-safe-top) + 4rem);
+    --app-mobile-stage-top: 4rem;
+  }
+
   * {
     box-sizing: border-box;
   }
@@ -78,6 +84,18 @@
 }
 
 @layer utilities {
+  .app-page-shell {
+    min-height: 100vh;
+    height: 100vh;
+  }
+
+  @supports (height: 100dvh) {
+    .app-page-shell {
+      min-height: 100dvh;
+      height: 100dvh;
+    }
+  }
+
   .font-bok {
     font-family: "Bok", "newfont.regular", "Pretendard", sans-serif;
     font-size: 20px;

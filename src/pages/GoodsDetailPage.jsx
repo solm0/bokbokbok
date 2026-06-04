@@ -20,7 +20,7 @@ export default function GoodsDetailPage({ goods }) {
   if (!good) {
     return (
       <main className="min-h-screen p-4 md:p-7 pt-18 md:pt-22">
-        <div className="grid items-start gap-7 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
+        <div className="grid items-start gap-4 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
           <p>{t("goodsDetail.notFound", { id })}</p>
           <GhostLink to="/goods">
             {t("goodsDetail.backToGoods")}
@@ -38,7 +38,7 @@ export default function GoodsDetailPage({ goods }) {
         </GhostLink>
       </div>
 
-      <div className="grid items-start gap-7 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
+      <div className="grid items-start gap-4 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
         <ProductDetailPanel
           item={{ ...good, type: "good", title, description }}
           subtitle={maker}

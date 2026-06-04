@@ -347,13 +347,14 @@ export default function CatalogPage({ zines }) {
   return (
     <main
       className={cx(
-        "relative flex h-screen flex-col overflow-hidden p-4 md:p-7",
+        "app-page-shell relative flex flex-col overflow-hidden p-4 md:p-7",
         effectiveViewMode === "grid" ? "grid-mode" : "scatter-mode"
       )}
     >
       <header
-        className="items-start sticky top-14 z-[100] flex w-full items-center justify-between gap-3 transition-[padding] duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
+        className="items-start sticky z-[100] flex w-full items-center justify-between gap-3 transition-[padding] duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
         style={{
+          top: isMobile ? "var(--app-mobile-search-top)" : "3.5rem",
           paddingInlineStart: `${headerPaddingX}px`,
           paddingInlineEnd: effectiveViewMode === "grid" && isMobile ? 0 : SCATTER_SIDE
         }}
@@ -433,11 +434,14 @@ export default function CatalogPage({ zines }) {
       <section
         ref={stageViewportRef}
         className={cx(
-          "relative z-0 min-h-0 flex-1 overflow-x-hidden pt-18",
+          "relative z-0 min-h-0 flex-1 overflow-x-hidden md:pt-18",
           effectiveViewMode === "grid"
             ? "overflow-y-auto pb-24 md:pb-24"
             : "overflow-hidden pb-0"
         )}
+        style={{
+          paddingTop: isMobile ? "var(--app-mobile-stage-top)" : undefined
+        }}
         aria-label={t("catalog.stageLabel")}
       >
         <div className="relative min-h-full" style={{ height: `${stageHeight}px` }}>
@@ -450,7 +454,7 @@ export default function CatalogPage({ zines }) {
                 key={zine.id}
                 type="button"
                 className={cx(
-                  "group absolute top-0 left-0 grid gap-0.5 text-left text-neutral-950 select-none [touch-action:none]",
+                  "group absolute top-0 left-0 grid gap-0.5 text-left text-neutral-950 select-none",
                   "transition-[transform,opacity] duration-600 ease-[cubic-bezier(0.22,1,0.36,1)]",
                   effectiveViewMode === "scatter" ? "cursor-grab" : "cursor-pointer",
                   draggingId === zine.id &&
@@ -461,6 +465,7 @@ export default function CatalogPage({ zines }) {
                 style={{
                   width: `${effectiveViewMode === "grid" ? gridLayout.cardWidth : CARD_WIDTH}px`,
                   transform: `translate3d(${active.x}px, ${active.y}px, 0) rotate(${active.rotation}deg)`,
+                  touchAction: effectiveViewMode === "scatter" ? "none" : "auto",
                   zIndex:
                     effectiveViewMode === "grid"
                       ? 2

@@ -51,7 +51,7 @@ export default function ProductDetailPanel({
       <div className="flex min-w-0 flex-col gap-3 md:gap-[1.4em]">
         <div className="flex items-start justify-between gap-3">
           <div className="flex min-w-0 flex-1 flex-col gap-1">
-            <p className="text-lg">{title}</p>
+            <div className="text-lg">{title}</div>
             <p>{subtitle}</p>
           </div>
           {resolvedHeaderAction ? (
