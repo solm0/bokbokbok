@@ -46,7 +46,7 @@ export function GhostButton({ className = "", children, ...props }) {
 
 export function GhostButtonUnderline({ className = "", children, ...props }) {
   return (
-    <button type="button" className={cx(baseSurfaceButton, "py-0.5 underline underline-offset-4 decoration-1 decoration-dotted text-base", className)} {...props}>
+    <button type="button" className={cx(baseSurfaceButton, "py-0.5 underline underline-offset-4 decoration-1 decoration-dotted text-base text-left max-w-40", className)} {...props}>
       {children}
     </button>
   );

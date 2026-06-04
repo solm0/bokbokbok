@@ -92,7 +92,7 @@ export default function ProductDetailPanel({
             ))}
           </div>
         ) : null}
-        {availabilityLabel && availabilityLabel === "Unavailable" ? <p className="bg-neutral-200 self-start px-2 py-1">{`Sold out :d`}</p> : null}
+        {availabilityLabel && availabilityLabel === "Unavailable" ? <p className="text-neutral-900/20 self-start text-5xl">{`Sold out :D`}</p> : null}
         <p>{formatPrice(item.price, language)}</p>
       </div>
       {overlayClassName ? <div className={cx("pointer-events-none absolute inset-0", overlayClassName)} /> : null}

@@ -21,7 +21,7 @@ export default function CartPage({ zines, goods }) {
   });
   const [submitState, setSubmitState] = useState("idle");
   const [submitMessage, setSubmitMessage] = useState("");
-  const formLabelClassName = "w-[7.5rem] shrink-0 md:w-[8.5rem]";
+  const formLabelClassName = "w-[5rem] shrink-0 md:w-[5rem]";
   const formFieldClassName = "min-w-0 flex-1 w-full focus:outline-none border-b border-dotted";
 
   const detailedItems = items
@@ -261,7 +261,7 @@ export default function CartPage({ zines, goods }) {
 
               <Panel
                 as="section"
-                className="fixed inset-x-4 bottom-4 z-30 flex shrink-0 flex-col gap-4 text-base md:static md:mt-4 md:flex-row md:items-center md:justify-end md:pb-7"
+                className="fixed inset-x-4 bottom-4 z-30 flex shrink-0 flex-col gap-4 text-base pt-2 border-t border-dotted md:static md:flex-row md:items-center md:justify-end md:pb-7 bg-white"
               >
                 <div className="flex gap-4 text-lg">
                   <p>{t("common.total")}</p>
