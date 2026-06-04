@@ -78,3 +78,4 @@ When someone submits `Request for Purchase`:
 - The sending account is the Google account that owns the Apps Script project.
 - If you want the sender to be `bok3books@gmail.com`, create and deploy the Apps Script while logged into `bok3books@gmail.com`.
 - The confirmation email goes to the requester's email, not to BOK.
+- After editing [apps-script/purchase-request.gs](/Users/solmi/Downloads/bokbokbok/apps-script/purchase-request.gs), save it in Google Apps Script and redeploy it from `Deploy -> Manage deployments`.

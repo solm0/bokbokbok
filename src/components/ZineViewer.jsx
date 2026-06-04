@@ -15,6 +15,12 @@ export default function ZineViewer({ zine }) {
   }, [zine.id]);
 
   const pageLabel = `${pageIndex + 1} / ${pages.length}`;
+  const isCoverPage = pageIndex === 0;
+  const previewBackgroundClassName = isCoverPage
+    ? !zine.hasDisplayImage
+      ? "bg-neutral-100"
+      : getProductImageBackgroundClass(zine)
+    : "bg-neutral-100";
 
   function moveTo(nextIndex) {
     if (nextIndex === pageIndex || nextIndex < 0 || nextIndex >= pages.length) {
@@ -27,7 +33,7 @@ export default function ZineViewer({ zine }) {
   return (
     <Panel className="mt-20 lg:mt-0 min-h-[calc(100vh-5rem)] md:min-h-0" as="section" aria-label={t("viewer.viewerLabel", { title })}>
       <div
-        className={`grid min-h-[360px] place-items-center overflow-hidden md:min-h-[540px] ${getProductImageBackgroundClass(zine)}`}
+        className={`grid min-h-[360px] place-items-center overflow-hidden md:min-h-[540px] ${previewBackgroundClassName}`}
       >
         <div className="aspect-[3/4] w-full max-w-[380px]">
           <ZineImage

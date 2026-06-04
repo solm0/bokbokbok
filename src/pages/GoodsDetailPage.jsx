@@ -50,7 +50,7 @@ export default function GoodsDetailPage({ goods }) {
           smallImage
         />
 
-        <ZineViewer zine={{ ...good, title }} />
+        <ZineViewer zine={{ ...good, type: "good", title }} />
       </div>
     </main>
   );

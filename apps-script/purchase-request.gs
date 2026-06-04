@@ -34,6 +34,8 @@ function doPost(e) {
       items.map(function(item) {
         return item.id + " | " + item.title + " | " + item.price;
       }).join("\n"),
+      "",
+      "",
       mailStatus,
       mailError
     ];
@@ -55,21 +57,42 @@ function doPost(e) {
 function getOrCreateSheet_() {
   var spreadsheet = getSpreadsheet_();
   var sheet = spreadsheet.getSheetByName("purchase_requests");
+  var headers = [
+    "date",
+    "name",
+    "note",
+    "email",
+    "phone",
+    "address",
+    "extra_contact",
+    "아이템",
+    "입금 상태",
+    "배송 상태",
+    "메일 전송 상태",
+    "메일 전송 에러"
+  ];
+
   if (!sheet) {
     sheet = spreadsheet.insertSheet("purchase_requests");
-    sheet.appendRow([
-      "created_at",
-      "name",
-      "note",
-      "email",
-        "phone",
-        "address",
-        "extra_contact",
-        "items",
-        "mail_status",
-        "mail_error"
-      ]);
+    sheet.appendRow(headers);
+    return sheet;
   }
+
+  var existingHeaders = sheet.getLastRow() > 0
+    ? sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0]
+    : [];
+
+  if (!existingHeaders.length) {
+    sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
+    return sheet;
+  }
+
+  headers.forEach(function(header, index) {
+    if (existingHeaders[index] !== header) {
+      sheet.getRange(1, index + 1).setValue(header);
+    }
+  });
+
   return sheet;
 }
 
@@ -95,12 +118,16 @@ function buildPlainText_(payload) {
       (index + 1) + ". " + (item.title || ""),
       "ID: " + (item.id || ""),
       "Price: " + formatPrice_(item.price),
-      "Description: " + (item.description || "-")
+      "Description: " + formatDescription_(item.description)
     ].join("\n");
   }).join("\n\n");
 
   return [
     "Your BOK3 purchase request has been received.",
+    "BOK3 구매 요청이 접수되었습니다.",
+    "",
+    "Please make sure your payment has been completed.",
+    "배송 전 입금이 완료되었는지 확인해 주세요.",
     "",
     "Name: " + (customer.name || "-"),
     "Note: " + (customer.note || "-"),
@@ -123,15 +150,15 @@ function buildHtml_(payload) {
       "<strong>" + escapeHtml_(String(index + 1) + ". " + (item.title || "")) + "</strong><br>" +
       "ID: " + escapeHtml_(item.id || "") + "<br>" +
       "Price: " + escapeHtml_(formatPrice_(item.price)) + "<br>" +
-      "Description: " + escapeHtml_(item.description || "-") +
+      "Description: " + escapeHtml_(formatDescription_(item.description)) +
       "</li>"
     );
   }).join("");
 
   return (
     "<div style='font-family:Arial,sans-serif; color:#111; line-height:1.5;'>" +
-    "<h2>Your BOK3 purchase request has been received.</h2>" +
-    "<p>We received the following request information.</p>" +
+    "<h2>Your BOK3 purchase request has been received. / BOK3 구매 요청이 접수되었습니다.</h2>" +
+    "<p>Please make sure your payment has been completed.<br>배송 전 입금이 완료되었는지 확인해 주세요.</p>" +
     "<p>" +
     "Name: " + escapeHtml_(customer.name || "-") + "<br>" +
     "Note: " + escapeHtml_(customer.note || "-") + "<br>" +
@@ -149,6 +176,14 @@ function buildHtml_(payload) {
 function formatPrice_(value) {
   var amount = Number(value || 0);
   return amount.toLocaleString("ko-KR") + " KRW";
+}
+
+function formatDescription_(value) {
+  if (Array.isArray(value)) {
+    return value.filter(Boolean).join(" / ") || "-";
+  }
+
+  return value || "-";
 }
 
 function escapeHtml_(value) {

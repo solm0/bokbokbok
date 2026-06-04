@@ -164,6 +164,12 @@ Apps Script 파일:
 3. Apps Script가 내용을 구글 스프레드시트에 저장
 4. Apps Script가 요청자 이메일로 확인 메일 발송
 
+Apps Script 파일을 수정한 뒤 반영하려면:
+
+1. [apps-script/purchase-request.gs](/Users/solmi/Downloads/bokbokbok/apps-script/purchase-request.gs) 내용을 Google Apps Script 편집기(script.google.com)에 다시 붙여넣고 저장
+2. Google Apps Script에서 `Deploy -> Manage deployments`로 들어가 기존 Web app 배포를 `Edit` 후 `Deploy`로 다시 배포
+3. 배포 URL이 바뀌었다면 [.env](/Users/solmi/Downloads/bokbokbok/.env)의 `VITE_PURCHASE_REQUEST_ENDPOINT`도 같이 업데이트
+
 중요:
 
 - 메일은 `bok3books@gmail.com`으로 가는 것이 아니라
@@ -238,6 +244,8 @@ VITE_PURCHASE_REQUEST_ENDPOINT=YOUR_APPS_SCRIPT_WEB_APP_URL
 ## 9. Apps Script 쪽에서 관리해야 할 것
 
 Apps Script 설정 가이드는 별도 문서에도 정리돼 있습니다.
+
+- [APPS_SCRIPT_SETUP.md](/Users/solmi/Downloads/bokbokbok/APPS_SCRIPT_SETUP.md)
 
 - [APPS_SCRIPT_SETUP.md](/Users/solmi/Downloads/bokbokbok/APPS_SCRIPT_SETUP.md)
 
