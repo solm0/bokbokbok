@@ -174,7 +174,7 @@ export default function CartPage({ zines, goods }) {
         </div>
       </div>
 
-      <div className="flex gap-2 items-center w-full">
+      <div className="flex gap-2 items-center w-full md:justify-end">
         <GhostButton onClick={() => setFormOpen(false)} className="flex-1 shrink-0">
           {t("common.close")}
         </GhostButton>
@@ -261,9 +261,9 @@ export default function CartPage({ zines, goods }) {
 
               <Panel
                 as="section"
-                className="fixed inset-x-4 bottom-4 z-30 flex shrink-0 flex-col gap-4 text-base md:static md:mt-4 md:flex-row md:items-baseline md:justify-between md:pb-7"
+                className="fixed inset-x-4 bottom-4 z-30 flex shrink-0 flex-col gap-4 text-base md:static md:mt-4 md:flex-row md:items-center md:justify-end md:pb-7"
               >
-                <div className="flex gap-4">
+                <div className="flex gap-4 text-lg">
                   <p>{t("common.total")}</p>
                   <strong className="font-normal">{formatPrice(totalPrice, language)}</strong>
                 </div>

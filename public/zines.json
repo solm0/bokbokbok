@@ -34,11 +34,9 @@
     "id": "3",
     "title": "All Conditions nostalGia (ACG)",
     "author": "Jinsoo Nam",
-    "description": [
-      "Placeholder description for zine 03. Replace this with the actual synopsis later."
-    ],
+    "description": [],
     "price": 15000,
-    "available": false,
+    "available": true,
     "metadata": [
       "[5.83“ x 8.27”]",
       "16 pages",

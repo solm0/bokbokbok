@@ -100,9 +100,9 @@ export default function GoodsPage({ goods }) {
   return (
     <main className="app-page-shell relative flex flex-col overflow-hidden p-4 md:p-7">
       <header
-        className="sticky z-[100] flex w-full items-center justify-between gap-3"
+        className="floating-controls-header sticky z-[100] flex w-full items-center justify-between gap-3"
         style={{
-          top: isMobile ? "var(--app-mobile-search-top)" : "3.5rem",
+          top: "3rem",
           paddingInlineStart: `${gridLayout.sidePadding}px`,
           paddingInlineEnd: isMobile ? 0 : GRID_SIDE
         }}

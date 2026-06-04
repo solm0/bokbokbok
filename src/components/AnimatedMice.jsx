@@ -1,36 +1,25 @@
 import { useEffect, useRef } from "react";
 
 const MOUSE_IMAGE_COUNT = 3;
-const MOUSE_IDLE_MS = 1000;
-const MOUSE_HORIZONTAL_DURATION_RANGE = [2100, 3000];
-const MOUSE_VERTICAL_DURATION_RANGE = [700, 1100];
-const MOUSE_VERTICAL_DISTANCE_RANGE = [26, 44];
-
-const MOUSE_PATTERNS = [
-  ["right", "up", "down", "right"],
-  ["right", "down", "up", "right"],
-  ["up", "right", "down", "right"],
-  ["down", "right", "up", "right"],
-  ["right", "up", "right", "down"],
-  ["right", "down", "right", "up"],
-];
+const MOUSE_SPEED_RANGE = [28, 92];
+const MOUSE_PAUSE_GAP_RANGE = [900, 2800];
+const MOUSE_PAUSE_DURATION_RANGE = [500, 1600];
 
 function randomBetween(min, max) {
   return min + Math.random() * (max - min);
 }
 
-function randomIntBetween(min, max) {
-  return Math.round(randomBetween(min, max));
+function randomDirection() {
+  return Math.random() < 0.5 ? -1 : 1;
 }
 
-function randomItem(items) {
-  return items[Math.floor(Math.random() * items.length)];
+function clamp(value, min, max) {
+  return Math.min(Math.max(value, min), max);
 }
 
 function createMouseConfigs() {
   return Array.from({ length: MOUSE_IMAGE_COUNT }, (_, index) => ({
     id: index + 1,
-    delayMs: randomIntBetween(120, 900) + index * 180,
     bottom: `${index * 6}px`,
     scale: Number((1 - index * 0.04).toFixed(2)),
   }));
@@ -42,186 +31,161 @@ export default function AnimatedMice({
   imageClassName = "home-mouse",
 }) {
   const miceRef = useRef(imageConfigs ?? createMouseConfigs());
-  const mouseElementsRef = useRef([]);
+  const mouseWrappersRef = useRef([]);
+  const mouseImagesRef = useRef([]);
 
   useEffect(() => {
-    const activeAnimations = [];
-    const activeTimers = [];
     let cancelled = false;
+    let frameId = 0;
+    let previousTime = performance.now();
 
-    const clearScheduledWork = () => {
-      activeAnimations.splice(0).forEach((animation) => animation.cancel());
-      activeTimers.splice(0).forEach((timer) => window.clearTimeout(timer));
+    const states = miceRef.current.map(() => null);
+
+    const updateMouseTransform = (wrapper, image, x, facing, scale) => {
+      wrapper.style.opacity = "1";
+      wrapper.style.transform = `translate3d(${x}px, 0, 0) scale(${scale})`;
+      image.style.transform = `rotateY(${facing === 1 ? 0 : 180}deg)`;
     };
 
-    const scheduleTimer = (callback, delay) => {
-      const timer = window.setTimeout(() => {
-        const timerIndex = activeTimers.indexOf(timer);
-        if (timerIndex >= 0) {
-          activeTimers.splice(timerIndex, 1);
-        }
-
-        callback();
-      }, delay);
-
-      activeTimers.push(timer);
-    };
-
-    const registerAnimation = (animation) => {
-      activeAnimations.push(animation);
-
-      const release = () => {
-        const animationIndex = activeAnimations.indexOf(animation);
-        if (animationIndex >= 0) {
-          activeAnimations.splice(animationIndex, 1);
-        }
+    const initializeState = (wrapper, image, config) => {
+      const maxX = Math.max(window.innerWidth - wrapper.offsetWidth, 0);
+      const direction = randomDirection();
+      const state = {
+        x: randomBetween(0, maxX),
+        direction,
+        facing: direction,
+        speed: randomBetween(MOUSE_SPEED_RANGE[0], MOUSE_SPEED_RANGE[1]),
+        pauseAt: performance.now() + randomBetween(MOUSE_PAUSE_GAP_RANGE[0], MOUSE_PAUSE_GAP_RANGE[1]),
+        pausedUntil: 0,
       };
 
-      animation.addEventListener("finish", release, { once: true });
-      animation.addEventListener("cancel", release, { once: true });
-      return animation;
+      updateMouseTransform(wrapper, image, state.x, state.facing, config.scale);
+      return state;
     };
 
-    const runMouseLoop = (element, config, cycleIndex = 0) => {
-      if (cancelled || !element) {
+    const tick = (time) => {
+      if (cancelled) {
         return;
       }
 
-      const viewportWidth = window.innerWidth;
-      const startX = -140;
-      const endX = viewportWidth + 140;
-      const travelDistance = endX - startX;
-      const firstHorizontalShare = randomBetween(0.28, 0.42);
-      const secondHorizontalShare = randomBetween(0.68, 0.82);
-      const firstHorizontalX = startX + travelDistance * firstHorizontalShare;
-      const secondHorizontalX = startX + travelDistance * secondHorizontalShare;
-      const verticalDistance = randomBetween(
-        MOUSE_VERTICAL_DISTANCE_RANGE[0],
-        MOUSE_VERTICAL_DISTANCE_RANGE[1]
-      );
-      const pattern = randomItem(MOUSE_PATTERNS);
-      const horizontalTargets = [firstHorizontalX, secondHorizontalX];
-      let horizontalIndex = 0;
-      let currentX = startX + cycleIndex * 18;
-      let currentY = 0;
+      const deltaSeconds = Math.min((time - previousTime) / 1000, 0.05);
+      previousTime = time;
 
-      const keyframes = [
-        {
-          opacity: 0,
-          transform: `translate3d(${currentX}px, ${currentY}px, 0) scale(${config.scale})`,
-          offset: 0,
-        },
-        {
-          opacity: 1,
-          transform: `translate3d(${currentX}px, ${currentY}px, 0) scale(${config.scale})`,
-          offset: 0.08,
-        },
-      ];
-
-      let elapsed = 0;
-      pattern.forEach((step) => {
-        const duration = step === "right"
-          ? randomIntBetween(
-              MOUSE_HORIZONTAL_DURATION_RANGE[0],
-              MOUSE_HORIZONTAL_DURATION_RANGE[1]
-            )
-          : randomIntBetween(MOUSE_VERTICAL_DURATION_RANGE[0], MOUSE_VERTICAL_DURATION_RANGE[1]);
-
-        elapsed += duration;
-
-        if (step === "right") {
-          currentX = horizontalTargets[Math.min(horizontalIndex, horizontalTargets.length - 1)];
-          horizontalIndex += 1;
+      miceRef.current.forEach((config, index) => {
+        const wrapper = mouseWrappersRef.current[index];
+        const image = mouseImagesRef.current[index];
+        if (!wrapper || !image) {
+          return;
         }
 
-        if (step === "up") {
-          currentY -= verticalDistance;
+        let state = states[index] ?? initializeState(wrapper, image, config);
+        const maxX = Math.max(window.innerWidth - wrapper.offsetWidth, 0);
+
+        if (state.pausedUntil > time) {
+          updateMouseTransform(wrapper, image, state.x, state.facing, config.scale);
+          states[index] = state;
+          return;
         }
 
-        if (step === "down") {
-          currentY += verticalDistance;
+        if (state.pausedUntil !== 0 && state.pausedUntil <= time) {
+          const direction = state.direction * -1;
+          state = {
+            ...state,
+            direction,
+            facing: direction,
+            pausedUntil: 0,
+            speed: randomBetween(MOUSE_SPEED_RANGE[0], MOUSE_SPEED_RANGE[1]),
+            pauseAt: time + randomBetween(MOUSE_PAUSE_GAP_RANGE[0], MOUSE_PAUSE_GAP_RANGE[1]),
+          };
         }
 
-        keyframes.push({
-          opacity: 1,
-          transform: `translate3d(${currentX}px, ${currentY}px, 0) scale(${config.scale})`,
-          offset: 0.08 + (elapsed / (elapsed + MOUSE_IDLE_MS)) * 0.82,
-        });
+        if (state.pauseAt <= time) {
+          state = {
+            ...state,
+            pausedUntil: time + randomBetween(MOUSE_PAUSE_DURATION_RANGE[0], MOUSE_PAUSE_DURATION_RANGE[1]),
+          };
+          updateMouseTransform(wrapper, image, state.x, state.facing, config.scale);
+          states[index] = state;
+          return;
+        }
+
+        let nextX = state.x + state.direction * state.speed * deltaSeconds;
+        let nextDirection = state.direction;
+        let nextFacing = state.facing;
+
+        if (nextX <= 0) {
+          nextX = 0;
+          nextDirection = 1;
+          nextFacing = 1;
+        } else if (nextX >= maxX) {
+          nextX = maxX;
+          nextDirection = -1;
+          nextFacing = -1;
+        }
+
+        state = {
+          ...state,
+          x: clamp(nextX, 0, maxX),
+          direction: nextDirection,
+          facing: nextFacing,
+        };
+
+        updateMouseTransform(wrapper, image, state.x, state.facing, config.scale);
+        states[index] = state;
       });
 
-      const finalHorizontalDuration = randomIntBetween(
-        MOUSE_HORIZONTAL_DURATION_RANGE[0],
-        MOUSE_HORIZONTAL_DURATION_RANGE[1]
-      );
-      const totalMotionDuration = elapsed + finalHorizontalDuration;
-
-      keyframes.push({
-        opacity: 1,
-        transform: `translate3d(${endX}px, ${currentY}px, 0) scale(${config.scale})`,
-        offset: 0.9,
-      });
-      keyframes.push({
-        opacity: 0,
-        transform: `translate3d(${endX}px, ${currentY}px, 0) scale(${config.scale})`,
-        offset: 0.92,
-      });
-      keyframes.push({
-        opacity: 0,
-        transform: `translate3d(${startX}px, 0px, 0) scale(${config.scale})`,
-        offset: 1,
-      });
-
-      const animation = registerAnimation(
-        element.animate(keyframes, {
-          duration: totalMotionDuration + MOUSE_IDLE_MS,
-          delay: cycleIndex === 0 ? config.delayMs : 0,
-          easing: "ease-in-out",
-          fill: "forwards",
-          iterations: 1,
-        })
-      );
-
-      animation.addEventListener(
-        "finish",
-        () => {
-          if (!cancelled) {
-            runMouseLoop(element, config, cycleIndex + 1);
-          }
-        },
-        { once: true }
-      );
+      frameId = window.requestAnimationFrame(tick);
     };
 
-    miceRef.current.forEach((config, index) => {
-      const element = mouseElementsRef.current[index];
-      if (element) {
-        scheduleTimer(() => runMouseLoop(element, config), 0);
-      }
-    });
+    const handleResize = () => {
+      miceRef.current.forEach((config, index) => {
+        const wrapper = mouseWrappersRef.current[index];
+        const image = mouseImagesRef.current[index];
+        const state = states[index];
+        if (!wrapper || !image || !state) {
+          return;
+        }
+
+        const maxX = Math.max(window.innerWidth - wrapper.offsetWidth, 0);
+        state.x = clamp(state.x, 0, maxX);
+        updateMouseTransform(wrapper, image, state.x, state.facing, config.scale);
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+    frameId = window.requestAnimationFrame(tick);
 
     return () => {
       cancelled = true;
-      clearScheduledWork();
+      window.cancelAnimationFrame(frameId);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   return (
     <div className={className}>
       {miceRef.current.map((mouse, index) => (
-        <img
+        <div
           key={mouse.id}
           ref={(element) => {
-            mouseElementsRef.current[index] = element;
+            mouseWrappersRef.current[index] = element;
           }}
-          src={mouse.src ?? `/images/mouse${mouse.id}.png`}
-          alt=""
-          aria-hidden="true"
           className={imageClassName}
           style={{
             "--mouse-bottom": mouse.bottom,
             "--mouse-scale": mouse.scale,
           }}
-        />
+        >
+          <img
+            ref={(element) => {
+              mouseImagesRef.current[index] = element;
+            }}
+            src={mouse.src ?? `/images/mouse${mouse.id}.png`}
+            alt=""
+            aria-hidden="true"
+            className="mouse-flip-image"
+          />
+        </div>
       ))}
     </div>
   );

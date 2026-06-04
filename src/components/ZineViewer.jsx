@@ -42,14 +42,14 @@ export default function ZineViewer({ zine }) {
         </div>
       </div>
 
-      <div className="mt-1 flex justify-between text-xs">
+      <div className="mt-1 flex justify-between text-base">
         <span>{pageLabel}</span>
         <div className="flex gap-4">
-          <GhostButton className="" onClick={() => moveTo(pageIndex - 1)} disabled={pageIndex === 0}>
+          <GhostButton className="text-lg!" onClick={() => moveTo(pageIndex - 1)} disabled={pageIndex === 0}>
             {`<`}
           </GhostButton>
           <GhostButton
-            className=""
+            className="text-lg!"
             onClick={() => moveTo(pageIndex + 1)}
             disabled={pageIndex === pages.length - 1}
           >

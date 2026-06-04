@@ -57,7 +57,7 @@ export default function ProductDetailPanel({
   return (
     <Panel
       className={cx(
-        "relative grid min-w-0 h-full content-start items-start gap-3 text-sm md:gap-5 md:grid-cols-[160px_minmax(0,1fr)]",
+        "relative grid min-w-0 h-full content-start items-start text-base gap-7 md:gap-4 md:grid-cols-[160px_minmax(0,1fr)]",
         className
       )}
     >
@@ -68,10 +68,10 @@ export default function ProductDetailPanel({
       ) : (
         image
       )}
-      <div className="flex min-w-0 flex-col gap-3 md:gap-[1.4em]">
+      <div className="flex min-w-0 flex-col gap-7">
         <div className="flex items-start justify-between gap-3">
-          <div className="flex min-w-0 flex-1 flex-col gap-1">
-            <div className="text-lg">{title}</div>
+          <div className="flex min-w-0 flex-1 flex-col gap-7">
+            <div className="text-xl">{title}</div>
             {subtitle ? <p>{subtitle}</p> : null}
           </div>
           {resolvedHeaderAction ? (
@@ -92,7 +92,7 @@ export default function ProductDetailPanel({
             ))}
           </div>
         ) : null}
-        {availabilityLabel ? <p>{availabilityLabel}</p> : null}
+        {availabilityLabel && availabilityLabel === "Unavailable" ? <p className="bg-neutral-200 self-start px-2 py-1">{`Sold out :d`}</p> : null}
         <p>{formatPrice(item.price, language)}</p>
       </div>
       {overlayClassName ? <div className={cx("pointer-events-none absolute inset-0", overlayClassName)} /> : null}

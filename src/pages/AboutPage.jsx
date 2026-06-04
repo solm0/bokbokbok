@@ -48,7 +48,7 @@ export default function AboutPage() {
             alt=""
             aria-hidden="true"
             className={cx(
-              "pointer-events-none absolute -top-10 right-[8%] w-16 origin-center transition-transform duration-700 ease-in-out md:-top-12 md:w-20",
+              "pointer-events-none absolute -top-30 right-[8%] w-25 origin-center transition-transform duration-700 ease-in-out md:-top-30 md:w-30",
               butterflyFacing === 1 ? "scale-x-100 rotate-12" : "-scale-x-100 -rotate-6"
             )}
           />

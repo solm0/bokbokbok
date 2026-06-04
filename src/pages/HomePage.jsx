@@ -21,7 +21,7 @@ export default function HomePage() {
           className="w-[20vh]"
         />
       </button>
-      <AnimatedMice className="pointer-events-none fixed inset-x-0 bottom-0 z-20 h-36 overflow-visible" />
+      <AnimatedMice className="home-page-mice pointer-events-none fixed inset-x-0 z-20 h-36 overflow-visible" />
     </div>
   );
 }

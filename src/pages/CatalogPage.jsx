@@ -7,11 +7,11 @@ import { useI18n } from "../lib/i18n";
 import { getProductImageBackgroundClass } from "../lib/product-display";
 
 const CARD_WIDTH = 200;
-const CARD_HEIGHT = 300;
+const CARD_HEIGHT = 340;
 const MOBILE_BREAKPOINT = 768;
 const MOBILE_SCATTER_SAMPLE_SIZE = 8;
 const SCATTER_SAMPLE_SIZE = 15;
-const GRID_GAP = 10;
+const GRID_GAP = 12;
 const MAX_GRID_COLUMNS = 5;
 const SCATTER_TOP = 0;
 const SCATTER_BOTTOM = 8;
@@ -360,9 +360,9 @@ export default function CatalogPage({ zines }) {
       )}
     >
       <header
-        className="items-start sticky z-[100] flex w-full items-center justify-between gap-3 transition-[padding] duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
+        className="floating-controls-header items-start sticky z-[100] flex w-full items-center justify-between gap-3 transition-[padding] duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
         style={{
-          top: isMobile ? "var(--app-mobile-search-top)" : "3.5rem",
+          top: "3rem",
           paddingInlineStart: `${headerPaddingX}px`,
           paddingInlineEnd: effectiveViewMode === "grid" && isMobile ? 0 : SCATTER_SIDE
         }}
@@ -497,6 +497,7 @@ export default function CatalogPage({ zines }) {
                   subtitle={getLocalized(zine.author) || ""}
                   cover={zine.cover}
                   mode={effectiveViewMode}
+                  imageClassName={effectiveViewMode === "scatter" ? "scatter-shadow" : ""}
                   imageBackgroundClassName={
                     !zine.hasDisplayImage
                       ? "bg-neutral-100"
