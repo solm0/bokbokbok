@@ -5,7 +5,7 @@ export function cx(...classes) {
 }
 
 const baseSurfaceButton =
-  "inline-flex items-center justify-center text-base transition hover:opacity-50 disabled:cursor-not-allowed disabled:opacity-35 max-w-20 md:max-w-max";
+  "inline-flex items-center justify-center text-base transition hover:opacity-50 disabled:cursor-not-allowed disabled:opacity-35 max-w-20 xl:max-w-max";
 
 export function StatusScreen({ children }) {
   return (
@@ -57,7 +57,7 @@ export function PrimaryButton({ className = "", children, ...props }) {
     <button
       type="button"
       className={cx(
-        "inline-flex py-2 px-2 md:px-3 items-center justify-center bg-neutral-950 text-base text-white transition hover:-translate-y-0.5 disabled:bg-transparent disabled:text-neutral-900 disabled:border disabled:border-dotted break-keep max-w-20 md:max-w-max leading-4.5",
+        "inline-flex py-2 px-2 md:px-3 items-center justify-center bg-neutral-950 text-base text-white transition hover:-translate-y-0.5 disabled:bg-transparent disabled:text-neutral-900 disabled:border disabled:border-dotted break-keep max-w-20 xl:max-w-max leading-4.5",
         className
       )}
       {...props}

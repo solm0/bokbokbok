@@ -6,6 +6,8 @@ import { useCart } from "../lib/cart-context";
 import { useI18n } from "../lib/i18n";
 import { getProductImageBackgroundClass } from "../lib/product-display";
 
+const detailGridClassName = "grid items-start gap-4 lg:gap-7 lg:grid-cols-[minmax(280px,2fr)_minmax(360px,3fr)]";
+
 export default function ZineDetailPage({ zines }) {
   const { id } = useParams();
   const { addItem, hasItem } = useCart();
@@ -19,7 +21,7 @@ export default function ZineDetailPage({ zines }) {
   if (!zine) {
     return (
       <main className="min-h-screen p-4 md:p-7 pt-18 md:pt-22">
-        <div className="grid items-start gap-4 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
+        <div className={detailGridClassName}>
           <p>{t("detail.notFound", { id })}</p>
           <GhostLink to="/dig">
             <img src="/images/back.png" className="w-7" />
@@ -37,7 +39,7 @@ export default function ZineDetailPage({ zines }) {
         </GhostLink>
       </div>
 
-      <div className="grid items-start gap-4 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
+      <div className={detailGridClassName}>
         <ProductDetailPanel
           item={{ ...zine, type: "zine", title, description }}
           subtitle={author}

@@ -5,6 +5,8 @@ import { GhostLink } from "../components/ui";
 import { useCart } from "../lib/cart-context";
 import { useI18n } from "../lib/i18n";
 
+const detailGridClassName = "grid items-start gap-4 lg:gap-7 lg:grid-cols-[minmax(280px,2fr)_minmax(360px,3fr)]";
+
 export default function GoodsDetailPage({ goods }) {
   const { id } = useParams();
   const { addItem, hasItem } = useCart();
@@ -20,7 +22,7 @@ export default function GoodsDetailPage({ goods }) {
   if (!good) {
     return (
       <main className="min-h-screen p-4 md:p-7 pt-18 md:pt-22">
-        <div className="grid items-start gap-4 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
+        <div className={detailGridClassName}>
           <p>{t("goodsDetail.notFound", { id })}</p>
           <GhostLink to="/goods">
             <img src="/images/back.png" className="w-7" />
@@ -38,7 +40,7 @@ export default function GoodsDetailPage({ goods }) {
         </GhostLink>
       </div>
 
-      <div className="grid items-start gap-4 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
+      <div className={detailGridClassName}>
         <ProductDetailPanel
           item={{ ...good, type: "good", title, description }}
           subtitle={maker}
