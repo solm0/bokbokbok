@@ -144,4 +144,14 @@
     transform-origin: center bottom;
     will-change: transform, opacity;
   }
+
+  .about-page-mice {
+    bottom: calc(var(--app-safe-top) + 4rem);
+  }
+
+  @media (min-width: 768px) {
+    .about-page-mice {
+      bottom: 0;
+    }
+  }
 }

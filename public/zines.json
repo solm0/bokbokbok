@@ -489,15 +489,6 @@
   },
   {
     "id": "34",
-    "title": "Placeholder Zine 34",
-    "description": [
-      "Placeholder description for zine 34. Replace this with the actual synopsis later."
-    ],
-    "price": 13500,
-    "available": true
-  },
-  {
-    "id": "35",
     "title": "폴카",
     "author": "이대인",
     "description": [
@@ -509,6 +500,33 @@
       "32페이지",
       "디지털(토너)인쇄",
       "중철제본"
+    ]
+  },
+  {
+    "id": "35",
+    "title": "layered tokyo",
+    "author": "백채민",
+    "description": [
+      "구글 맵스로 도쿄 진보초 거리를 여행하며 캡쳐한 장면을 바탕으로, 길거리의 시각적 요소를 인형으로 재구성하고 이를 손에 들고 1인청 시점으로 촬영한 AI 이미지를 활용해 진으로 제작하였습니다. 케이팝 아이돌 인형 문화에서 착안한 이미지며, 컬러 구글 이미지와 흑백 AI 이미지를 리소 인쇄로 중첩하여 표현하였습니다."
+    ],
+    "price": 10000,
+    "available": true,
+    "metadata": [
+      "2026",
+      "16pages"
+    ]
+  },
+  {
+    "id": "36",
+    "title": "Stapled Voices",
+    "author": "백채민",
+    "description": [
+      "이 진은 주류 출판 바깥에서 작동해온 진의 의미를 다룬다. 소량 제작의 물성, 직접 교환의 방식, 사라질 수 있는 목소리를 붙잡는 기록 매체로서의 가능성을 살펴본다."
+    ],
+    "price": 5000,
+    "available": true,
+    "metadata": [
+      "16pages"
     ]
   }
 ]

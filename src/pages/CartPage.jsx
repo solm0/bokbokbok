@@ -167,6 +167,11 @@ export default function CartPage({ zines, goods }) {
             spellCheck={false}
           />
         </FieldLabel>
+        <div className="mt-7 text-xs border border-dotted p-3 gap-3 flex flex-col break-keep text-center">
+          <p className="text-sm">Please submit the form after making a payment to the account below.</p>
+          <p>아래 계좌로 입금 후 폼 제출 부탁드립니다.</p>
+          <p className="pt-[1.7em] font-sans">백채민 카카오뱅크 3333-37-6005790</p>
+        </div>
       </div>
 
       <div className="flex gap-2 items-center w-full">
