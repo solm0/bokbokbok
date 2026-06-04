@@ -105,7 +105,6 @@ const dictionaries = {
       portrait: "세로",
       landscape: "가로",
       pages: "페이지",
-      pageCount: "{count} 페이지",
       addPage: "페이지 추가",
       deletePage: "삭제",
       grid: "그리드",
@@ -226,7 +225,6 @@ const dictionaries = {
       portrait: "Portrait",
       landscape: "Landscape",
       pages: "Pages",
-      pageCount: "{count} page{suffix}",
       addPage: "Add Page",
       deletePage: "Delete",
       grid: "Grid",
@@ -278,7 +276,9 @@ export function getLocalizedValue(value, language, fallbackLanguage = DEFAULT_LA
   return (
     value[language] ??
     value[fallbackLanguage] ??
-    SUPPORTED_LANGUAGES.map((code) => value[code]).find((entry) => typeof entry === "string") ??
+    SUPPORTED_LANGUAGES
+      .map((code) => value[code])
+      .find((entry) => typeof entry === "string" || Array.isArray(entry)) ??
     ""
   );
 }

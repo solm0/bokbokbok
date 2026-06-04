@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
+import { DEFAULT_PRODUCT_IMAGE } from "../lib/product-display";
 
-function buildZineAssets(id, manifest) {
-  const pages = manifest[String(id)] ?? [];
-  const cover = pages[0] ?? `/images/zines/${id}_cover.png`;
+function buildZineAssets(zine, manifest) {
+  const pages = manifest[String(zine.id)] ?? [];
+  const fallbackCover = zine.cover || DEFAULT_PRODUCT_IMAGE;
+  const cover = pages[0] ?? fallbackCover;
 
   return {
     cover,
-    pages: pages.length ? pages : [cover]
+    pages: pages.length ? pages : [cover],
+    hasDisplayImage: pages.length > 0 || fallbackCover !== DEFAULT_PRODUCT_IMAGE
   };
 }
 
 function hydrateZine(zine, manifest) {
   return {
     ...zine,
-    ...buildZineAssets(zine.id, manifest)
+    ...buildZineAssets(zine, manifest)
   };
 }
 

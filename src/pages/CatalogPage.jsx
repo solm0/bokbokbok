@@ -30,12 +30,20 @@ function getRandomSample(items, size) {
     return items;
   }
 
-  const pool = [...items];
+  const shuffle = (pool) => {
+    const nextPool = [...pool];
 
-  for (let index = pool.length - 1; index > 0; index -= 1) {
-    const randomIndex = Math.floor(Math.random() * (index + 1));
-    [pool[index], pool[randomIndex]] = [pool[randomIndex], pool[index]];
-  }
+    for (let index = nextPool.length - 1; index > 0; index -= 1) {
+      const randomIndex = Math.floor(Math.random() * (index + 1));
+      [nextPool[index], nextPool[randomIndex]] = [nextPool[randomIndex], nextPool[index]];
+    }
+
+    return nextPool;
+  };
+
+  const preferred = items.filter((item) => item.hasDisplayImage);
+  const fallback = items.filter((item) => !item.hasDisplayImage);
+  const pool = [...shuffle(preferred), ...shuffle(fallback)];
 
   return pool.slice(0, size);
 }
@@ -489,10 +497,14 @@ export default function CatalogPage({ zines }) {
                   subtitle={getLocalized(zine.author) || ""}
                   cover={zine.cover}
                   mode={effectiveViewMode}
-                  imageBackgroundClassName={getProductImageBackgroundClass({
-                    type: "zine",
-                    invertBg: zine.invertBg
-                  })}
+                  imageBackgroundClassName={
+                    !zine.hasDisplayImage
+                      ? "bg-neutral-100"
+                      : getProductImageBackgroundClass({
+                          type: "zine",
+                          invertBg: zine.invertBg
+                        })
+                  }
                 />
               </button>
             );

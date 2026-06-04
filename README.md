@@ -48,7 +48,6 @@ npm run build
   "description": "설명",
   "price": 12000,
   "available": true,
-  "pageCount": 0
 }
 ```
 
@@ -66,9 +65,6 @@ npm run build
   판매 가능 여부입니다.
   `true`면 목록에 보이고 상세 페이지에서 장바구니에 담을 수 있습니다.
   `false`면 `DIG` 목록에서 제외됩니다.
-- `pageCount`
-  상세 페이지 진 뷰어에서 보여줄 내지 이미지 개수입니다.
-  `0`이면 표지만 보여줍니다.
 
 ### 진 추가 방법
 
@@ -90,7 +86,6 @@ npm run build
   "description": "설명",
   "price": 15000,
   "available": false,
-  "pageCount": 0
 }
 ```
 
@@ -126,28 +121,6 @@ npm run build
 
 - [1_cover.png](/Users/solmi/Downloads/bokbokbok/public/images/zines/1_cover.png)
 - [25_cover.png](/Users/solmi/Downloads/bokbokbok/public/images/zines/25_cover.png)
-
-### 상세 페이지 내지 미리보기 이미지
-
-`pageCount`가 0보다 크면 아래 규칙으로 자동 생성됩니다.
-
-```text
-/images/zines/{id}_page-1.png
-/images/zines/{id}_page-2.png
-/images/zines/{id}_page-3.png
-...
-```
-
-예:
-
-`id: "12"`, `pageCount: 3` 이면:
-
-```text
-/images/zines/12_cover.png
-/images/zines/12_page-1.png
-/images/zines/12_page-2.png
-/images/zines/12_page-3.png
-```
 
 ### 이미지가 없을 때
 
@@ -305,7 +278,6 @@ Apps Script 코드 바꿨을 때:
 
 - 진을 새로 추가할 때는 먼저 `zines.json`부터 수정
 - 그다음 표지 이미지 추가
-- 미리보기 페이지가 있으면 `pageCount`와 `page-{n}.png` 추가
 - 구매 요청 테스트를 한 번 보내서 시트 기록과 메일 발송 둘 다 확인
 
 이 문서를 먼저 보고도 해결이 안 되면, 다음 순서로 문제를 찾는 것이 가장 빠릅니다.

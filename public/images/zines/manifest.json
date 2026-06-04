@@ -1,34 +1,54 @@
 {
-  "1": [
-    "/images/zines/1_cover.png",
-    "/images/zines/1_page-1.png",
-    "/images/zines/1_page-2.png"
-  ],
   "2": [
-    "/images/zines/2_cover.png",
-    "/images/zines/2_page-1.png",
-    "/images/zines/2_page-2.png"
-  ],
-  "3": [
-    "/images/zines/3_cover.png",
-    "/images/zines/3_page-1.png",
-    "/images/zines/3_page-2.png"
+    "/images/zines/2_cover.jpeg",
+    "/images/zines/2_page-1.jpeg",
+    "/images/zines/2_page-2.jpeg",
+    "/images/zines/2_page-3.jpeg",
+    "/images/zines/2_page-4.jpeg",
+    "/images/zines/2_page-5.jpeg",
+    "/images/zines/2_page-6.jpeg",
+    "/images/zines/2_page-7.jpeg",
+    "/images/zines/2_page-8.jpeg"
   ],
   "4": [
-    "/images/zines/4_cover.png",
-    "/images/zines/4_page-1.png",
-    "/images/zines/4_page-2.png"
+    "/images/zines/4_cover.jpeg",
+    "/images/zines/4_page-1.jpeg",
+    "/images/zines/4_page-2.jpeg",
+    "/images/zines/4_page-3.jpeg",
+    "/images/zines/4_page-4.jpeg",
+    "/images/zines/4_page-5.jpeg"
   ],
-  "5": [
-    "/images/zines/5_cover.png"
+  "9": [
+    "/images/zines/9_cover.jpeg",
+    "/images/zines/9_page-1.jpeg",
+    "/images/zines/9_page-2.jpeg"
   ],
-  "6": [
-    "/images/zines/6_cover.png"
+  "14": [
+    "/images/zines/14_cover.jpeg",
+    "/images/zines/14_page-1.jpeg",
+    "/images/zines/14_page-2.jpeg",
+    "/images/zines/14_page-3.jpeg",
+    "/images/zines/14_page-4.jpeg",
+    "/images/zines/14_page-5.jpeg"
   ],
-  "7": [
-    "/images/zines/7_cover.png"
+  "21": [
+    "/images/zines/21_cover.jpeg",
+    "/images/zines/21_page-1.jpeg",
+    "/images/zines/21_page-2.jpeg",
+    "/images/zines/21_page-3.jpeg",
+    "/images/zines/21_page-4.jpeg",
+    "/images/zines/21_page-5.jpeg"
   ],
-  "8": [
-    "/images/zines/8_cover.png"
+  "24": [
+    "/images/zines/24_cover.jpeg",
+    "/images/zines/24_page-1.jpeg",
+    "/images/zines/24_page-2.jpeg",
+    "/images/zines/24_page-3.jpeg",
+    "/images/zines/24_page-4.jpeg"
+  ],
+  "25": [
+    "/images/zines/25_cover.jpeg",
+    "/images/zines/25_page-1.jpeg",
+    "/images/zines/25_page-2.jpeg"
   ]
 }

@@ -25,6 +25,11 @@ export default function ProductDetailPanel({
     smallImage ? 'w-1/2 md:w-full': 'w-full',
     imageBackgroundClassName ?? getProductImageBackgroundClass(item)
   );
+  const descriptionLines = Array.isArray(item.description)
+    ? item.description.filter(Boolean)
+    : item.description
+      ? [item.description]
+      : [];
   const image = <ZineImage className={imageClassName} src={item.cover} alt={item.title} />;
   const resolvedHeaderAction =
     headerAction ??
@@ -65,7 +70,13 @@ export default function ProductDetailPanel({
             <div className="shrink-0 self-start text-right">{resolvedHeaderAction}</div>
           ) : null}
         </div>
-        {item.description && !short ? <p className="max-w-[42ch] break-words break-keep leading-[1.45]">{item.description}</p> : null}
+        {descriptionLines.length && !short ? (
+          <div className="flex max-w-[42ch] flex-col gap-2 break-words break-keep leading-[1.45]">
+            {descriptionLines.map((line, index) => (
+              <p key={index}>{line}</p>
+            ))}
+          </div>
+        ) : null}
         {item.metadata?.length && !short ? (
           <div className="flex flex-col gap-0.5">
             {item.metadata?.map((entry, index) => (

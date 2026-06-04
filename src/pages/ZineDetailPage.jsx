@@ -4,6 +4,7 @@ import ZineViewer from "../components/ZineViewer";
 import { GhostLink } from "../components/ui";
 import { useCart } from "../lib/cart-context";
 import { useI18n } from "../lib/i18n";
+import { getProductImageBackgroundClass } from "../lib/product-display";
 
 export default function ZineDetailPage({ zines }) {
   const { id } = useParams();
@@ -41,6 +42,14 @@ export default function ZineDetailPage({ zines }) {
           item={{ ...zine, type: "zine", title, description }}
           subtitle={author}
           language={language}
+          imageBackgroundClassName={
+            !zine.hasDisplayImage
+              ? "bg-neutral-100"
+              : getProductImageBackgroundClass({
+                  type: "zine",
+                  invertBg: zine.invertBg
+                })
+          }
           availabilityLabel={zine.available === false ? t("detail.unavailable") : t("detail.available")}
           actionLabel={saved ? t("detail.savedInCart") : t("detail.addToCart")}
           actionDisabled={saved}

@@ -1,3 +1,5 @@
+export const DEFAULT_PRODUCT_IMAGE = "/images/bok.png";
+
 export function getProductImageBackgroundClass(productOrType) {
   const type = typeof productOrType === "string" ? productOrType : productOrType?.type;
   const invertBg =

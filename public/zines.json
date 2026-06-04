@@ -1,411 +1,514 @@
 [
   {
     "id": "1",
-    "title": "Moment",
-    "author": "Daeun Lee",
-    "description": "최근 구매한 빈티지 디지털 카메라로 부지런히 기록한 순간들 중, 파란 색감을 가진 장면들만을 골라 엮은 미니 사진집입니다. 실제 카메라 디스플레이 스크린과 유사한 판형으로 제작되었으며, 진을 펼치고 넘기는 동안 카메라의 전원을 켜고 사진을 촬영한 뒤 다시 끄는 일련의 동작을 함께 재현합니다. 덧) 동명의 캐논 EOS M 캠페인송 <Moment>를 좋아합니다.",
-    "price": 12000,
+    "title": "Flyers Ephemera 2023-2025",
+    "author": "Jinsoo Nam",
+    "description": [
+      "Flyers Archive book"
+    ],
+    "price": 20000,
     "available": true,
     "metadata": [
-      "16 pages",
-      "52 x 36mm",
-      "Digital printing",
-      "Saddle stitch",
-      "@deltaalphaechouniformnovember",
-      "2026"
-    ],
-    "pageCount": 0
+      "86 pages",
+      "2025"
+    ]
   },
   {
     "id": "2",
-    "title": "Placeholder Zine 02",
-    "description": "Placeholder description for zine 02. Replace this with the actual synopsis later.",
-    "price": 12500,
+    "title": "Digital Nostalgia Combo 2000",
+    "author": "Jinsoo Nam",
+    "description": [
+      "기억의 포맷 : 2000s"
+    ],
+    "price": 15000,
     "available": true,
-    "pageCount": 0
+    "metadata": [
+      "First edition · printed in Seoul",
+      "Published by Low Ink Press, Seoul",
+      "© 2025 Alembic Service. All rights reserved.",
+      "20 pages",
+      "2025"
+    ]
   },
   {
     "id": "3",
-    "title": "Placeholder Zine 03",
-    "description": "Placeholder description for zine 03. Replace this with the actual synopsis later.",
-    "price": 13000,
+    "title": "𝗔𝘭𝘭 𝗖𝘰𝘯𝘥𝘪𝘵𝘪𝘰𝘯𝘴 𝘯𝘰𝘴𝘵𝘢𝘭𝗚𝘪𝘢",
+    "author": "Jinsoo Nam",
+    "description": [
+      "Placeholder description for zine 03. Replace this with the actual synopsis later."
+    ],
+    "price": 15000,
     "available": true,
-    "pageCount": 0
+    "metadata": [
+      "[5.83“ x 8.27”]",
+      "16 pages",
+      "2026"
+    ]
   },
   {
     "id": "4",
-    "title": "Placeholder Zine 04",
-    "description": "Placeholder description for zine 04. Replace this with the actual synopsis later.",
-    "price": 13500,
+    "title": "GORE-SHEET® zine",
+    "author": "Jinsoo Nam",
+    "description": [
+      "[Guaranteed To Keep Your Tears Out]",
+      "Cry all you want"
+    ],
+    "price": 15000,
     "available": true,
-    "pageCount": 0
+    "metadata": [
+      "Published by Low Ink Press, Seoul",
+      "© 2026 ep"
+    ]
   },
   {
     "id": "5",
-    "title": "Placeholder Zine 05",
-    "description": "Placeholder description for zine 05. Replace this with the actual synopsis later.",
-    "price": 14000,
+    "title": "앞지르기시점",
+    "author": "gon",
+    "description": [
+      "s. 문장 수",
+      "w. 단어 수",
+      "c. 한글 글자 수",
+      "rt. 예상 읽기 시간",
+      "vowel 가장 많이 등장한 모음",
+      "coda% 받침 밀도",
+      "longest 가장 긴 단어",
+      "avg 문장 평균 길이",
+      "s.d. 문장 리듬 불규칙성",
+      "rank 텍스트 밀도 순위 / 13",
+      "cumul. 누적 글자 수",
+      "Petrichor : the distinct, earthy produced when rain falls on dry soil 마른 땅에 비가 내를 때 나는 특유의 흙 냄새"
+    ],
+    "price": 10000,
     "available": true,
-    "pageCount": 0
+    "metadata": [
+      "Published by Low Ink Press, Seoul",
+      "2026"
+    ]
   },
   {
     "id": "6",
-    "title": "Placeholder Zine 06",
-    "description": "Placeholder description for zine 06. Replace this with the actual synopsis later.",
-    "price": 14500,
+    "title": "Jongnohost:종로호스트",
+    "author": "고을희 / Eulhee Ko",
+    "description": [
+      "《종로호스트》는 9년 동안 서울 종로에 거주하며 아이폰으로 기록한 이미지들을 엮은 사진집입니다. 반복되는 일상의 동선과 장소 속에 쌓여온 시간의 흐름을 따라가며, 오래도록 떠오르는 순간들, 미처 눈치채지 못했던 장면들, 수치스럽지만 다정하고 불쾌하지만 너그러운 순간들을 담았습니다."
+    ],
+    "price": 55000,
     "available": true,
-    "pageCount": 0
+    "metadata": [
+      "2026",
+      "10권",
+      "103x148mm",
+      "704p",
+      "양장제본"
+    ]
   },
   {
     "id": "7",
-    "title": "Placeholder Zine 07",
-    "description": "Placeholder description for zine 07. Replace this with the actual synopsis later.",
-    "price": 15000,
+    "title": "Open Hours",
+    "author": "KOZELNANTS / 코젤앤엔츠",
+    "description": [
+      "코젤앤엔츠의 오픈 시간을 알리기 위해 매일 업로드하던 인스타그램 스토리를 기반으로 제작한 신문 형태의 출판물입니다. 매장 안팎의 장면, 개인적인 기록들이 뒤섞이며 하나의 느슨한 시간의 아카이브를 만들어갑니다."
+    ],
+    "price": 30000,
     "available": true,
-    "pageCount": 0
+    "metadata": [
+      "2025",
+      "10권",
+      "451x318mm",
+      "38p",
+      "중철제본"
+    ]
   },
   {
     "id": "8",
-    "title": "Placeholder Zine 08",
-    "description": "Placeholder description for zine 08. Replace this with the actual synopsis later.",
-    "price": 15500,
+    "title": "존재와 이유 (Être et devoir être)",
+    "author": "박새한 (Saehan Parc)",
+    "description": [
+      "2020년부터 출판된 시리즈의 첫번째 에디션. 프랑스 스트라스부르에서 처음 만들고 서울에서 제작되었다."
+    ],
+    "price": 12000,
     "available": true,
-    "pageCount": 0
+    "metadata": [
+      "2020"
+    ]
   },
   {
     "id": "9",
-    "title": "Placeholder Zine 09",
-    "description": "Placeholder description for zine 09. Replace this with the actual synopsis later.",
-    "price": 16000,
+    "title": "한 여성이 걸을 때 (Quand une femme marche)",
+    "author": "박새한 (Saehan Parc)",
+    "description": [
+      "2020년부터 출판된 시리즈의 두번째 에디션. 프랑스 스트라스부르에서 처음 만들고 서울에서 제작되었다."
+    ],
+    "price": 12000,
     "available": true,
-    "pageCount": 0
+    "metadata": [
+      "2020"
+    ]
   },
   {
     "id": "10",
-    "title": "Placeholder Zine 10",
-    "description": "Placeholder description for zine 10. Replace this with the actual synopsis later.",
-    "price": 16500,
+    "title": "내 메세지 받았어 ? (As-tu reçu mon message?)",
+    "author": "박새한 (Saehan Parc)",
+    "description": [
+      "2020년부터 출판된 시리즈의 세번째 에디션. 프랑스 스트라스부르에서 처음 만들고 서울에서 제작되었다."
+    ],
+    "price": 12000,
     "available": true,
-    "pageCount": 0
+    "metadata": [
+      "2020"
+    ]
   },
   {
     "id": "11",
-    "title": "Placeholder Zine 11",
-    "description": "Placeholder description for zine 11. Replace this with the actual synopsis later.",
+    "title": "문명의 레시피 (La recette de la civilisation)",
+    "author": "박새한 (Saehan Parc)",
+    "description": [
+      "2020년부터 출판된 시리즈의 네번째 에디션. 프랑스 스트라스부르에서 처음 만들고 서울에서 제작되었다."
+    ],
     "price": 12000,
     "available": true,
-    "pageCount": 0
+    "metadata": [
+      "2022"
+    ]
   },
   {
     "id": "12",
-    "title": "Placeholder Zine 12",
-    "description": "Placeholder description for zine 12. Replace this with the actual synopsis later.",
-    "price": 12500,
+    "title": "내 친구의 집은 어디인가 ? (Où est la maison de mon amie?)",
+    "author": "박새한 (Saehan Parc)",
+    "description": [
+      "2020년부터 출판된 시리즈의 다섯번째 에디션. 포토키노(Fotokino)와 라 마헬(La Marelle)이 주최한 프랑스 라 시오타(La Ciotat)의 아티스트 레지던시에서 처음 만들고 서울에서 제작되었다."
+    ],
+    "price": 12000,
     "available": true,
-    "pageCount": 0
+    "metadata": [
+      "2023"
+    ]
   },
   {
     "id": "13",
-    "title": "Placeholder Zine 13",
-    "description": "Placeholder description for zine 13. Replace this with the actual synopsis later.",
-    "price": 13000,
+    "title": "나사식 (Nasasik)",
+    "author": "박새한 (Saehan Parc)",
+    "description": [
+      "2020년부터 출판된 시리즈의 여섯번째 에디션. 2025년 서울 갤러리 포켓테일즈(Pokettales)에서 머물며 을지로 일대에서 만난 나사들이 담겨있다. 서울에서 처음 만들고 제작되었다."
+    ],
+    "price": 12000,
     "available": true,
-    "pageCount": 0
+    "metadata": [
+      "2025"
+    ]
   },
   {
     "id": "14",
-    "title": "Placeholder Zine 14",
-    "description": "Placeholder description for zine 14. Replace this with the actual synopsis later.",
-    "price": 13500,
+    "title": "읽기 (Lecture)",
+    "author": "박새한 (Saehan Parc)",
+    "description": [
+      "2020년부터 출판된 시리즈의 일곱번째 에디션. 뉴욕타임즈에 2024년 8월에 한달동안 연재한 일러스트레이션이 담겨있다. 서울에서 처음 만들고 제작되었다."
+    ],
+    "price": 12000,
     "available": true,
-    "pageCount": 0
+    "metadata": [
+      "2025"
+    ]
   },
   {
     "id": "15",
-    "title": "Placeholder Zine 15",
-    "description": "Placeholder description for zine 15. Replace this with the actual synopsis later.",
-    "price": 14000,
+    "title": "vomiting book",
+    "author": "홍지현",
+    "description": [
+      "수많은 북페어, 서점에서 쏟아지는 사람들과 책들을 보며 토 쏠리는 감정을 담아 만든 진입니다."
+    ],
+    "price": 5000,
     "available": true,
-    "pageCount": 0
+    "metadata": [
+      "16p",
+      "Digital printing",
+      "중철제본"
+    ]
   },
   {
     "id": "16",
-    "title": "Placeholder Zine 16",
-    "description": "Placeholder description for zine 16. Replace this with the actual synopsis later.",
-    "price": 14500,
+    "title": "가려진 항목",
+    "author": "민세진 min sejin",
+    "description": [
+      "아이폰 사진첩 ‘가려진 항목‘ 속 사진들을 담은 진이다. 저마다의 이유로 삭제하지 않고 숨겨둔 개인적인 사진들을 공개한다. 프렌치 폴딩 제본으로 엮어 안쪽에서만 은밀하게 들여다볼 수 있도록 만들었다."
+    ],
+    "price": 5000,
     "available": true,
-    "pageCount": 0
+    "metadata": [
+      "2026"
+    ]
   },
   {
     "id": "17",
-    "title": "Placeholder Zine 17",
-    "description": "Placeholder description for zine 17. Replace this with the actual synopsis later.",
-    "price": 15000,
+    "title": "달달이 도시",
+    "author": "김담 / Demi Kim",
+    "description": [
+      "종이들이 여행하는 도시. 충무로의 골목 사이 작은 탈것들이 종이를 싣고 달달거리며 오고 갑니다.이곳에서만 마주하는 손때 묻은 풍경. 그 시선을 따라가는 이 책은 어쩌면 책 속 종이 더미가 모여 만들어진 것일지도 모릅니다."
+    ],
+    "price": 13000,
     "available": true,
-    "pageCount": 0
+    "metadata": [
+      "2026",
+      "90*110mm",
+      "스프링 제본"
+    ]
   },
   {
     "id": "18",
-    "title": "Placeholder Zine 18",
-    "description": "Placeholder description for zine 18. Replace this with the actual synopsis later.",
-    "price": 15500,
+    "title": "수의 자서전",
+    "author": "수",
+    "description": [
+      "인생의 오분의 일을 거쳐오며, 수를 이루었던 사건들을 나열했습니다. 2005년 수의 탄생과 중학교 시절 첫사랑 이야기, 그리고 2026년 현재의 고민 등을 담았습니다."
+    ],
+    "price": 4000,
     "available": true,
-    "pageCount": 0
+    "metadata": [
+      "2026",
+      "148*210mm",
+      "중철제본",
+      "digital print"
+    ]
   },
   {
     "id": "19",
-    "title": "Placeholder Zine 19",
-    "description": "Placeholder description for zine 19. Replace this with the actual synopsis later.",
-    "price": 16000,
+    "title": "5AM Miracle Morning",
+    "author": "오해찬 / OH HAECHAN",
+    "description": [
+      "5시에 일어나 무언가를 할 사람들을 모았습니다.",
+      "작업, 산책, 일터, 이른 하루 시작하기, 빵만들기.",
+      "각자의 새벽은 다른 이유로 시작되지만,",
+      "그 시간 안에는 비슷한 색감과 에너지가 있다고 생각했어요.",
+      "이 책은 새벽의 움직임들을 기록한 zine입니다."
+    ],
+    "price": 9000,
     "available": true,
-    "pageCount": 0
+    "metadata": [
+      "2026",
+      "48p",
+      "120 x 170 mm",
+      "중철제본"
+    ]
   },
   {
     "id": "20",
-    "title": "Placeholder Zine 20",
-    "description": "Placeholder description for zine 20. Replace this with the actual synopsis later.",
-    "price": 16500,
+    "title": "끝말잇기 Last and first",
+    "author": "배성연 / Bae seongyeon",
+    "description": [
+      "언젠가 친구와 했던 끝말잇기를 종이에 옮긴 진입니다. 어떤 단어들을 주고받았을까요?"
+    ],
+    "price": 4000,
     "available": true,
-    "pageCount": 0
+    "metadata": [
+      "2026",
+      "10 pages",
+      "148x210mm",
+      "Digital printing",
+      "중철제본"
+    ]
   },
   {
     "id": "21",
-    "title": "Placeholder Zine 21",
-    "description": "Placeholder description for zine 21. Replace this with the actual synopsis later.",
-    "price": 12000,
+    "title": "What’s in My Wallet",
+    "author": "게릴라 퍼블리시 / guerrilla publish",
+    "description": [
+      "사람들의 지갑을 관찰한 zine"
+    ],
+    "price": 8000,
     "available": true,
-    "pageCount": 0
+    "metadata": [
+      "2026"
+    ]
   },
   {
     "id": "22",
-    "title": "Placeholder Zine 22",
-    "description": "Placeholder description for zine 22. Replace this with the actual synopsis later.",
-    "price": 12500,
+    "title": "NEARPOST GRAPHIC ZINE VOL.1",
+    "author": "Hong Inpyo",
+    "description": [
+      "NEARPOST GRAPHIC ZINE VOL.1",
+      "<NEARPOST> is a side project by graphic designer Inpyo Hong, created on weekend nights while watching Premier League broadcasts. It is a project focused on creating graphics based on football."
+    ],
+    "price": 20000,
     "available": true,
-    "pageCount": 0
+    "metadata": [
+      "2026",
+      "105 × 148 mm",
+      "24 Pages",
+      "All pages are risographed printed.",
+      "The cover is screen-printed."
+    ]
   },
   {
     "id": "23",
-    "title": "Placeholder Zine 23",
-    "description": "Placeholder description for zine 23. Replace this with the actual synopsis later.",
-    "price": 13000,
+    "title": "Fashion Graphic",
+    "author": "커튼 아이디어 (Curtain Idea) @curtainidea",
+    "description": [
+      "런웨이 이미지와 책의 편집 요소를 한 지면 안에 병치한 그래픽 진으로, 페이지 넘버와 기호, 텍스트 등 읽히던 요소들을 시각적 레이어로 전환해 재구성했다."
+    ],
+    "price": 8000,
     "available": true,
-    "pageCount": 0
+    "metadata": [
+      "2026",
+      "150×220mm",
+      "24p",
+      "중철",
+      "2도 인쇄 (은색 별색)"
+    ]
   },
   {
     "id": "24",
-    "title": "Placeholder Zine 24",
-    "description": "Placeholder description for zine 24. Replace this with the actual synopsis later.",
-    "price": 13500,
-    "available": true,
-    "pageCount": 0
+    "title": "Souvenirs",
+    "author": "이다은 / Lee Daeun",
+    "description": [
+      "굿즈 제작 및 판매 프로젝트 [페게라 골목상점] 을 위한 a9 사이즈의 진 시리즈 3종. 교환학생 시절 가장 인상깊었던 여행지 페게라에서의 기억들을 엮었다. 재미있는 기념품 모음집, 숙소에서 3분 거리였던 바다에 가기 위한 쌍둥이 자매의 준비 과정이 담겨 있다."
+    ],
+    "price": 7000,
+    "available": true
   },
   {
     "id": "25",
-    "title": "Placeholder Zine 25",
-    "description": "Placeholder description for zine 25. Replace this with the actual synopsis later.",
-    "price": 14000,
-    "available": true,
-    "pageCount": 0
+    "title": "바다 갈 준비 part.1",
+    "author": "이다은 / Lee Daeun",
+    "description": [
+      "굿즈 제작 및 판매 프로젝트 [페게라 골목상점] 을 위한 a9 사이즈의 진 시리즈 3종. 교환학생 시절 가장 인상깊었던 여행지 페게라에서의 기억들을 엮었다. 재미있는 기념품 모음집, 숙소에서 3분 거리였던 바다에 가기 위한 쌍둥이 자매의 준비 과정이 담겨 있다."
+    ],
+    "price": 7000,
+    "available": true
   },
   {
     "id": "26",
-    "title": "Placeholder Zine 26",
-    "description": "Placeholder description for zine 26. Replace this with the actual synopsis later.",
-    "price": 14500,
-    "available": true,
-    "pageCount": 0
+    "title": "바다 갈 준비 part.2",
+    "author": "이다은 / Lee Daeun",
+    "description": [
+      "굿즈 제작 및 판매 프로젝트 [페게라 골목상점] 을 위한 a9 사이즈의 진 시리즈 3종. 교환학생 시절 가장 인상깊었던 여행지 페게라에서의 기억들을 엮었다. 재미있는 기념품 모음집, 숙소에서 3분 거리였던 바다에 가기 위한 쌍둥이 자매의 준비 과정이 담겨 있다."
+    ],
+    "price": 7000,
+    "available": true
   },
   {
     "id": "27",
-    "title": "Placeholder Zine 27",
-    "description": "Placeholder description for zine 27. Replace this with the actual synopsis later.",
-    "price": 15000,
-    "available": true,
-    "pageCount": 0
+    "title": "Moments",
+    "author": "이다은 / Lee Daeun",
+    "description": [
+      "최근에 구매한 빈티지 디카를 부지런히 들고 다니며 모은 순간들 중 파란 것들을 골라낸 미니 사진집. 실제 해당 카메라의 디스플레이 스크린과 같은 판형이기도 하다. 진을 읽는 동안에는 카메라를 켜 사진을 찍고 다시 전원을 끄는 일련의 동작이 재현된다.",
+      "덧) 동명의 캐논 eos M 캠페인송 <Moment>를 좋아합니다."
+    ],
+    "price": 5000,
+    "available": true
   },
   {
     "id": "28",
-    "title": "Placeholder Zine 28",
-    "description": "Placeholder description for zine 28. Replace this with the actual synopsis later.",
-    "price": 15500,
+    "title": "Rhizoma",
+    "author": "김다빈 Dabin Kim",
+    "description": [
+      "〈Rhizoma〉는 코드를 통해 리좀처럼 뻗어나가는 글자를 바탕으로 만들어진 진입니다. 스스로 얽히며 가독성을 벗어나는 활자들이 만들어내는 낯선 증식의 풍경을 담았습니다."
+    ],
+    "price": 8000,
     "available": true,
-    "pageCount": 0
+    "metadata": [
+      "2026"
+    ]
   },
   {
     "id": "29",
-    "title": "Placeholder Zine 29",
-    "description": "Placeholder description for zine 29. Replace this with the actual synopsis later.",
-    "price": 16000,
+    "title": "Surface of yellow forms",
+    "author": "김다연 / dayon kim",
+    "description": [
+      "천연 염료인 치자로 찍어낸 알파벳 진. 26개의 글자는 순서 없이 배열된다."
+    ],
+    "price": 10000,
     "available": true,
-    "pageCount": 0
+    "metadata": [
+      "2026"
+    ]
   },
   {
     "id": "30",
-    "title": "Placeholder Zine 30",
-    "description": "Placeholder description for zine 30. Replace this with the actual synopsis later.",
-    "price": 16500,
+    "title": "From a Safe Distance",
+    "author": "이다연 / Dayeon Lee",
+    "description": [
+      "〈From a Safe Distance〉는 전쟁을 안전한 거리에서 바라보는 관망자의 위치를 다룬 그래픽 진입니다. 뉴스, 지도, 유가 그래프, 드론 이미지처럼 선명하게 정리되는 전쟁의 표면과 그 뒤로 흐려지는 죽음과 상실의 흔적을 함께 보여줍니다."
+    ],
+    "price": 18000,
     "available": true,
-    "pageCount": 0
+    "metadata": [
+      "2026"
+    ]
   },
   {
     "id": "31",
-    "title": "Placeholder Zine 31",
-    "description": "Placeholder description for zine 31. Replace this with the actual synopsis later.",
-    "price": 12000,
+    "title": "충무로 Chungmuro",
+    "author": "양예슬 / 김태환",
+    "description": [
+      "충무로와 을지로 일대는 그 세월이 고스란히 드러나는 곳이다. 이 진은 그 세월이 어디서, 어떻게 느껴지는지 관찰하고 해석해 나가는 과정이다. 굽이굽이 골목을 따라가 보자."
+    ],
+    "price": 8000,
     "available": true,
-    "pageCount": 0
+    "metadata": [
+      "2026",
+      "20p",
+      "105*148mm",
+      "Digital&Riso printing",
+      "중철제본",
+      "Designed by @vanoveseul / @p7grapix"
+    ]
   },
   {
     "id": "32",
-    "title": "Placeholder Zine 32",
-    "description": "Placeholder description for zine 32. Replace this with the actual synopsis later.",
-    "price": 12500,
+    "title": "Meet My LaserJet 5000n",
+    "author": "김태환 Kim Taehwan",
+    "description": [
+      "중고 거래에서 무료 나눔을 받은 낡은 프린터를 기록한 작은 진이다. 반복되는 페이지 구성을 통해 이미지의 해상도는 1200dpi에서 72dpi까지 점진적으로 떨어진다. 기기 고유의 세월이 만든 거친 망점들은 디지털 화면에서는 느낄 수 없는 인쇄물 특유의 아우라를 보여준다."
+    ],
+    "price": 4000,
     "available": true,
-    "pageCount": 0
+    "metadata": [
+      "2026",
+      "16p",
+      "148*105mm",
+      "Digital printing",
+      "중철제본",
+      "Designed by @p7grapix"
+    ]
   },
   {
     "id": "33",
-    "title": "Placeholder Zine 33",
-    "description": "Placeholder description for zine 33. Replace this with the actual synopsis later.",
-    "price": 13000,
+    "title": "FACES",
+    "description": [
+      "유독 찌그러지고 뒤틀린 얼굴들을 그릴 때면 잡생각이 사라진다. 그 얼굴들로 옮겨간 것 같기도 하다. 그렇게 모인 얼굴들을 엮은 아카이브 진이다."
+    ],
+    "price": 9000,
     "available": true,
-    "pageCount": 0
+    "metadata": [
+      "2026",
+      "36p",
+      "210*148mm",
+      "Digital printing",
+      "중철제본",
+      "Designed by @p7grapix"
+    ]
   },
   {
     "id": "34",
     "title": "Placeholder Zine 34",
-    "description": "Placeholder description for zine 34. Replace this with the actual synopsis later.",
+    "description": [
+      "Placeholder description for zine 34. Replace this with the actual synopsis later."
+    ],
     "price": 13500,
-    "available": true,
-    "pageCount": 0
+    "available": true
   },
   {
     "id": "35",
-    "title": "Placeholder Zine 35",
-    "description": "Placeholder description for zine 35. Replace this with the actual synopsis later.",
-    "price": 14000,
-    "available": true,
-    "pageCount": 0
-  },
-  {
-    "id": "36",
-    "title": "Placeholder Zine 36",
-    "description": "Placeholder description for zine 36. Replace this with the actual synopsis later.",
-    "price": 14500,
-    "available": true,
-    "pageCount": 0
-  },
-  {
-    "id": "37",
-    "title": "Placeholder Zine 37",
-    "description": "Placeholder description for zine 37. Replace this with the actual synopsis later.",
+    "title": "폴카",
+    "author": "이대인",
+    "description": [
+      "“Polka” 는 제 일상에서 발견한 작은 순간들과 그림들을 모은 책입니다. 낙서처럼 가볍게 시작된 그림들 속에는 그날의 감정과 장면, 지나간 시간들을 기록했습니다. 그림 주변의 폴카도트가 모여 하나의 패턴이 되듯, 이 책도 여러 순간들이 이어 만들어졌습니다."
+    ],
     "price": 15000,
     "available": true,
-    "pageCount": 0
-  },
-  {
-    "id": "38",
-    "title": "Placeholder Zine 38",
-    "description": "Placeholder description for zine 38. Replace this with the actual synopsis later.",
-    "price": 15500,
-    "available": true,
-    "pageCount": 0
-  },
-  {
-    "id": "39",
-    "title": "Placeholder Zine 39",
-    "description": "Placeholder description for zine 39. Replace this with the actual synopsis later.",
-    "price": 16000,
-    "available": true,
-    "pageCount": 0
-  },
-  {
-    "id": "40",
-    "title": "Placeholder Zine 40",
-    "description": "Placeholder description for zine 40. Replace this with the actual synopsis later.",
-    "price": 16500,
-    "available": true,
-    "pageCount": 0
-  },
-  {
-    "id": "41",
-    "title": "Placeholder Zine 41",
-    "description": "Placeholder description for zine 41. Replace this with the actual synopsis later.",
-    "price": 12000,
-    "available": true,
-    "pageCount": 0
-  },
-  {
-    "id": "42",
-    "title": "Placeholder Zine 42",
-    "description": "Placeholder description for zine 42. Replace this with the actual synopsis later.",
-    "price": 12500,
-    "available": true,
-    "pageCount": 0
-  },
-  {
-    "id": "43",
-    "title": "Placeholder Zine 43",
-    "description": "Placeholder description for zine 43. Replace this with the actual synopsis later.",
-    "price": 13000,
-    "available": true,
-    "pageCount": 0
-  },
-  {
-    "id": "44",
-    "title": "Placeholder Zine 44",
-    "description": "Placeholder description for zine 44. Replace this with the actual synopsis later.",
-    "price": 13500,
-    "available": true,
-    "pageCount": 0
-  },
-  {
-    "id": "45",
-    "title": "Placeholder Zine 45",
-    "description": "Placeholder description for zine 45. Replace this with the actual synopsis later.",
-    "price": 14000,
-    "available": true,
-    "pageCount": 0
-  },
-  {
-    "id": "46",
-    "title": "Placeholder Zine 46",
-    "description": "Placeholder description for zine 46. Replace this with the actual synopsis later.",
-    "price": 14500,
-    "available": true,
-    "pageCount": 0
-  },
-  {
-    "id": "47",
-    "title": "Placeholder Zine 47",
-    "description": "Placeholder description for zine 47. Replace this with the actual synopsis later.",
-    "price": 15000,
-    "available": true,
-    "pageCount": 0
-  },
-  {
-    "id": "48",
-    "title": "Placeholder Zine 48",
-    "description": "Placeholder description for zine 48. Replace this with the actual synopsis later.",
-    "price": 15500,
-    "available": true,
-    "pageCount": 0
-  },
-  {
-    "id": "49",
-    "title": "Placeholder Zine 49",
-    "description": "Placeholder description for zine 49. Replace this with the actual synopsis later.",
-    "price": 16000,
-    "available": true,
-    "pageCount": 0
-  },
-  {
-    "id": "50",
-    "title": "Placeholder Zine 50",
-    "description": "Placeholder description for zine 50. Replace this with the actual synopsis later.",
-    "price": 16500,
-    "available": true,
-    "pageCount": 0
+    "metadata": [
+      "32페이지",
+      "디지털(토너)인쇄",
+      "중철제본"
+    ]
   }
 ]

@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
+import { DEFAULT_PRODUCT_IMAGE } from "../lib/product-display";
 
-function buildGoodsAssets(id, manifest) {
-  const pages = manifest[String(id)] ?? [];
-  const cover = pages[0] ?? `/images/goods/${id}_cover.png`;
+function buildGoodsAssets(good, manifest) {
+  const pages = manifest[String(good.id)] ?? [];
+  const fallbackCover = good.cover || DEFAULT_PRODUCT_IMAGE;
+  const cover = pages[0] ?? fallbackCover;
 
   return {
     cover,
-    pages: pages.length ? pages : [cover]
+    pages: pages.length ? pages : [cover],
+    hasDisplayImage: pages.length > 0 || fallbackCover !== DEFAULT_PRODUCT_IMAGE
   };
 }
 
 function hydrateGood(good, manifest) {
   return {
     ...good,
-    ...buildGoodsAssets(good.id, manifest)
+    ...buildGoodsAssets(good, manifest)
   };
 }
 

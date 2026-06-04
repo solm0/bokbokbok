@@ -4,6 +4,7 @@ import { Eyebrow, FieldLabel, GhostButton, GhostButtonUnderline, GhostLink, Pane
 import { useCart } from "../lib/cart-context";
 import { formatPrice } from "../lib/format";
 import { useI18n } from "../lib/i18n";
+import { getProductImageBackgroundClass } from "../lib/product-display";
 import { submitPurchaseRequest } from "../lib/purchase-requests";
 
 export default function CartPage({ zines, goods }) {
@@ -230,6 +231,14 @@ export default function CartPage({ zines, goods }) {
                     }
                     detailPath={item.detailPath}
                     language={language}
+                    imageBackgroundClassName={
+                      item.type === "zine" && !item.product.hasDisplayImage
+                        ? "bg-neutral-100"
+                        : getProductImageBackgroundClass({
+                            type: item.type,
+                            invertBg: item.product.invertBg
+                          })
+                    }
                     availabilityLabel={
                       item.product.available === false ? t("detail.unavailable") : t("detail.available")
                     }
