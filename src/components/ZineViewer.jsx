@@ -15,12 +15,7 @@ export default function ZineViewer({ zine }) {
   }, [zine.id]);
 
   const pageLabel = `${pageIndex + 1} / ${pages.length}`;
-  const isCoverPage = pageIndex === 0;
-  const previewBackgroundClassName = isCoverPage
-    ? !zine.hasDisplayImage
-      ? "bg-neutral-100"
-      : getProductImageBackgroundClass(zine)
-    : "bg-neutral-100";
+  const previewBackgroundClassName = getProductImageBackgroundClass(zine);
 
   function moveTo(nextIndex) {
     if (nextIndex === pageIndex || nextIndex < 0 || nextIndex >= pages.length) {

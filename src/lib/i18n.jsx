@@ -181,11 +181,9 @@ const dictionaries = {
     },
     goodsDetail: {
       notFound: "Could not find goods item #{id}.",
-      backToGoods: "Back to GOODS"
     },
     detail: {
       notFound: "Could not find zine #{id}.",
-      backToDig: "Back to DIG",
       unavailable: "Unavailable",
       available: "Available",
       savedInCart: "Saved in Cart",

@@ -22,7 +22,7 @@ export default function ZineDetailPage({ zines }) {
         <div className="grid items-start gap-4 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
           <p>{t("detail.notFound", { id })}</p>
           <GhostLink to="/dig">
-            {t("detail.backToDig")}
+            <img src="/images/back.png" className="w-5" />
           </GhostLink>
         </div>
       </main>
@@ -33,7 +33,7 @@ export default function ZineDetailPage({ zines }) {
     <main className="min-h-screen p-4 md:p-7 pt-18 md:pt-22">
       <div className="mb-5 flex flex-wrap justify-between gap-3">
         <GhostLink to="/dig">
-          {t("detail.backToDig")}
+          <img src="/images/back.png" className="w-5" />
         </GhostLink>
       </div>
 
