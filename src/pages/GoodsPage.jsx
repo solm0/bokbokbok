@@ -126,7 +126,7 @@ export default function GoodsPage({ goods }) {
             {query ? (
               <button
                 type="button"
-                className="absolute top-1/2 right-2.5 z-10 inline-flex h-5 w-5 -translate-y-1/2 items-center justify-center border-0 bg-transparent p-0 text-neutral-700"
+                className="absolute top-1/2 right-2.5 z-10 inline-flex text-xl hover:opacity-50 transition-opacity -translate-y-1/2 items-center justify-center border-0 bg-transparent p-0 text-neutral-700"
                 aria-label={t("goods.clearSearch")}
                 onMouseDown={(event) => event.preventDefault()}
                 onClick={handleClearQuery}
@@ -179,7 +179,7 @@ export default function GoodsPage({ goods }) {
           {filteredGoods.length === 0 ? (
             <div className="absolute top-10 left-0 grid w-full justify-items-center gap-4 text-xl md:top-[52px]">
               <p>{t("goods.empty")}</p>
-              <img src="/images/ilovezinemouse.png" alt="" className="w-28 max-w-full" />
+              <img src="/images/ilovezinemouse.png" alt="" className="w-36 max-w-full pt-4" />
             </div>
           ) : null}
         </div>

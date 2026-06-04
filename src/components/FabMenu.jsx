@@ -128,11 +128,12 @@ export default function FabMenu({
         </div>
 
         <Link
-          className="flex flex-col left-0 text-sm transition-opacity duration-200 hover:opacity-50"
+          className="flex flex-col items-center left-0 text-sm transition-opacity duration-200 hover:opacity-50"
           to="/cart"
           aria-label={t("nav.cart")}
         >
           <img src="/images/cart.png" className="w-12" />
+          {cartCount > 0 ? <span className="mt-2">({cartCount})</span> : null}
         </Link>
       </nav>
     </>

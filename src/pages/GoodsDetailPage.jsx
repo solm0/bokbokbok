@@ -23,7 +23,7 @@ export default function GoodsDetailPage({ goods }) {
         <div className="grid items-start gap-4 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
           <p>{t("goodsDetail.notFound", { id })}</p>
           <GhostLink to="/goods">
-            <img src="/images/back.png" className="w-5" />
+            <img src="/images/back.png" className="w-7" />
           </GhostLink>
         </div>
       </main>
@@ -34,7 +34,7 @@ export default function GoodsDetailPage({ goods }) {
     <main className="min-h-screen bg-white p-4 md:p-7 pt-18 md:pt-22">
       <div className="mb-5 flex flex-wrap justify-between gap-3">
         <GhostLink to="/goods">
-          <img src="/images/back.png" className="w-5" />
+          <img src="/images/back.png" className="w-7" />
         </GhostLink>
       </div>
 
@@ -47,7 +47,6 @@ export default function GoodsDetailPage({ goods }) {
           actionLabel={saved ? t("detail.savedInCart") : t("detail.addToCart")}
           actionDisabled={saved}
           onAction={() => addItem(good.id, "good")}
-          smallImage
         />
 
         <ZineViewer zine={{ ...good, type: "good", title }} />

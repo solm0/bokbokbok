@@ -17,12 +17,10 @@ export default function ProductDetailPanel({
   className = "",
   imageBackgroundClassName,
   short = false,
-  smallImage = false,
   overlayClassName = "",
 }) {
   const imageFrameClassName = cx(
     "aspect-3/4 p-3",
-    smallImage ? 'w-1/2 md:w-full': 'w-full',
     imageBackgroundClassName ?? getProductImageBackgroundClass(item)
   );
   const imageClassName = cx(
@@ -57,21 +55,31 @@ export default function ProductDetailPanel({
   return (
     <Panel
       className={cx(
-        "relative grid min-w-0 h-full content-start items-start text-base gap-7 md:gap-4 md:grid-cols-[160px_minmax(0,1fr)]",
+        "relative min-w-0 h-full content-start items-start md:grid-cols-[160px_minmax(0,1fr)]",
+        short ? 'grid text-sm gap-3 md:gap-4' : 'text-base gap-7 md:gap-4',
         className
       )}
     >
-      {detailPath ? (
-        <Link to={detailPath} className="block min-w-0 w-full overflow-hidden">
-          {image}
-        </Link>
-      ) : (
-        image
+      {!short
+        ? null
+        : detailPath ? (
+          <Link to={detailPath} className="block min-w-0 w-full overflow-hidden">
+            {image}
+          </Link>
+        ) : (
+          image
       )}
-      <div className="flex min-w-0 flex-col gap-7">
+      <div className={`
+        flex min-w-0 flex-col
+        ${short ? 'gap-3': 'gap-7'}
+      `}
+      >
         <div className="flex items-start justify-between gap-3">
-          <div className="flex min-w-0 flex-1 flex-col gap-7">
-            <div className="text-xl">{title}</div>
+          <div className={`
+            flex min-w-0 flex-1 flex-col
+            ${short ? 'gap-3': 'gap-7'}
+          `}>
+            <div className={short ? 'text-base' : 'text-xl'}>{title}</div>
             {subtitle ? <p>{subtitle}</p> : null}
           </div>
           {resolvedHeaderAction ? (

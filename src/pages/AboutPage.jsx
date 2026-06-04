@@ -61,7 +61,7 @@ export default function AboutPage() {
         </a>
       </Panel>
       <AnimatedMice
-        className="about-page-mice pointer-events-none absolute inset-x-0 z-0 h-28 overflow-visible md:h-36"
+        className="about-page-mice pointer-events-none absolute inset-x-0 z-0 overflow-visible h-36 scale-130 origin-bottom"
         imageConfigs={aboutMouseConfig}
         imageClassName="about-mouse"
       />

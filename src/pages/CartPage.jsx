@@ -174,14 +174,14 @@ export default function CartPage({ zines, goods }) {
         </div>
       </div>
 
-      <div className="flex gap-2 items-center w-full md:justify-end">
+      <div className="flex gap-2 items-center w-full justify-end">
         <GhostButton onClick={() => setFormOpen(false)} className="flex-1 shrink-0">
           {t("common.close")}
         </GhostButton>
         <PrimaryButton
           type="submit"
           disabled={submitState === "submitting" || purchasableItems.length === 0}
-          className="flex-1 shrink-0"
+          className="flex-1 shrink-0 max-w-max text-lg"
         >
           {submitState === "submitting" ? t("cart.submitting") : t("cart.submit")}
         </PrimaryButton>
@@ -201,7 +201,7 @@ export default function CartPage({ zines, goods }) {
   );
 
   return (
-    <main className="flex h-screen flex-col overflow-hidden p-4 pt-18 md:p-3 md:pt-22">
+    <main className="flex h-screen flex-col overflow-hidden p-4 pt-18 md:p-3 md:pt-20">
       <div className="shrink-0 flex flex-wrap w-full md:w-2/3 justify-start gap-4">
         {detailedItems.length > 0 ? (
           <GhostButtonUnderline onClick={clearCart}>
@@ -210,12 +210,12 @@ export default function CartPage({ zines, goods }) {
         ) : null}
       </div>
 
-      <div className="mt-4 flex min-h-0 w-full flex-1 flex-col gap-4 md:flex-row">
+      <div className="mt-2 flex min-h-0 w-full flex-1 flex-col gap-4 md:flex-row">
         <div className="flex min-h-0 w-full flex-col md:w-2/3">
           {detailedItems.length === 0 ? (
             <Panel as="section" className="grid justify-items-center gap-4 p-7">
               <p className="text-xl w-full flex justify-center">{t("cart.empty")}</p>
-              <img src="/images/ilovezinemouse.png" alt="" className="w-28 max-w-full" />
+              <img src="/images/ilovezinemouse.png" alt="" className="w-36 max-w-full pt-4" />
             </Panel>
           ) : (
             <>
@@ -249,7 +249,7 @@ export default function CartPage({ zines, goods }) {
                     }
                     headerAction={
                       <PrimaryButton className="justify-end text-right" onClick={() => removeItem(item.id, item.type)}>
-                        <span className="md:hidden">X</span>
+                        <span className="md:hidden leading-3">X</span>
                         <span className="hidden md:inline">{t("common.remove")}</span>
                       </PrimaryButton>
                     }
@@ -261,7 +261,7 @@ export default function CartPage({ zines, goods }) {
 
               <Panel
                 as="section"
-                className="fixed inset-x-4 bottom-4 z-30 flex shrink-0 flex-col gap-4 text-base pt-2 border-t border-dotted md:static md:flex-row md:items-center md:justify-end md:pb-7 bg-white"
+                className="fixed inset-x-4 bottom-4 z-30 flex shrink-0 flex-col gap-2 md:gap-7 text-base pt-2 border-t border-dotted md:static md:flex-row md:items-center md:justify-end md:pb-4 bg-white"
               >
                 <div className="flex gap-4 text-lg">
                   <p>{t("common.total")}</p>
@@ -270,6 +270,7 @@ export default function CartPage({ zines, goods }) {
                 <PrimaryButton
                   onClick={() => setFormOpen((current) => !current)}
                   disabled={purchasableItems.length === 0}
+                  className="max-w-max text-lg"
                 >
                   {t("cart.request")}
                 </PrimaryButton>
@@ -282,9 +283,11 @@ export default function CartPage({ zines, goods }) {
           <>
             <div className="fixed inset-0 z-40 md:hidden" onClick={() => setFormOpen(false)} />
             <section className="fixed inset-x-4 top-18 bottom-4 z-50 overflow-y-auto bg-white md:hidden">
+              <h2 className="pb-4 text-xl w-full text-center">~~~~~ Request for Purchase ~~~~~</h2>
               {requestForm}
             </section>
-            <section className="hidden w-full md:flex-1 md:border-l md:border-dotted md:block">
+            <section className="hidden w-full md:flex-1 md:block pr-4 overflow-y-auto pb-4">
+              <h2 className="pb-4 text-xl w-full text-center">~~ Request for Purchase ~~</h2>
               {requestForm}
             </section>
           </>
