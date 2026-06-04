@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ZineImage from "./ZineImage";
-import { Eyebrow, GhostButton, Panel } from "./ui";
+import { cx, Eyebrow, GhostButton, Panel } from "./ui";
 import { useI18n } from "../lib/i18n";
 import { getProductImageBackgroundClass } from "../lib/product-display";
 
@@ -32,7 +32,10 @@ export default function ZineViewer({ zine }) {
       >
         <div className="aspect-[3/4] w-full max-w-[380px]">
           <ZineImage
-            className="h-full w-full object-contain"
+            className={cx(
+              "h-full w-full object-contain",
+              zine.type === "good" && "goods-image-shadow"
+            )}
             src={pages[pageIndex]}
             alt={t("viewer.pageAlt", { title, page: pageIndex + 1 })}
           />

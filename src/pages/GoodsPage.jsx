@@ -171,6 +171,7 @@ export default function GoodsPage({ goods }) {
                     type: "good",
                     invertBg: item.invertBg
                   })}
+                  imageClassName="goods-image-shadow"
                 />
               </Link>
             );

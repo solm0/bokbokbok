@@ -7,7 +7,8 @@ export default function ProductCardContent({
   subtitle,
   cover,
   mode = "grid",
-  imageBackgroundClassName = "bg-neutral-900"
+  imageBackgroundClassName = "bg-neutral-900",
+  imageClassName = ""
 }) {
   const isGrid = mode === "grid";
   const [isTallPortrait, setIsTallPortrait] = useState(false);
@@ -28,7 +29,8 @@ export default function ProductCardContent({
               ? "h-full w-full object-contain p-3"
               : isTallPortrait
                 ? "max-h-full max-w-full scale-[0.55] object-contain"
-                : "max-h-full max-w-full object-contain"
+                : "max-h-full max-w-full object-contain",
+            imageClassName
           )}
           src={cover}
           alt={title}

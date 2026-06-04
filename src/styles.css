@@ -149,6 +149,10 @@
     bottom: calc(var(--app-safe-top) + 4rem);
   }
 
+  .goods-image-shadow {
+    filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.24));
+  }
+
   @media (min-width: 768px) {
     .about-page-mice {
       bottom: 0;

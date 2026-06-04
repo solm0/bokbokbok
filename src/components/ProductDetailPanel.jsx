@@ -20,17 +20,25 @@ export default function ProductDetailPanel({
   smallImage = false,
   overlayClassName = "",
 }) {
-  const imageClassName = cx(
-    "aspect-3/4 object-contain p-3",
+  const imageFrameClassName = cx(
+    "aspect-3/4 p-3",
     smallImage ? 'w-1/2 md:w-full': 'w-full',
     imageBackgroundClassName ?? getProductImageBackgroundClass(item)
+  );
+  const imageClassName = cx(
+    "h-full w-full object-contain",
+    item.type === "good" && "goods-image-shadow"
   );
   const descriptionLines = Array.isArray(item.description)
     ? item.description.filter(Boolean)
     : item.description
       ? [item.description]
       : [];
-  const image = <ZineImage className={imageClassName} src={item.cover} alt={item.title} />;
+  const image = (
+    <div className={imageFrameClassName}>
+      <ZineImage className={imageClassName} src={item.cover} alt={item.title} />
+    </div>
+  );
   const resolvedHeaderAction =
     headerAction ??
     (actionLabel ? (
