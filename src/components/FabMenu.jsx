@@ -92,7 +92,7 @@ export default function FabMenu({
         )}
         aria-label={t("nav.primary")}
       >
-        <Link className="flex flex-col left-0 text-[20px] transition-opacity duration-200" to="/">
+        <Link className="flex leading-3 pt-1.5 pl-1 flex-col left-0 text-[14px] transition-opacity duration-200" to="/">
           <span>BOK³</span>
           <span>Zine</span>
         </Link>
