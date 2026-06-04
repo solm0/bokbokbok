@@ -151,7 +151,7 @@ npm run build
 
 ## 6. 이메일 발송 관련
 
-이메일 발송은 Firebase가 아니라 `Google Apps Script`가 담당합니다.
+이메일 발송은 `Google Apps Script`가 담당합니다.
 
 Apps Script 파일:
 
@@ -167,7 +167,7 @@ Apps Script 파일:
 Apps Script 파일을 수정한 뒤 반영하려면:
 
 1. [apps-script/purchase-request.gs](/Users/solmi/Downloads/bokbokbok/apps-script/purchase-request.gs) 내용을 Google Apps Script 편집기(script.google.com)에 다시 붙여넣고 저장
-2. Google Apps Script에서 `Deploy -> Manage deployments`로 들어가 기존 Web app 배포를 `Edit` 후 `Deploy`로 다시 배포
+2. Google Apps Script에서 `Deploy(배포) -> Manage deployments(배포 관리)`로 들어가 연필 아이콘 누르고 버전을 '새 버전' 선택 후 `Deploy(배포)`로 다시 배포
 3. 배포 URL이 바뀌었다면 [.env](/Users/solmi/Downloads/bokbokbok/.env)의 `VITE_PURCHASE_REQUEST_ENDPOINT`도 같이 업데이트
 
 중요:

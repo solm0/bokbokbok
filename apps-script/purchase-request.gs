@@ -34,10 +34,10 @@ function doPost(e) {
       items.map(function(item) {
         return item.id + " | " + item.title + " | " + item.price;
       }).join("\n"),
-      "",
-      "",
       mailStatus,
-      mailError
+      mailError,
+      "",
+      ""
     ];
     sheet.appendRow(row);
 
@@ -66,10 +66,10 @@ function getOrCreateSheet_() {
     "address",
     "extra_contact",
     "아이템",
+    "메일 전송 상태",
+    "메일 전송 에러",
     "입금 상태",
     "배송 상태",
-    "메일 전송 상태",
-    "메일 전송 에러"
   ];
 
   if (!sheet) {
