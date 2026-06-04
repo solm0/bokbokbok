@@ -164,9 +164,7 @@ export default function GoodsPage({ goods }) {
               >
                 <ProductCardContent
                   title={getLocalized(item.title)}
-                  subtitle={
-                    getLocalized(item.author) || getLocalized(item.brand) || t("common.unknownMaker")
-                  }
+                  subtitle={getLocalized(item.brand) || ""}
                   cover={item.cover}
                   mode="grid"
                   imageBackgroundClassName="bg-neutral-100"

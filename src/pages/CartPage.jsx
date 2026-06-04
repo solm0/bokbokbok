@@ -194,9 +194,9 @@ export default function CartPage({ zines, goods }) {
                       description: getLocalized(item.product.description)
                     }}
                     subtitle={
-                      getLocalized(item.product.author) ||
-                      getLocalized(item.product.brand) ||
-                      t("common.unknownMaker")
+                      item.type === "good"
+                        ? getLocalized(item.product.brand) || ""
+                        : getLocalized(item.product.author) || ""
                     }
                     detailPath={item.detailPath}
                     language={language}

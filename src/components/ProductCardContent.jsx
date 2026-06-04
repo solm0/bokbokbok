@@ -29,7 +29,7 @@ export default function ProductCardContent({
       {isGrid ? (
         <>
           <span className="mt-2 text-xs font-bold">{title}</span>
-          <span className="text-xs opacity-70">{subtitle}</span>
+          {subtitle ? <span className="text-xs opacity-70">{subtitle}</span> : null}
         </>
       ) : null}
     </>

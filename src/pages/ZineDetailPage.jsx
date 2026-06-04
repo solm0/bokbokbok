@@ -12,7 +12,7 @@ export default function ZineDetailPage({ zines }) {
   const zine = zines.find((item) => item.id === id);
   const saved = zine ? hasItem(zine.id, "zine") : false;
   const title = zine ? getLocalized(zine.title) : "";
-  const author = zine ? getLocalized(zine.author) || t("common.unknownAuthor") : "";
+  const author = zine ? getLocalized(zine.author) || "" : "";
   const description = zine ? getLocalized(zine.description) : "";
 
   if (!zine) {

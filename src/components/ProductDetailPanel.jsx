@@ -52,7 +52,7 @@ export default function ProductDetailPanel({
         <div className="flex items-start justify-between gap-3">
           <div className="flex min-w-0 flex-1 flex-col gap-1">
             <div className="text-lg">{title}</div>
-            <p>{subtitle}</p>
+            {subtitle ? <p>{subtitle}</p> : null}
           </div>
           {resolvedHeaderAction ? (
             <div className="shrink-0 self-start text-right">{resolvedHeaderAction}</div>

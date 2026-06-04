@@ -13,7 +13,7 @@ export default function GoodsDetailPage({ goods }) {
   const saved = good ? hasItem(good.id, "good") : false;
   const title = good ? getLocalized(good.title) : "";
   const maker = good
-    ? getLocalized(good.author) || getLocalized(good.brand) || t("common.unknownMaker")
+    ? getLocalized(good.brand) || ""
     : "";
   const description = good ? getLocalized(good.description) : "";
 

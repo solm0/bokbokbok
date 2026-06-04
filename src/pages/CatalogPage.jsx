@@ -486,7 +486,7 @@ export default function CatalogPage({ zines }) {
               >
                 <ProductCardContent
                   title={getLocalized(zine.title)}
-                  subtitle={getLocalized(zine.author) || t("common.unknownAuthor")}
+                  subtitle={getLocalized(zine.author) || ""}
                   cover={zine.cover}
                   mode={effectiveViewMode}
                   imageBackgroundClassName="bg-neutral-900"
