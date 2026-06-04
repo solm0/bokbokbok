@@ -13,7 +13,8 @@ const MOBILE_SCATTER_SAMPLE_SIZE = 8;
 const SCATTER_SAMPLE_SIZE = 15;
 const GRID_GAP = 12;
 const MAX_GRID_COLUMNS = 5;
-const SCATTER_TOP = 0;
+const GRID_TOP = 0;
+const SCATTER_TOP = 42;
 const SCATTER_BOTTOM = 8;
 const SCATTER_SIDE = 50;
 const MOBILE_PAGE_PADDING = 16;
@@ -133,13 +134,13 @@ function getGridLayout(zines, width) {
 
     return {
       x: leftOffset + column * (cardWidth + GRID_GAP),
-      y: SCATTER_TOP + row * rowHeight,
+      y: GRID_TOP + row * rowHeight,
       rotation: 0
     };
   });
 
   const rows = Math.ceil(zines.length / columns);
-  const totalHeight = SCATTER_TOP + rows * rowHeight + 60;
+  const totalHeight = GRID_TOP + rows * rowHeight + 60;
 
   return { positions, totalHeight, sidePadding: isMobile ? 0 : leftOffset, cardWidth };
 }
@@ -355,22 +356,22 @@ export default function CatalogPage({ zines }) {
   return (
     <main
       className={cx(
-        "app-page-shell relative flex flex-col overflow-hidden p-4 md:p-7",
+        "app-page-shell relative flex flex-col overflow-hidden p-4 md:p-7 pb-0 md:pb-0",
         effectiveViewMode === "grid" ? "grid-mode" : "scatter-mode"
       )}
     >
       <header
-        className="floating-controls-header items-start sticky z-[100] flex w-full items-center justify-between gap-3 transition-[padding] duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
+        className="floating-controls-header sticky z-[100] flex h-[38px] w-full items-start justify-between gap-3 overflow-visible transition-[padding] duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
         style={{
           top: "3rem",
           paddingInlineStart: `${headerPaddingX}px`,
           paddingInlineEnd: effectiveViewMode === "grid" && isMobile ? 0 : SCATTER_SIDE
         }}
       >
-        <div className="w-full flex-wrap items-start justify-start gap-3 md:w-auto md:justify-end hidden md:flex">
+        <div className="pointer-events-none absolute top-0 left-0 hidden md:flex">
           {isMobile ? null : (
             <div
-              className="flex flex-col items-start gap-1 font-bok"
+              className="pointer-events-auto flex flex-col items-start gap-1 font-bok"
               role="tablist"
               aria-label={t("catalog.displayMode")}
             >
@@ -407,7 +408,7 @@ export default function CatalogPage({ zines }) {
             </div>
           )}
         </div>
-        <div className="flex grow md:grow-0">
+        <div className="ml-auto flex grow md:grow-0">
           <div className="relative flex w-full text-sm items-center md:w-auto">
             <label htmlFor="catalog-search" className="sr-only">
               {t("catalog.searchZines")}
@@ -442,7 +443,7 @@ export default function CatalogPage({ zines }) {
       <section
         ref={stageViewportRef}
         className={cx(
-          "relative z-0 min-h-0 flex-1 overflow-x-hidden md:pt-18",
+          "relative z-0 min-h-0 flex-1 overflow-x-hidden md:pt-20",
           effectiveViewMode === "grid"
             ? "overflow-y-auto pb-24 md:pb-24"
             : "overflow-hidden pb-0"

@@ -98,7 +98,7 @@ export default function GoodsPage({ goods }) {
   };
 
   return (
-    <main className="app-page-shell relative flex flex-col overflow-hidden p-4 md:p-7">
+    <main className="app-page-shell relative flex flex-col overflow-hidden p-4 md:p-7 pb-0 md:pb-0">
       <header
         className="floating-controls-header sticky z-[100] flex w-full items-center justify-between gap-3"
         style={{
@@ -139,7 +139,7 @@ export default function GoodsPage({ goods }) {
       </header>
 
       <section
-        className="relative z-0 min-h-0 flex-1 overflow-x-hidden overflow-y-auto pb-24 md:pt-18 md:pb-24"
+        className="relative z-0 min-h-0 flex-1 overflow-x-hidden overflow-y-auto pb-24 md:pt-20 md:pb-24"
         style={{
           paddingTop: isMobile ? "var(--app-mobile-stage-top)" : undefined
         }}
