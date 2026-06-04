@@ -53,7 +53,8 @@
     },
     "price": 28000,
     "available": true,
-    "cover": "/images/bok.png"
+    "cover": "/images/bok.png",
+    "invertBg": true
   },
   {
     "id": "g5",
@@ -81,7 +82,8 @@
     },
     "price": 28000,
     "available": true,
-    "cover": "/images/bok.png"
+    "cover": "/images/bok.png",
+    "invertBg": true
   },
   {
     "id": "g7",
@@ -109,7 +111,8 @@
     },
     "price": 28000,
     "available": true,
-    "cover": "/images/bok.png"
+    "cover": "/images/bok.png",
+    "invertBg": true
   },
   {
     "id": "g9",

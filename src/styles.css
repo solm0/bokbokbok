@@ -112,4 +112,15 @@
     transform-origin: center bottom;
     will-change: transform, opacity;
   }
+
+  .about-mouse {
+    position: absolute;
+    bottom: var(--mouse-bottom, 0px);
+    left: 0;
+    width: clamp(96px, 16vw, 172px);
+    opacity: 0;
+    transform: translate3d(-180px, 0, 0) scale(var(--mouse-scale, 1));
+    transform-origin: center bottom;
+    will-change: transform, opacity;
+  }
 }

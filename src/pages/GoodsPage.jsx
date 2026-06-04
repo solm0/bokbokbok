@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import ProductCardContent from "../components/ProductCardContent";
 import { cx } from "../components/ui";
 import { useI18n } from "../lib/i18n";
+import { getProductImageBackgroundClass } from "../lib/product-display";
 
 const CARD_WIDTH = 200;
 const CARD_HEIGHT = 300;
@@ -76,17 +77,16 @@ export default function GoodsPage({ goods }) {
     };
   }, []);
 
-  const availableGoods = useMemo(() => goods.filter((item) => item.available !== false), [goods]);
   const normalizedQuery = deferredQuery.trim().toLowerCase();
   const filteredGoods = useMemo(() => {
     if (!normalizedQuery) {
-      return availableGoods;
+      return goods;
     }
 
-    return availableGoods.filter((item) =>
+    return goods.filter((item) =>
       String(getLocalized(item.title)).toLowerCase().includes(normalizedQuery)
     );
-  }, [availableGoods, getLocalized, normalizedQuery]);
+  }, [getLocalized, goods, normalizedQuery]);
   const gridLayout = useMemo(
     () => getGridLayout(filteredGoods, viewportWidth),
     [filteredGoods, viewportWidth]
@@ -167,15 +167,19 @@ export default function GoodsPage({ goods }) {
                   subtitle={getLocalized(item.brand) || ""}
                   cover={item.cover}
                   mode="grid"
-                  imageBackgroundClassName="bg-neutral-100"
+                  imageBackgroundClassName={getProductImageBackgroundClass({
+                    type: "good",
+                    invertBg: item.invertBg
+                  })}
                 />
               </Link>
             );
           })}
           {filteredGoods.length === 0 ? (
-            <p className="absolute w-full flex justify-center top-10 left-3 text-xl md:top-[52px] md:left-8">
-              {t("goods.empty")}
-            </p>
+            <div className="absolute top-10 left-0 grid w-full justify-items-center gap-4 text-xl md:top-[52px]">
+              <p>{t("goods.empty")}</p>
+              <img src="/images/ilovezinemouse.png" alt="" className="w-28 max-w-full" />
+            </div>
           ) : null}
         </div>
       </section>

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import ProductCardContent from "../components/ProductCardContent";
 import { GhostButton, cx } from "../components/ui";
 import { useI18n } from "../lib/i18n";
+import { getProductImageBackgroundClass } from "../lib/product-display";
 
 const CARD_WIDTH = 200;
 const CARD_HEIGHT = 300;
@@ -211,17 +212,16 @@ export default function CatalogPage({ zines }) {
     };
   }, [isMobile, viewMode]);
 
-  const availableZines = useMemo(() => zines.filter((zine) => zine.available !== false), [zines]);
   const normalizedQuery = deferredQuery.trim().toLowerCase();
   const filteredZines = useMemo(() => {
     if (!normalizedQuery) {
-      return availableZines;
+      return zines;
     }
 
-    return availableZines.filter((zine) =>
+    return zines.filter((zine) =>
       String(getLocalized(zine.title)).toLowerCase().includes(normalizedQuery)
     );
-  }, [availableZines, getLocalized, normalizedQuery]);
+  }, [getLocalized, normalizedQuery, zines]);
 
   useEffect(() => {
     setScatterZines(getRandomSample(filteredZines, scatterSampleSize));
@@ -489,15 +489,19 @@ export default function CatalogPage({ zines }) {
                   subtitle={getLocalized(zine.author) || ""}
                   cover={zine.cover}
                   mode={effectiveViewMode}
-                  imageBackgroundClassName="bg-neutral-900"
+                  imageBackgroundClassName={getProductImageBackgroundClass({
+                    type: "zine",
+                    invertBg: zine.invertBg
+                  })}
                 />
               </button>
             );
           })}
           {displayedZines.length === 0 ? (
-            <p className="absolute w-full flex justify-center top-10 left-3 text-xl md:top-[52px] md:left-8">
-              {t("catalog.empty")}
-            </p>
+            <div className="absolute top-10 left-0 grid w-full justify-items-center gap-4 text-xl md:top-[52px]">
+              <p>{t("catalog.empty")}</p>
+              <img src="/images/ilovezinemouse.png" alt="" className="w-28 max-w-full" />
+            </div>
           ) : null}
         </div>
         

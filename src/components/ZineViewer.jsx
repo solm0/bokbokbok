@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ZineImage from "./ZineImage";
 import { Eyebrow, GhostButton, Panel } from "./ui";
 import { useI18n } from "../lib/i18n";
+import { getProductImageBackgroundClass } from "../lib/product-display";
 
 export default function ZineViewer({ zine }) {
   const pages = zine?.pages?.length ? zine.pages : [zine.cover];
@@ -25,7 +26,9 @@ export default function ZineViewer({ zine }) {
 
   return (
     <Panel className="mt-20 lg:mt-0 min-h-[calc(100vh-5rem)] md:min-h-0" as="section" aria-label={t("viewer.viewerLabel", { title })}>
-      <div className="grid bg-neutral-100 min-h-[360px] place-items-center overflow-hidden  md:min-h-[540px]">
+      <div
+        className={`grid min-h-[360px] place-items-center overflow-hidden md:min-h-[540px] ${getProductImageBackgroundClass(zine)}`}
+      >
         <div className="aspect-[3/4] w-full max-w-[380px]">
           <ZineImage
             className="h-full w-full object-contain"

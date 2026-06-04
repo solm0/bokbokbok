@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import ZineImage from "./ZineImage";
 import { cx, Panel, PrimaryButton } from "./ui";
 import { formatPrice } from "../lib/format";
+import { getProductImageBackgroundClass } from "../lib/product-display";
 
 export default function ProductDetailPanel({
   item,
@@ -17,11 +18,12 @@ export default function ProductDetailPanel({
   imageBackgroundClassName,
   short = false,
   smallImage = false,
+  overlayClassName = "",
 }) {
   const imageClassName = cx(
     "aspect-3/4 object-contain p-3",
     smallImage ? 'w-1/2 md:w-full': 'w-full',
-    imageBackgroundClassName ?? (item.type === "good" ? "bg-neutral-100" : "bg-neutral-900")
+    imageBackgroundClassName ?? getProductImageBackgroundClass(item)
   );
   const image = <ZineImage className={imageClassName} src={item.cover} alt={item.title} />;
   const resolvedHeaderAction =
@@ -40,7 +42,12 @@ export default function ProductDetailPanel({
   );
 
   return (
-    <Panel className={cx("grid min-w-0 h-full content-start items-start gap-3 text-sm md:gap-5 md:grid-cols-[160px_minmax(0,1fr)]", className)}>
+    <Panel
+      className={cx(
+        "relative grid min-w-0 h-full content-start items-start gap-3 text-sm md:gap-5 md:grid-cols-[160px_minmax(0,1fr)]",
+        className
+      )}
+    >
       {detailPath ? (
         <Link to={detailPath} className="block min-w-0 w-full overflow-hidden">
           {image}
@@ -69,6 +76,7 @@ export default function ProductDetailPanel({
         {availabilityLabel ? <p>{availabilityLabel}</p> : null}
         <p>{formatPrice(item.price, language)}</p>
       </div>
+      {overlayClassName ? <div className={cx("pointer-events-none absolute inset-0", overlayClassName)} /> : null}
     </Panel>
   );
 }

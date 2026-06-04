@@ -20,6 +20,8 @@ export default function CartPage({ zines, goods }) {
   });
   const [submitState, setSubmitState] = useState("idle");
   const [submitMessage, setSubmitMessage] = useState("");
+  const formLabelClassName = "w-[7.5rem] shrink-0 md:w-[8.5rem]";
+  const formFieldClassName = "min-w-0 flex-1 w-full focus:outline-none border-b border-dotted";
 
   const detailedItems = items
     .map((item) => {
@@ -40,7 +42,8 @@ export default function CartPage({ zines, goods }) {
     })
     .filter(Boolean);
 
-  const totalPrice = detailedItems.reduce((sum, item) => sum + item.product.price, 0);
+  const purchasableItems = detailedItems.filter((item) => item.product.available !== false);
+  const totalPrice = purchasableItems.reduce((sum, item) => sum + item.product.price, 0);
 
   function updateField(event) {
     const { name, value } = event.target;
@@ -50,7 +53,7 @@ export default function CartPage({ zines, goods }) {
   async function onSubmit(event) {
     event.preventDefault();
 
-    if (detailedItems.length === 0) {
+    if (purchasableItems.length === 0) {
       return;
     }
 
@@ -58,7 +61,7 @@ export default function CartPage({ zines, goods }) {
     setSubmitMessage("");
 
     try {
-      await submitPurchaseRequest(formState, detailedItems, language);
+      await submitPurchaseRequest(formState, purchasableItems, language);
       setSubmitState("success");
       setSubmitMessage(t("cart.successCheckEmail"));
       setFormState({
@@ -87,9 +90,12 @@ export default function CartPage({ zines, goods }) {
     <Panel as="form" className="grid gap-[18px] md:pl-4 text-base" onSubmit={onSubmit}>
       <div className="flex flex-col gap-2">
         <FieldLabel>
-          <span>{t("cart.fields.name")}</span>
+          <span className={`flex items-center gap-1 ${formLabelClassName}`}>
+            {t("cart.fields.name")}
+            <span>*</span>
+          </span>
           <input
-            className="w-full focus:outline-none border-b border-dotted"
+            className={formFieldClassName}
             name="name"
             value={formState.name}
             onChange={updateField}
@@ -98,9 +104,12 @@ export default function CartPage({ zines, goods }) {
           />
         </FieldLabel>
         <FieldLabel>
-          <span>{t("cart.fields.email")}</span>
+          <span className={`flex items-center gap-1 ${formLabelClassName}`}>
+            {t("cart.fields.email")}
+            <span>*</span>
+          </span>
           <input
-            className="w-full focus:outline-none border-b border-dotted"
+            className={formFieldClassName}
             name="email"
             type="email"
             value={formState.email}
@@ -110,9 +119,12 @@ export default function CartPage({ zines, goods }) {
           />
         </FieldLabel>
         <FieldLabel>
-          <span>{t("cart.fields.phone")}</span>
+          <span className={`flex items-center gap-1 ${formLabelClassName}`}>
+            {t("cart.fields.phone")}
+            <span>*</span>
+          </span>
           <input
-            className="w-full focus:outline-none border-b border-dotted"
+            className={formFieldClassName}
             name="phone"
             value={formState.phone}
             onChange={updateField}
@@ -121,9 +133,12 @@ export default function CartPage({ zines, goods }) {
           />
         </FieldLabel>
         <FieldLabel className="md:col-span-2">
-          <span>{t("cart.fields.address")}</span>
+          <span className={`flex items-center gap-1 ${formLabelClassName}`}>
+            {t("cart.fields.address")}
+            <span>*</span>
+          </span>
           <textarea
-            className="min-h-[110px] w-full resize-y focus:outline-none border-b border-dotted"
+            className={`${formFieldClassName} min-h-[110px] resize-y`}
             name="address"
             value={formState.address}
             onChange={updateField}
@@ -131,9 +146,19 @@ export default function CartPage({ zines, goods }) {
           />
         </FieldLabel>
         <FieldLabel className="md:col-span-2">
-          <span>{t("cart.fields.extraContact")}</span>
-          <input
-            className="w-full focus:outline-none border-b border-dotted"
+          <span className={formLabelClassName}>{t("cart.fields.note")}</span>
+          <textarea
+            className={`${formFieldClassName} min-h-[88px] resize-y`}
+            name="note"
+            value={formState.note}
+            onChange={updateField}
+            placeholder="Leave a note!"
+          />
+        </FieldLabel>
+        <FieldLabel className="md:col-span-2">
+          <span className={formLabelClassName}>{t("cart.fields.extraContact")}</span>
+          <textarea
+            className={`${formFieldClassName} min-h-[88px] resize-y`}
             name="extraContact"
             value={formState.extraContact}
             onChange={updateField}
@@ -147,7 +172,11 @@ export default function CartPage({ zines, goods }) {
         <GhostButton onClick={() => setFormOpen(false)} className="flex-1 shrink-0">
           {t("common.close")}
         </GhostButton>
-        <PrimaryButton type="submit" disabled={submitState === "submitting"} className="flex-1 shrink-0">
+        <PrimaryButton
+          type="submit"
+          disabled={submitState === "submitting" || purchasableItems.length === 0}
+          className="flex-1 shrink-0"
+        >
           {submitState === "submitting" ? t("cart.submitting") : t("cart.submit")}
         </PrimaryButton>
       </div>
@@ -167,7 +196,7 @@ export default function CartPage({ zines, goods }) {
 
   return (
     <main className="flex h-screen flex-col overflow-hidden p-4 pt-18 md:p-3 md:pt-22">
-      <div className="shrink-0 flex flex-wrap w-full lg:w-2/3 justify-start gap-4">
+      <div className="shrink-0 flex flex-wrap w-full md:w-2/3 justify-start gap-4">
         {detailedItems.length > 0 ? (
           <GhostButtonUnderline onClick={clearCart}>
             {t("cart.clearCart")}
@@ -175,15 +204,16 @@ export default function CartPage({ zines, goods }) {
         ) : null}
       </div>
 
-      <div className="mt-4 flex min-h-0 w-full flex-1 flex-col gap-4 lg:flex-row">
-        <div className="flex min-h-0 w-full flex-col lg:w-2/3">
+      <div className="mt-4 flex min-h-0 w-full flex-1 flex-col gap-4 md:flex-row">
+        <div className="flex min-h-0 w-full flex-col md:w-2/3">
           {detailedItems.length === 0 ? (
-            <Panel as="section" className="grid gap-4 p-7">
+            <Panel as="section" className="grid justify-items-center gap-4 p-7">
               <p className="text-xl w-full flex justify-center">{t("cart.empty")}</p>
+              <img src="/images/ilovezinemouse.png" alt="" className="w-28 max-w-full" />
             </Panel>
           ) : (
             <>
-              <section className="grid min-h-0 flex-1 content-start grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-x-4 gap-y-7 overflow-y-auto pb-32 pr-1 md:grid-cols-1 lg:pb-0">
+              <section className="grid min-h-0 flex-1 content-start grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-x-4 gap-y-7 overflow-y-auto pb-32 pr-1 md:grid-cols-1 md:pb-0">
                 {detailedItems.map((item) => (
                   <ProductDetailPanel
                     key={`${item.type}-${item.id}`}
@@ -209,6 +239,7 @@ export default function CartPage({ zines, goods }) {
                         <span className="hidden md:inline">{t("common.remove")}</span>
                       </PrimaryButton>
                     }
+                    overlayClassName={item.product.available === false ? "bg-white/70" : ""}
                     short={true}
                   />
                 ))}
@@ -216,13 +247,16 @@ export default function CartPage({ zines, goods }) {
 
               <Panel
                 as="section"
-                className="fixed inset-x-4 bottom-4 z-30 flex shrink-0 flex-col gap-4 text-base lg:static lg:mt-4 lg:flex-row lg:items-baseline lg:justify-between lg:pb-7"
+                className="fixed inset-x-4 bottom-4 z-30 flex shrink-0 flex-col gap-4 text-base md:static md:mt-4 md:flex-row md:items-baseline md:justify-between md:pb-7"
               >
                 <div className="flex gap-4">
                   <p>{t("common.total")}</p>
                   <strong className="font-normal">{formatPrice(totalPrice, language)}</strong>
                 </div>
-                <PrimaryButton onClick={() => setFormOpen((current) => !current)}>
+                <PrimaryButton
+                  onClick={() => setFormOpen((current) => !current)}
+                  disabled={purchasableItems.length === 0}
+                >
                   {t("cart.request")}
                 </PrimaryButton>
               </Panel>
@@ -232,11 +266,11 @@ export default function CartPage({ zines, goods }) {
 
         {formOpen ? (
           <>
-            <div className="fixed inset-0 z-40 lg:hidden" onClick={() => setFormOpen(false)} />
-            <section className="fixed inset-x-4 top-18 bottom-4 z-50 overflow-y-auto bg-white lg:hidden">
+            <div className="fixed inset-0 z-40 md:hidden" onClick={() => setFormOpen(false)} />
+            <section className="fixed inset-x-4 top-18 bottom-4 z-50 overflow-y-auto bg-white md:hidden">
               {requestForm}
             </section>
-            <section className="hidden w-full lg:flex-1 lg:border-l lg:border-dotted lg:block">
+            <section className="hidden w-full md:flex-1 md:border-l md:border-dotted md:block">
               {requestForm}
             </section>
           </>
