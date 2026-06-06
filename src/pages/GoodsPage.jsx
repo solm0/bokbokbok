@@ -7,7 +7,7 @@ import { getProductImageBackgroundClass } from "../lib/product-display";
 
 const CARD_WIDTH = 200;
 const CARD_HEIGHT = 300;
-const GRID_GAP = 10;
+const GRID_GAP = 8;
 const GRID_TOP = 0;
 const GRID_SIDE = 50;
 const MOBILE_BREAKPOINT = 768;
