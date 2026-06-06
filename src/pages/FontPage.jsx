@@ -122,11 +122,8 @@ export default function FontPage() {
                 {t("font.cardTitle") || t("font.download")}
               </span>
             </span>
-            <span className="mt-3 text-xs font-bold">
-              {t("font.cardTitle") || t("font.download")}
-            </span>
-            <span className="mt-2 text-xs opacity-70">
-              {t("font.cardSubtitle") || t("font.previewPlaceholder")}
+            <span className="mt-3 text-xs font-bold text-neutral-950">
+              Lazy Font
             </span>
           </Link>
         </div>
