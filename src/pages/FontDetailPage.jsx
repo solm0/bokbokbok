@@ -43,9 +43,15 @@ export default function FontDetailPage() {
             placeholder={t("font.previewPlaceholder")}
             spellCheck={false}
           />
-          <p className="font-lazy-preview break-words text-xl leading-[1.05] md:text-2xl">
-            {previewText || t("font.previewPlaceholder")}
-          </p>
+          <div className="w-full max-w-xs">
+            <span className="block aspect-3/4 overflow-hidden bg-neutral-900 p-3">
+              <div className="font-lazy-preview h-full w-full flex items-center justify-center text-xl md:text-2xl break-words">
+                {previewText || t("font.previewPlaceholder")}
+              </div>
+            </span>
+            <span className="mt-3 text-xs font-bold">Lazy</span>
+            <span className="text-xs opacity-70 mt-2 block">{t("font.description")}</span>
+          </div>
         </div>
 
         <div className="grid grid-cols-4 gap-x-4 gap-y-5 border-t border-dotted border-neutral-950 pt-6 font-lazy-preview text-xl leading-none md:grid-cols-8 md:text-2xl">
