@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { useI18n } from "../lib/i18n";
+import { getProductImageBackgroundClass } from "../lib/product-display";
 
 const FONT_PATH = "/fonts/lazy.otf";
 
@@ -31,7 +32,7 @@ export default function FontDetailPage() {
           </a>
         </header>
 
-        <div className="grid gap-3">
+        <div className="mt-6 w-full pl-4 md:pl-[50px]">
           <label className="sr-only" htmlFor="font-preview">
             {t("font.previewLabel")}
           </label>
@@ -43,14 +44,15 @@ export default function FontDetailPage() {
             placeholder={t("font.previewPlaceholder")}
             spellCheck={false}
           />
-          <div className="w-full max-w-xs">
-            <span className="block aspect-3/4 overflow-hidden bg-neutral-900 p-3">
-              <div className="font-lazy-preview h-full w-full flex items-center justify-center text-xl md:text-2xl break-words">
+
+          <div style={{ width: "min(200px, 100%)" }} className="mt-6">
+            <span className={`block aspect-3/4 overflow-hidden p-3 ${getProductImageBackgroundClass("good")}`}>
+              <div className="font-lazy-preview h-full w-full flex items-center justify-center text-xl md:text-2xl break-words goods-image-shadow">
                 {previewText || t("font.previewPlaceholder")}
               </div>
             </span>
-            <span className="mt-3 text-xs font-bold">Lazy</span>
-            <span className="text-xs opacity-70 mt-2 block">{t("font.description")}</span>
+            <span className="mt-3 text-xs font-bold">{t("font.cardTitle") || t("font.download")}</span>
+            <span className="text-xs opacity-70 mt-2 block">{t("font.cardSubtitle") || t("font.previewPlaceholder")}</span>
           </div>
         </div>
 
