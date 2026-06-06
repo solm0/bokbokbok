@@ -6,7 +6,7 @@ const FONT_PATH = "/fonts/lazy.otf";
 
 export default function FontDetailPage() {
   const { t } = useI18n();
-  const [previewText, setPreviewText] = useState(t("font.previewText"));
+  const [previewText, setPreviewText] = useState("");
   const previewSample = previewText || t("font.previewPlaceholder");
   const previewLetters = useMemo(
     () => previewSample.slice(0, 8).split(""),

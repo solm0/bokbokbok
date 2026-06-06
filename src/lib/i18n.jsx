@@ -66,13 +66,13 @@ const dictionaries = {
       backToGoods: "GOODS로 돌아가기"
     },
     font: {
-      description: "Lazy 폰트를 무료로 내려받고 미리 써볼 수 있습니다.",
+      description: "Lazy font was hand written left-handed carelessly. Be lazy and use it for free.",
       download: "Lazy 폰트 다운로드",
       cardTitle: "Lazy 폰트",
       cardSubtitle: "폰트 미리보기 및 다운로드",
       previewLabel: "Lazy 폰트 미리보기",
-      previewPlaceholder: "Lazy font",
-      previewText: "Lazy font"
+      previewPlaceholder: "Type here",
+      previewText: ""
     },
     detail: {
       notFound: "진 #{id}를 찾을 수 없습니다.",
@@ -194,13 +194,13 @@ const dictionaries = {
       notFound: "Could not find goods item #{id}.",
     },
     font: {
-      description: "Try the Lazy font and download it for free.",
+      description: "Lazy font was hand written left-handed carelessly. Be lazy and use it for free.",
       download: "Download Lazy Font",
       cardTitle: "Lazy Font",
       cardSubtitle: "Preview and download the font",
       previewLabel: "Lazy font preview",
-      previewPlaceholder: "Lazy font",
-      previewText: "Lazy font"
+      previewPlaceholder: "Type here",
+      previewText: ""
     },
     detail: {
       notFound: "Could not find zine #{id}.",
