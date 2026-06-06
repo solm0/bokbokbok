@@ -7,10 +7,9 @@ const FONT_PATH = "/fonts/lazy.otf";
 export default function FontDetailPage() {
   const { t } = useI18n();
   const [previewText, setPreviewText] = useState("");
-  const previewSample = previewText || t("font.previewPlaceholder");
   const previewLetters = useMemo(
-    () => previewSample.slice(0, 8).split(""),
-    [previewSample]
+    () => previewText.slice(0, 8).split(""),
+    [previewText]
   );
 
   return (
@@ -56,11 +55,13 @@ export default function FontDetailPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-4 gap-x-4 gap-y-5 border-t border-dotted border-neutral-950 pt-6 font-lazy-preview text-xl leading-none md:grid-cols-8 md:text-2xl">
-          {previewLetters.map((letter, index) => (
-            <span key={`${letter}-${index}`}>{letter}</span>
-          ))}
-        </div>
+        {previewLetters.length > 0 && (
+          <div className="grid grid-cols-4 gap-x-4 gap-y-5 border-t border-dotted border-neutral-950 pt-6 font-lazy-preview text-xl leading-none md:grid-cols-8 md:text-2xl">
+            {previewLetters.map((letter, index) => (
+              <span key={`${letter}-${index}`}>{letter}</span>
+            ))}
+          </div>
+        )}
       </section>
     </main>
   );
