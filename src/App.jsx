@@ -15,6 +15,7 @@ const GoodsDetailPage = lazy(() => import("./pages/GoodsDetailPage"));
 const ZineDetailPage = lazy(() => import("./pages/ZineDetailPage"));
 const CartPage = lazy(() => import("./pages/CartPage"));
 const ZineMakerPage = lazy(() => import("./pages/ZineMakerPage"));
+const FontPage = lazy(() => import("./pages/FontPage"));
 
 function AppRoutes() {
   const { zines, status, error } = useZines();
@@ -43,6 +44,7 @@ function AppRoutes() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/goods" element={<GoodsPage goods={goods} />} />
           <Route path="/goods/:id" element={<GoodsDetailPage goods={goods} />} />
+          <Route path="/font" element={<FontPage />} />
           <Route path="/dig" element={<CatalogPage zines={zines} />} />
           <Route path="/page/:id" element={<ZineDetailPage zines={zines} />} />
           <Route path="/cart" element={<CartPage zines={zines} goods={goods} />} />

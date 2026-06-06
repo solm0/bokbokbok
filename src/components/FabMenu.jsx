@@ -6,6 +6,7 @@ const menuItems = [
   { key: "nav.about", to: "/about" },
   { key: "nav.digging", to: "/dig" },
   { key: "nav.goods", to: "/goods" },
+  { key: "nav.font", to: "/font" },
   { key: "nav.diy", to: "/zine" }
 ];
 

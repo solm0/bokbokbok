@@ -39,6 +39,14 @@
     U+FFFD;
 }
 
+@font-face {
+  font-family: "Lazy";
+  src: url("/fonts/lazy.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   :root {
     --app-safe-top: env(safe-area-inset-top, 0px);
@@ -120,6 +128,10 @@
   .font-bok {
     font-family: "Bok", "newfont.regular", "Pretendard", sans-serif;
     font-size: 20px;
+  }
+
+  .font-lazy-preview {
+    font-family: "Lazy", "Bok", "newfont.regular", "Pretendard", sans-serif;
   }
 
   .home-mouse {

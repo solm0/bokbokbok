@@ -20,6 +20,7 @@ const dictionaries = {
     nav: {
       about: "소개",
       goods: "굿즈+어패럴",
+      font: "폰트",
       digging: "디깅 존",
       diy: "DIY",
       cart: "카트",
@@ -63,6 +64,13 @@ const dictionaries = {
     goodsDetail: {
       notFound: "굿즈 #{id}를 찾을 수 없습니다.",
       backToGoods: "GOODS로 돌아가기"
+    },
+    font: {
+      description: "Lazy 폰트를 무료로 내려받고 미리 써볼 수 있습니다.",
+      download: "Lazy 폰트 다운로드",
+      previewLabel: "Lazy 폰트 미리보기",
+      previewPlaceholder: "Lazy font",
+      previewText: "Lazy font"
     },
     detail: {
       notFound: "진 #{id}를 찾을 수 없습니다.",
@@ -139,6 +147,7 @@ const dictionaries = {
     nav: {
       about: "About",
       goods: "Goods+Apparel",
+      font: "Font",
       digging: "Digging Zone",
       diy: "DIY",
       cart: "Cart",
@@ -181,6 +190,13 @@ const dictionaries = {
     },
     goodsDetail: {
       notFound: "Could not find goods item #{id}.",
+    },
+    font: {
+      description: "Try the Lazy font and download it for free.",
+      download: "Download Lazy Font",
+      previewLabel: "Lazy font preview",
+      previewPlaceholder: "Lazy font",
+      previewText: "Lazy font"
     },
     detail: {
       notFound: "Could not find zine #{id}.",
