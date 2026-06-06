@@ -47,7 +47,7 @@ export default function FontDetailPage() {
           <div style={{ width: "min(200px, 100%)" }} className="mt-6">
             <span className={`block aspect-3/4 overflow-hidden p-3 ${getProductImageBackgroundClass("good")}`}>
               <div className="font-lazy-preview h-full w-full flex items-center justify-center text-xl md:text-2xl break-words goods-image-shadow">
-                {previewText || t("font.previewPlaceholder")}
+                {previewText || t("font.cardTitle")}
               </div>
             </span>
             <span className="mt-3 text-xs font-bold">{t("font.cardTitle") || t("font.download")}</span>
