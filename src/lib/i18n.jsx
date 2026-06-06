@@ -68,6 +68,8 @@ const dictionaries = {
     font: {
       description: "Lazy 폰트를 무료로 내려받고 미리 써볼 수 있습니다.",
       download: "Lazy 폰트 다운로드",
+      cardTitle: "Lazy 폰트",
+      cardSubtitle: "폰트 미리보기 및 다운로드",
       previewLabel: "Lazy 폰트 미리보기",
       previewPlaceholder: "Lazy font",
       previewText: "Lazy font"
@@ -194,6 +196,8 @@ const dictionaries = {
     font: {
       description: "Try the Lazy font and download it for free.",
       download: "Download Lazy Font",
+      cardTitle: "Lazy Font",
+      cardSubtitle: "Preview and download the font",
       previewLabel: "Lazy font preview",
       previewPlaceholder: "Lazy font",
       previewText: "Lazy font"
