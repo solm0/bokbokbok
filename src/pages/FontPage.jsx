@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import ProductCardContent from "../components/ProductCardContent";
 import { useI18n } from "../lib/i18n";
 import { getProductImageBackgroundClass } from "../lib/product-display";
 
@@ -114,18 +113,21 @@ export default function FontPage() {
               transform: `translate3d(${gridLayout.sidePadding}px, 0, 0)`
             }}
           >
-            <ProductCardContent
-              title={t("font.cardTitle") || t("font.download")}
-              subtitle={
-                t("font.cardSubtitle") || t("font.previewPlaceholder")
-              }
-              cover={undefined}
-              mode="grid"
-              imageBackgroundClassName={getProductImageBackgroundClass({
+            <span
+              className={`block aspect-3/4 overflow-hidden p-3 transition duration-200 group-hover:opacity-80 ${getProductImageBackgroundClass({
                 type: "good"
-              })}
-              imageClassName="goods-image-shadow"
-            />
+              })}`}
+            >
+              <span className="font-lazy-preview goods-image-shadow flex h-full w-full items-center justify-center break-words text-xl md:text-2xl">
+                {t("font.cardTitle") || t("font.download")}
+              </span>
+            </span>
+            <span className="mt-3 text-xs font-bold">
+              {t("font.cardTitle") || t("font.download")}
+            </span>
+            <span className="mt-2 text-xs opacity-70">
+              {t("font.cardSubtitle") || t("font.previewPlaceholder")}
+            </span>
           </Link>
         </div>
       </section>
