@@ -15,7 +15,7 @@ export default function FontDetailPage() {
   return (
     <main className="app-page-shell relative flex flex-col overflow-hidden px-4 pt-24 pb-8 md:px-7 md:pt-28">
       <section className="mx-auto flex min-h-0 w-full max-w-5xl flex-1 flex-col gap-9 overflow-y-auto pb-20">
-        <header className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+        <header className="flex flex-col gap-5 pl-4 md:flex-row md:items-end md:justify-between md:pl-[50px]">
           <div className="grid gap-2">
             <h1 className="font-lazy-preview text-4xl leading-none md:text-6xl">Lazy</h1>
             <p className="max-w-[38ch] text-lg leading-[1.45] opacity-70 md:text-xl">
