@@ -9,9 +9,11 @@ export default function FontPage() {
   return (
     <main className="app-page-shell relative flex flex-col overflow-hidden px-4 pt-24 pb-8 md:px-7 md:pt-28">
       <section className="mx-auto flex min-h-0 w-full max-w-5xl flex-1 flex-col gap-9 overflow-y-auto pb-20">
-        <header>
-          <h1 className="text-4xl font-bold">{t("nav.font")}</h1>
-        </header>
+       <header>
+ <h1 className="font-bok text-sm font-light">
+  {t("nav.font")}
+</h1>
+</header>
 
         <div className="mt-6 w-full pl-4 md:pl-[50px]">
           <Link

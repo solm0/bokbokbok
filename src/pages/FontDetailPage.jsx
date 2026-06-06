@@ -6,14 +6,18 @@ const FONT_PATH = "/fonts/lazy.otf";
 export default function FontDetailPage() {
   const { t } = useI18n();
   const [previewText, setPreviewText] = useState(t("font.previewText"));
-  const previewLetters = useMemo(() => "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""), []);
+  const previewSample = previewText || t("font.previewPlaceholder");
+  const previewLetters = useMemo(
+    () => previewSample.slice(0, 8).split(""),
+    [previewSample]
+  );
 
   return (
     <main className="app-page-shell relative flex flex-col overflow-hidden px-4 pt-24 pb-8 md:px-7 md:pt-28">
       <section className="mx-auto flex min-h-0 w-full max-w-5xl flex-1 flex-col gap-9 overflow-y-auto pb-20">
         <header className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div className="grid gap-2">
-            <h1 className="font-lazy-preview text-7xl leading-none md:text-9xl">Lazy</h1>
+            <h1 className="font-lazy-preview text-4xl leading-none md:text-6xl">Lazy</h1>
             <p className="max-w-[38ch] text-lg leading-[1.45] opacity-70 md:text-xl">
               {t("font.description")}
             </p>
@@ -39,14 +43,14 @@ export default function FontDetailPage() {
             placeholder={t("font.previewPlaceholder")}
             spellCheck={false}
           />
-          <p className="font-lazy-preview break-words text-5xl leading-[1.05] md:text-8xl">
+          <p className="font-lazy-preview break-words text-xl leading-[1.05] md:text-2xl">
             {previewText || t("font.previewPlaceholder")}
           </p>
         </div>
 
-        <div className="grid grid-cols-4 gap-x-4 gap-y-5 border-t border-dotted border-neutral-950 pt-6 font-lazy-preview text-5xl leading-none md:grid-cols-8 md:text-7xl">
-          {previewLetters.map((letter) => (
-            <span key={letter}>{letter}</span>
+        <div className="grid grid-cols-4 gap-x-4 gap-y-5 border-t border-dotted border-neutral-950 pt-6 font-lazy-preview text-xl leading-none md:grid-cols-8 md:text-2xl">
+          {previewLetters.map((letter, index) => (
+            <span key={`${letter}-${index}`}>{letter}</span>
           ))}
         </div>
       </section>
