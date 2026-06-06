@@ -50,8 +50,8 @@ export default function FontDetailPage() {
                 {previewText || t("font.cardTitle")}
               </div>
             </span>
-            <span className="mt-3 text-xs font-bold">{t("font.cardTitle") || t("font.download")}</span>
-            <span className="text-xs opacity-70 mt-2 block">{t("font.cardSubtitle") || t("font.previewPlaceholder")}</span>
+            <span className="mt-3 block text-xs font-bold text-neutral-950">lazyfont</span>
+            <span className="mt-2 block text-xs text-neutral-500">Seoyeon Oh</span>
           </div>
         </div>
 
