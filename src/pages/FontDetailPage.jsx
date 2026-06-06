@@ -51,7 +51,6 @@ export default function FontDetailPage() {
               </div>
             </span>
             <span className="mt-3 block text-xs font-bold text-neutral-950">Lazy Font</span>
-            <span className="mt-2 block text-xs text-neutral-500">Seoyeon Oh</span>
           </div>
         </div>
 
