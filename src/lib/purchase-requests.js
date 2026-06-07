@@ -1,6 +1,13 @@
 import { getLocalizedValue } from "./i18n";
+import { formatSelectedOptionsSuffix } from "./product-options";
 
 export const SHIPPING_FEE = 3000;
+
+function formatItemTitle(item, language) {
+  const baseTitle = getLocalizedValue(item.product.title, language);
+  const optionSuffix = formatSelectedOptionsSuffix(item.product, item.selectedOptions);
+  return optionSuffix ? `${baseTitle} ${optionSuffix}` : baseTitle;
+}
 
 export async function submitPurchaseRequest(form, items, language = "ko") {
   const endpoint = import.meta.env.VITE_PURCHASE_REQUEST_ENDPOINT;
@@ -23,7 +30,8 @@ export async function submitPurchaseRequest(form, items, language = "ko") {
     items: items.map((item) => ({
       id: item.product.id,
       type: item.type,
-      title: getLocalizedValue(item.product.title, language),
+      selectedOptions: item.selectedOptions ?? {},
+      title: formatItemTitle(item, language),
       description: getLocalizedValue(item.product.description, language),
       price: item.product.price
     })),

@@ -80,6 +80,11 @@ const dictionaries = {
       backToDig: "DIG로 돌아가기",
       unavailable: "품절",
       available: "구매 가능",
+      optionGroups: {
+        size: "사이즈",
+        color: "컬러"
+      },
+      optionImageNotice: "이미지는 옵션을 반영하지 않을 수 있습니다",
       savedInCart: "카트에 담김",
       addToCart: "카트에 담기"
     },
@@ -208,6 +213,11 @@ const dictionaries = {
       notFound: "Could not find zine #{id}.",
       unavailable: "Unavailable",
       available: "Available",
+      optionGroups: {
+        size: "Size",
+        color: "Color"
+      },
+      optionImageNotice: "Images may not reflect the selected options.",
       savedInCart: "Saved in Cart",
       addToCart: "Add to Cart"
     },

@@ -7,6 +7,7 @@ import { getProductImageBackgroundClass } from "../lib/product-display";
 export default function ProductDetailPanel({
   item,
   subtitle,
+  optionSelector,
   language = "ko",
   availabilityLabel,
   actionLabel,
@@ -80,6 +81,7 @@ export default function ProductDetailPanel({
             ${short ? 'gap-3': 'gap-7'}
           `}>
             <div className={short ? 'text-base' : 'text-xl'}>{title}</div>
+            {optionSelector}
             {subtitle ? <p>{subtitle}</p> : null}
           </div>
           {resolvedHeaderAction ? (

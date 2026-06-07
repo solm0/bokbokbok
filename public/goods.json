@@ -56,8 +56,8 @@
   {
     "id": "g4",
     "title": {
-      "ko": "BOK 로고 티 M",
-      "en": "BOK Logo Tee M"
+      "ko": "BOK 로고 티",
+      "en": "BOK Logo Tee"
     },
     "description": {
       "ko": [
@@ -69,13 +69,25 @@
     },
     "price": 28000,
     "available": true,
+    "options": {
+      "size": ["m", "l"],
+      "color": ["gray", "white", "blue"]
+    },
+    "variants": [
+      { "selectedOptions": { "size": "m", "color": "gray" }, "available": true },
+      { "selectedOptions": { "size": "m", "color": "white" }, "available": true },
+      { "selectedOptions": { "size": "m", "color": "blue" }, "available": true },
+      { "selectedOptions": { "size": "l", "color": "gray" }, "available": true },
+      { "selectedOptions": { "size": "l", "color": "white" }, "available": true },
+      { "selectedOptions": { "size": "l", "color": "blue" }, "available": true }
+    ],
     "cover": "/images/bok.png"
   },
   {
     "id": "g5",
     "title": {
-      "ko": "BOK 로고 티 L",
-      "en": "BOK Logo Tee L"
+      "ko": "BOK 로고 티",
+      "en": "BOK Logo Tee"
     },
     "description": {
       "ko": [
@@ -87,13 +99,25 @@
     },
     "price": 28000,
     "available": true,
+    "options": {
+      "size": ["m", "l"],
+      "color": ["gray", "white", "blue"]
+    },
+    "variants": [
+      { "selectedOptions": { "size": "m", "color": "gray" }, "available": true },
+      { "selectedOptions": { "size": "m", "color": "white" }, "available": true },
+      { "selectedOptions": { "size": "m", "color": "blue" }, "available": true },
+      { "selectedOptions": { "size": "l", "color": "gray" }, "available": true },
+      { "selectedOptions": { "size": "l", "color": "white" }, "available": true },
+      { "selectedOptions": { "size": "l", "color": "blue" }, "available": true }
+    ],
     "cover": "/images/bok.png"
   },
   {
     "id": "g6",
     "title": {
-      "ko": "BOK 로고 티 M",
-      "en": "BOK Logo Tee M"
+      "ko": "BOK 로고 티",
+      "en": "BOK Logo Tee"
     },
     "description": {
       "ko": [
@@ -105,13 +129,25 @@
     },
     "price": 28000,
     "available": true,
+    "options": {
+      "size": ["m", "l"],
+      "color": ["gray", "white", "blue"]
+    },
+    "variants": [
+      { "selectedOptions": { "size": "m", "color": "gray" }, "available": true },
+      { "selectedOptions": { "size": "m", "color": "white" }, "available": true },
+      { "selectedOptions": { "size": "m", "color": "blue" }, "available": true },
+      { "selectedOptions": { "size": "l", "color": "gray" }, "available": true },
+      { "selectedOptions": { "size": "l", "color": "white" }, "available": true },
+      { "selectedOptions": { "size": "l", "color": "blue" }, "available": true }
+    ],
     "cover": "/images/bok.png"
   },
   {
     "id": "g7",
     "title": {
-      "ko": "BOK 로고 티 L",
-      "en": "BOK Logo Tee L"
+      "ko": "BOK 로고 티",
+      "en": "BOK Logo Tee"
     },
     "description": {
       "ko": [
@@ -123,13 +159,25 @@
     },
     "price": 28000,
     "available": true,
+    "options": {
+      "size": ["m", "l"],
+      "color": ["gray", "white", "blue"]
+    },
+    "variants": [
+      { "selectedOptions": { "size": "m", "color": "gray" }, "available": true },
+      { "selectedOptions": { "size": "m", "color": "white" }, "available": true },
+      { "selectedOptions": { "size": "m", "color": "blue" }, "available": true },
+      { "selectedOptions": { "size": "l", "color": "gray" }, "available": true },
+      { "selectedOptions": { "size": "l", "color": "white" }, "available": true },
+      { "selectedOptions": { "size": "l", "color": "blue" }, "available": true }
+    ],
     "cover": "/images/bok.png"
   },
   {
     "id": "g8",
     "title": {
-      "ko": "BOK 로고 티 M",
-      "en": "BOK Logo Tee M"
+      "ko": "BOK 로고 티",
+      "en": "BOK Logo Tee"
     },
     "description": {
       "ko": [
@@ -141,100 +189,22 @@
     },
     "price": 28000,
     "available": true,
+    "options": {
+      "size": ["m", "l"],
+      "color": ["gray", "white", "blue"]
+    },
+    "variants": [
+      { "selectedOptions": { "size": "m", "color": "gray" }, "available": true },
+      { "selectedOptions": { "size": "m", "color": "white" }, "available": true },
+      { "selectedOptions": { "size": "m", "color": "blue" }, "available": true },
+      { "selectedOptions": { "size": "l", "color": "gray" }, "available": true },
+      { "selectedOptions": { "size": "l", "color": "white" }, "available": true },
+      { "selectedOptions": { "size": "l", "color": "blue" }, "available": true }
+    ],
     "cover": "/images/bok.png"
   },
   {
     "id": "g9",
-    "title": {
-      "ko": "BOK 로고 티 L",
-      "en": "BOK Logo Tee L"
-    },
-    "description": {
-      "ko": [
-        "앞면에 BOK 로고가 프린트된 부드러운 코튼 티셔츠입니다."
-      ],
-      "en": [
-        "Soft cotton t-shirt with the BOK logo printed on the front."
-      ]
-    },
-    "price": 28000,
-    "available": true,
-    "cover": "/images/bok.png"
-  },
-  {
-    "id": "g10",
-    "title": {
-      "ko": "BOK 로고 티 M",
-      "en": "BOK Logo Tee M"
-    },
-    "description": {
-      "ko": [
-        "앞면에 BOK 로고가 프린트된 부드러운 코튼 티셔츠입니다."
-      ],
-      "en": [
-        "Soft cotton t-shirt with the BOK logo printed on the front."
-      ]
-    },
-    "price": 28000,
-    "available": true,
-    "cover": "/images/bok.png"
-  },
-  {
-    "id": "g11",
-    "title": {
-      "ko": "BOK 로고 티 L",
-      "en": "BOK Logo Tee L"
-    },
-    "description": {
-      "ko": [
-        "앞면에 BOK 로고가 프린트된 부드러운 코튼 티셔츠입니다."
-      ],
-      "en": [
-        "Soft cotton t-shirt with the BOK logo printed on the front."
-      ]
-    },
-    "price": 28000,
-    "available": true,
-    "cover": "/images/bok.png"
-  },
-  {
-    "id": "g12",
-    "title": {
-      "ko": "BOK 로고 티 M",
-      "en": "BOK Logo Tee M"
-    },
-    "description": {
-      "ko": [
-        "앞면에 BOK 로고가 프린트된 부드러운 코튼 티셔츠입니다."
-      ],
-      "en": [
-        "Soft cotton t-shirt with the BOK logo printed on the front."
-      ]
-    },
-    "price": 28000,
-    "available": true,
-    "cover": "/images/bok.png"
-  },
-  {
-    "id": "g13",
-    "title": {
-      "ko": "BOK 로고 티 L",
-      "en": "BOK Logo Tee L"
-    },
-    "description": {
-      "ko": [
-        "앞면에 BOK 로고가 프린트된 부드러운 코튼 티셔츠입니다."
-      ],
-      "en": [
-        "Soft cotton t-shirt with the BOK logo printed on the front."
-      ]
-    },
-    "price": 28000,
-    "available": true,
-    "cover": "/images/bok.png"
-  },
-  {
-    "id": "g14",
     "title": {
       "ko": "본 폴더",
       "en": "BONE FOLDER"

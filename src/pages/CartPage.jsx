@@ -1,14 +1,23 @@
 import { useState } from "react";
+import ProductOptionSelector from "../components/ProductOptionSelector";
 import ProductDetailPanel from "../components/ProductDetailPanel";
 import { Eyebrow, FieldLabel, GhostButton, GhostButtonUnderline, GhostLink, Panel, PrimaryButton, cx } from "../components/ui";
 import { useCart } from "../lib/cart-context";
 import { formatPrice } from "../lib/format";
 import { useI18n } from "../lib/i18n";
+import {
+  getDefaultSelectedOptions,
+  getOptionsEntries,
+  isOptionValueAvailable,
+  isVariantAvailable,
+  resolveSelectedOptions,
+  serializeSelectedOptions
+} from "../lib/product-options";
 import { getProductImageBackgroundClass } from "../lib/product-display";
 import { SHIPPING_FEE, submitPurchaseRequest } from "../lib/purchase-requests";
 
 export default function CartPage({ zines, goods }) {
-  const { items, removeItem, clearCart } = useCart();
+  const { items, removeItem, clearCart, setItemOptions } = useCart();
   const { t, getLocalized, language } = useI18n();
   const [formOpen, setFormOpen] = useState(false);
   const [formState, setFormState] = useState({
@@ -35,15 +44,27 @@ export default function CartPage({ zines, goods }) {
         return null;
       }
 
+      const resolvedSelectedOptions =
+        item.type === "good"
+          ? Object.keys(item.selectedOptions ?? {}).length > 0
+            ? resolveSelectedOptions(product, item.selectedOptions)
+            : getDefaultSelectedOptions(product)
+          : item.selectedOptions ?? {};
+
       return {
         ...item,
         product,
+        selectedOptions: resolvedSelectedOptions,
+        available:
+          item.type === "good"
+            ? isVariantAvailable(product, resolvedSelectedOptions)
+            : product.available !== false,
         detailPath: item.type === "good" ? `/goods/${item.id}` : `/page/${item.id}`
       };
     })
     .filter(Boolean);
 
-  const purchasableItems = detailedItems.filter((item) => item.product.available !== false);
+  const purchasableItems = detailedItems.filter((item) => item.available);
   const itemsTotalPrice = purchasableItems.reduce((sum, item) => sum + item.product.price, 0);
   const shippingFee = purchasableItems.length > 0 ? SHIPPING_FEE : 0;
   const totalPrice = itemsTotalPrice + shippingFee;
@@ -224,10 +245,11 @@ export default function CartPage({ zines, goods }) {
               <section className="grid min-h-0 flex-1 content-start grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-x-4 gap-y-7 overflow-y-auto pb-32 pr-1 md:grid-cols-1 md:pb-0">
                 {detailedItems.map((item) => (
                   <ProductDetailPanel
-                    key={`${item.type}-${item.id}`}
+                    key={`${item.type}-${item.id}-${serializeSelectedOptions(item.selectedOptions)}`}
                     item={{
                       ...item.product,
                       type: item.type,
+                      available: item.available,
                       title: getLocalized(item.product.title),
                       description: getLocalized(item.product.description)
                     }}
@@ -235,6 +257,32 @@ export default function CartPage({ zines, goods }) {
                       item.type === "good"
                         ? getLocalized(item.product.brand) || ""
                         : getLocalized(item.product.author) || ""
+                    }
+                    optionSelector={
+                      item.type === "good" && getOptionsEntries(item.product).length ? (
+                        <ProductOptionSelector
+                          namePrefix={`cart-option-${item.id}-${serializeSelectedOptions(item.selectedOptions)}`}
+                          optionGroups={getOptionsEntries(item.product)}
+                          selectedOptions={item.selectedOptions}
+                          onChange={(groupKey, optionValue) =>
+                            setItemOptions(
+                              item.id,
+                              item.type,
+                              { ...item.selectedOptions, [groupKey]: optionValue },
+                              item.selectedOptions
+                            )
+                          }
+                          getGroupLabel={(groupKey) => t(`detail.optionGroups.${groupKey}`)}
+                          isOptionDisabled={(groupKey, optionValue) =>
+                            !isOptionValueAvailable(
+                              item.product,
+                              item.selectedOptions,
+                              groupKey,
+                              optionValue
+                            )
+                          }
+                        />
+                      ) : null
                     }
                     detailPath={item.detailPath}
                     language={language}
@@ -247,15 +295,18 @@ export default function CartPage({ zines, goods }) {
                           })
                     }
                     availabilityLabel={
-                      item.product.available === false ? t("detail.unavailable") : t("detail.available")
+                      item.available ? t("detail.available") : t("detail.unavailable")
                     }
                     headerAction={
-                      <PrimaryButton className="justify-end text-right" onClick={() => removeItem(item.id, item.type)}>
+                      <PrimaryButton
+                        className="justify-end text-right"
+                        onClick={() => removeItem(item.id, item.type, item.selectedOptions)}
+                      >
                         <span className="md:hidden leading-3">X</span>
                         <span className="hidden md:inline">{t("common.remove")}</span>
                       </PrimaryButton>
                     }
-                    overlayClassName={item.product.available === false ? "bg-white/70" : ""}
+                    overlayClassName={!item.available ? "bg-white/70" : ""}
                     short={true}
                   />
                 ))}
