@@ -13,7 +13,7 @@
         "Compact tote bag for carrying zines, notebooks, and small daily tools."
       ]
     },
-    "price": 22000,
+    "price": 25000,
     "available": true,
     "cover": "/images/bok.png"
   },
@@ -31,7 +31,7 @@
         "Compact tote bag for carrying zines, notebooks, and small daily tools."
       ]
     },
-    "price": 22000,
+    "price": 25000,
     "available": true,
     "cover": "/images/bok.png"
   },
@@ -49,15 +49,15 @@
         "Compact tote bag for carrying zines, notebooks, and small daily tools."
       ]
     },
-    "price": 22000,
+    "price": 25000,
     "available": true,
     "cover": "/images/bok.png"
   },
   {
     "id": "g4",
     "title": {
-      "ko": "BOK 로고 티",
-      "en": "BOK Logo Tee"
+      "ko": "BOK 로고 티 M",
+      "en": "BOK Logo Tee M"
     },
     "description": {
       "ko": [
@@ -74,8 +74,8 @@
   {
     "id": "g5",
     "title": {
-      "ko": "BOK 로고 티",
-      "en": "BOK Logo Tee"
+      "ko": "BOK 로고 티 L",
+      "en": "BOK Logo Tee L"
     },
     "description": {
       "ko": [
@@ -92,8 +92,8 @@
   {
     "id": "g6",
     "title": {
-      "ko": "BOK 로고 티",
-      "en": "BOK Logo Tee"
+      "ko": "BOK 로고 티 M",
+      "en": "BOK Logo Tee M"
     },
     "description": {
       "ko": [
@@ -110,8 +110,8 @@
   {
     "id": "g7",
     "title": {
-      "ko": "BOK 로고 티",
-      "en": "BOK Logo Tee"
+      "ko": "BOK 로고 티 L",
+      "en": "BOK Logo Tee L"
     },
     "description": {
       "ko": [
@@ -128,8 +128,8 @@
   {
     "id": "g8",
     "title": {
-      "ko": "BOK 로고 티",
-      "en": "BOK Logo Tee"
+      "ko": "BOK 로고 티 M",
+      "en": "BOK Logo Tee M"
     },
     "description": {
       "ko": [
@@ -146,6 +146,96 @@
   {
     "id": "g9",
     "title": {
+      "ko": "BOK 로고 티 L",
+      "en": "BOK Logo Tee L"
+    },
+    "description": {
+      "ko": [
+        "앞면에 BOK 로고가 프린트된 부드러운 코튼 티셔츠입니다."
+      ],
+      "en": [
+        "Soft cotton t-shirt with the BOK logo printed on the front."
+      ]
+    },
+    "price": 28000,
+    "available": true,
+    "cover": "/images/bok.png"
+  },
+  {
+    "id": "g10",
+    "title": {
+      "ko": "BOK 로고 티 M",
+      "en": "BOK Logo Tee M"
+    },
+    "description": {
+      "ko": [
+        "앞면에 BOK 로고가 프린트된 부드러운 코튼 티셔츠입니다."
+      ],
+      "en": [
+        "Soft cotton t-shirt with the BOK logo printed on the front."
+      ]
+    },
+    "price": 28000,
+    "available": true,
+    "cover": "/images/bok.png"
+  },
+  {
+    "id": "g11",
+    "title": {
+      "ko": "BOK 로고 티 L",
+      "en": "BOK Logo Tee L"
+    },
+    "description": {
+      "ko": [
+        "앞면에 BOK 로고가 프린트된 부드러운 코튼 티셔츠입니다."
+      ],
+      "en": [
+        "Soft cotton t-shirt with the BOK logo printed on the front."
+      ]
+    },
+    "price": 28000,
+    "available": true,
+    "cover": "/images/bok.png"
+  },
+  {
+    "id": "g12",
+    "title": {
+      "ko": "BOK 로고 티 M",
+      "en": "BOK Logo Tee M"
+    },
+    "description": {
+      "ko": [
+        "앞면에 BOK 로고가 프린트된 부드러운 코튼 티셔츠입니다."
+      ],
+      "en": [
+        "Soft cotton t-shirt with the BOK logo printed on the front."
+      ]
+    },
+    "price": 28000,
+    "available": true,
+    "cover": "/images/bok.png"
+  },
+  {
+    "id": "g13",
+    "title": {
+      "ko": "BOK 로고 티 L",
+      "en": "BOK Logo Tee L"
+    },
+    "description": {
+      "ko": [
+        "앞면에 BOK 로고가 프린트된 부드러운 코튼 티셔츠입니다."
+      ],
+      "en": [
+        "Soft cotton t-shirt with the BOK logo printed on the front."
+      ]
+    },
+    "price": 28000,
+    "available": true,
+    "cover": "/images/bok.png"
+  },
+  {
+    "id": "g14",
+    "title": {
       "ko": "본 폴더",
       "en": "BONE FOLDER"
     },
@@ -157,8 +247,8 @@
         "Bone folder for folding zines."
       ]
     },
-    "price": 28000,
-    "available": true,
+    "price": 15000,
+    "available": false,
     "cover": "/images/bok.png"
   }
 ]
