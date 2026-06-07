@@ -67,7 +67,7 @@ const dictionaries = {
       backToGoods: "GOODS로 돌아가기"
     },
     font: {
-      description: "Lazy font was hand written left-handed carelessly. Be lazy and use it for free.",
+      description: "Lazy font was written left-handed carelessly. Be lazy and use it for free.",
       download: "Lazy 폰트 다운로드",
       cardTitle: "Lazy 폰트",
       cardSubtitle: "폰트 미리보기 및 다운로드",
@@ -196,7 +196,7 @@ const dictionaries = {
       notFound: "Could not find goods item #{id}.",
     },
     font: {
-      description: "Lazy font was hand written left-handed carelessly. Be lazy and use it for free.",
+      description: "Lazy font was written left-handed carelessly. Be lazy and use it for free.",
       download: "Download Lazy Font",
       cardTitle: "Lazy Font",
       cardSubtitle: "Preview and download the font",
