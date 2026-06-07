@@ -79,7 +79,7 @@ export default function ProductDetailPanel({
             flex min-w-0 flex-1 flex-col
             ${short ? 'gap-3': 'gap-7'}
           `}>
-              <div className="text-xs">{title}</div>
+            <div className={short ? 'text-base' : 'text-xl'}>{title}</div>
             {subtitle ? <p>{subtitle}</p> : null}
           </div>
           {resolvedHeaderAction ? (
