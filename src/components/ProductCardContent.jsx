@@ -11,7 +11,6 @@ export default function ProductCardContent({
   imageClassName = ""
 }) {
   const isGrid = mode === "grid";
-  const [isTallPortrait, setIsTallPortrait] = useState(false);
 
   return (
     <>
@@ -26,22 +25,12 @@ export default function ProductCardContent({
         <ZineImage
           className={cx(
             isGrid
-              ? "h-full w-full object-contain p-3"
-              : isTallPortrait
-                ? "max-h-full max-w-full scale-[0.55] object-contain"
-                : "max-h-full max-w-full object-contain",
+              ? "h-full w-full p-3 max-h-full max-w-full object-contain"
+              : 'max-h-full max-w-full object-contain',
             imageClassName
           )}
           src={cover}
           alt={title}
-          onLoad={(event) => {
-            const { naturalWidth, naturalHeight } = event.currentTarget;
-            if (!naturalWidth || !naturalHeight) {
-              return;
-            }
-
-            setIsTallPortrait(naturalHeight / naturalWidth > 1.45);
-          }}
         />
       </span>
       {isGrid ? (
