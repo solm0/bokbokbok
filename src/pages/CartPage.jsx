@@ -5,7 +5,7 @@ import { useCart } from "../lib/cart-context";
 import { formatPrice } from "../lib/format";
 import { useI18n } from "../lib/i18n";
 import { getProductImageBackgroundClass } from "../lib/product-display";
-import { submitPurchaseRequest } from "../lib/purchase-requests";
+import { SHIPPING_FEE, submitPurchaseRequest } from "../lib/purchase-requests";
 
 export default function CartPage({ zines, goods }) {
   const { items, removeItem, clearCart } = useCart();
@@ -44,7 +44,9 @@ export default function CartPage({ zines, goods }) {
     .filter(Boolean);
 
   const purchasableItems = detailedItems.filter((item) => item.product.available !== false);
-  const totalPrice = purchasableItems.reduce((sum, item) => sum + item.product.price, 0);
+  const itemsTotalPrice = purchasableItems.reduce((sum, item) => sum + item.product.price, 0);
+  const shippingFee = purchasableItems.length > 0 ? SHIPPING_FEE : 0;
+  const totalPrice = itemsTotalPrice + shippingFee;
 
   function updateField(event) {
     const { name, value } = event.target;
@@ -263,9 +265,15 @@ export default function CartPage({ zines, goods }) {
                 as="section"
                 className="fixed inset-x-4 bottom-4 z-30 flex shrink-0 flex-col gap-2 md:gap-7 text-base pt-2 border-t border-dotted md:static md:flex-row md:items-center md:justify-end md:pb-4 bg-white"
               >
-                <div className="flex gap-4 text-lg">
-                  <p>{t("common.total")}</p>
-                  <strong className="font-normal">{formatPrice(totalPrice, language)}</strong>
+                <div className="flex flex-col gap-2 text-lg md:flex-row md:items-center md:gap-7">
+                  <div className="flex gap-4 opacity-60">
+                    <p>+ {t("common.shippingFee")}</p>
+                    <strong className="font-normal">{formatPrice(shippingFee, language)}</strong>
+                  </div>
+                  <div className="flex gap-4">
+                    <p>= {t("common.total")}</p>
+                    <strong className="font-normal">{formatPrice(totalPrice, language)}</strong>
+                  </div>
                 </div>
                 <PrimaryButton
                   onClick={() => setFormOpen((current) => !current)}

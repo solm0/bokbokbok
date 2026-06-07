@@ -15,7 +15,8 @@ const dictionaries = {
       remove: "삭제",
       clear: "비우기",
       search: "검색",
-      total: "합계"
+      total: "합계",
+      shippingFee: "배송비"
     },
     nav: {
       about: "소개",
@@ -144,7 +145,8 @@ const dictionaries = {
       remove: "Remove",
       clear: "Clear",
       search: "Search",
-      total: "Total"
+      total: "Total",
+      shippingFee: "Shipping"
     },
     nav: {
       about: "About",

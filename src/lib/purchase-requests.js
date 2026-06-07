@@ -1,5 +1,7 @@
 import { getLocalizedValue } from "./i18n";
 
+export const SHIPPING_FEE = 3000;
+
 export async function submitPurchaseRequest(form, items, language = "ko") {
   const endpoint = import.meta.env.VITE_PURCHASE_REQUEST_ENDPOINT;
 
@@ -8,6 +10,8 @@ export async function submitPurchaseRequest(form, items, language = "ko") {
   }
 
   const payload = {
+    shippingFee: items.length > 0 ? SHIPPING_FEE : 0,
+    totalPrice: items.reduce((sum, item) => sum + item.product.price, 0) + (items.length > 0 ? SHIPPING_FEE : 0),
     customer: {
       name: form.name.trim(),
       note: form.note.trim(),
