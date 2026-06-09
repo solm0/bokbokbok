@@ -1,7 +1,7 @@
 import { getLocalizedValue } from "./i18n";
 import { formatSelectedOptionsSuffix } from "./product-options";
 
-export const SHIPPING_FEE = 3000;
+export const SHIPPING_FEE = 4400;
 
 function formatItemTitle(item, language) {
   const baseTitle = getLocalizedValue(item.product.title, language);
