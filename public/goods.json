@@ -14,7 +14,7 @@
       ]
     },
     "price": 25000,
-    "available": true,
+    "available": false,
     "cover": "/images/bok.png"
   },
   {
@@ -32,7 +32,7 @@
       ]
     },
     "price": 25000,
-    "available": true,
+    "available": false,
     "cover": "/images/bok.png"
   },
   {
@@ -50,7 +50,7 @@
       ]
     },
     "price": 25000,
-    "available": true,
+    "available": false,
     "cover": "/images/bok.png"
   },
   {
@@ -68,18 +68,18 @@
       ]
     },
     "price": 28000,
-    "available": true,
+    "available": false,
     "options": {
       "size": ["m", "l"],
       "color": ["gray", "white", "blue"]
     },
     "variants": [
-      { "selectedOptions": { "size": "m", "color": "gray" }, "available": true },
-      { "selectedOptions": { "size": "m", "color": "white" }, "available": true },
-      { "selectedOptions": { "size": "m", "color": "blue" }, "available": true },
-      { "selectedOptions": { "size": "l", "color": "gray" }, "available": true },
-      { "selectedOptions": { "size": "l", "color": "white" }, "available": true },
-      { "selectedOptions": { "size": "l", "color": "blue" }, "available": true }
+      { "selectedOptions": { "size": "m", "color": "gray" }, "available": false },
+      { "selectedOptions": { "size": "m", "color": "white" }, "available": false },
+      { "selectedOptions": { "size": "m", "color": "blue" }, "available": false },
+      { "selectedOptions": { "size": "l", "color": "gray" }, "available": false },
+      { "selectedOptions": { "size": "l", "color": "white" }, "available": false },
+      { "selectedOptions": { "size": "l", "color": "blue" }, "available": false }
     ],
     "cover": "/images/bok.png"
   },
@@ -98,18 +98,18 @@
       ]
     },
     "price": 28000,
-    "available": true,
+    "available": false,
     "options": {
       "size": ["m", "l"],
       "color": ["gray", "white", "blue"]
     },
     "variants": [
-      { "selectedOptions": { "size": "m", "color": "gray" }, "available": true },
-      { "selectedOptions": { "size": "m", "color": "white" }, "available": true },
-      { "selectedOptions": { "size": "m", "color": "blue" }, "available": true },
-      { "selectedOptions": { "size": "l", "color": "gray" }, "available": true },
-      { "selectedOptions": { "size": "l", "color": "white" }, "available": true },
-      { "selectedOptions": { "size": "l", "color": "blue" }, "available": true }
+      { "selectedOptions": { "size": "m", "color": "gray" }, "available": false },
+      { "selectedOptions": { "size": "m", "color": "white" }, "available": false },
+      { "selectedOptions": { "size": "m", "color": "blue" }, "available": false },
+      { "selectedOptions": { "size": "l", "color": "gray" }, "available": false },
+      { "selectedOptions": { "size": "l", "color": "white" }, "available": false },
+      { "selectedOptions": { "size": "l", "color": "blue" }, "available": false }
     ],
     "cover": "/images/bok.png"
   },
@@ -128,18 +128,18 @@
       ]
     },
     "price": 28000,
-    "available": true,
+    "available": false,
     "options": {
       "size": ["m", "l"],
       "color": ["gray", "white", "blue"]
     },
     "variants": [
-      { "selectedOptions": { "size": "m", "color": "gray" }, "available": true },
-      { "selectedOptions": { "size": "m", "color": "white" }, "available": true },
-      { "selectedOptions": { "size": "m", "color": "blue" }, "available": true },
-      { "selectedOptions": { "size": "l", "color": "gray" }, "available": true },
-      { "selectedOptions": { "size": "l", "color": "white" }, "available": true },
-      { "selectedOptions": { "size": "l", "color": "blue" }, "available": true }
+      { "selectedOptions": { "size": "m", "color": "gray" }, "available": false },
+      { "selectedOptions": { "size": "m", "color": "white" }, "available": false },
+      { "selectedOptions": { "size": "m", "color": "blue" }, "available": false },
+      { "selectedOptions": { "size": "l", "color": "gray" }, "available": false },
+      { "selectedOptions": { "size": "l", "color": "white" }, "available": false },
+      { "selectedOptions": { "size": "l", "color": "blue" }, "available": false }
     ],
     "cover": "/images/bok.png"
   },
@@ -158,18 +158,18 @@
       ]
     },
     "price": 28000,
-    "available": true,
+    "available": false,
     "options": {
       "size": ["m", "l"],
       "color": ["gray", "white", "blue"]
     },
     "variants": [
-      { "selectedOptions": { "size": "m", "color": "gray" }, "available": true },
-      { "selectedOptions": { "size": "m", "color": "white" }, "available": true },
-      { "selectedOptions": { "size": "m", "color": "blue" }, "available": true },
-      { "selectedOptions": { "size": "l", "color": "gray" }, "available": true },
-      { "selectedOptions": { "size": "l", "color": "white" }, "available": true },
-      { "selectedOptions": { "size": "l", "color": "blue" }, "available": true }
+      { "selectedOptions": { "size": "m", "color": "gray" }, "available": false },
+      { "selectedOptions": { "size": "m", "color": "white" }, "available": false },
+      { "selectedOptions": { "size": "m", "color": "blue" }, "available": false },
+      { "selectedOptions": { "size": "l", "color": "gray" }, "available": false },
+      { "selectedOptions": { "size": "l", "color": "white" }, "available": false },
+      { "selectedOptions": { "size": "l", "color": "blue" }, "available": false }
     ],
     "cover": "/images/bok.png"
   },

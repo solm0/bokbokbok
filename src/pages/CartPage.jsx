@@ -17,13 +17,6 @@ import { getProductImageBackgroundClass } from "../lib/product-display";
 import { SHIPPING_FEE, submitPurchaseRequest } from "../lib/purchase-requests";
 
 export default function CartPage({ zines, goods }) {
-
-  return <div className="h-screen w-screen flex items-center justify-center flex-col">
-    <img src="/images/butterfly.png" alt="" className="w-28" />
-    <p>Online sales have ended</p>
-    <p className="text-xs pt-2">온라인 판매가 종료되었습니다</p>
-  </div>
-
   const { items, removeItem, clearCart, setItemOptions } = useCart();
   const { t, getLocalized, language } = useI18n();
   const [formOpen, setFormOpen] = useState(false);
