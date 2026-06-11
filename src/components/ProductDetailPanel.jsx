@@ -84,9 +84,9 @@ export default function ProductDetailPanel({
             {optionSelector}
             {subtitle ? <p>{subtitle}</p> : null}
           </div>
-          {resolvedHeaderAction ? (
+          {/* {resolvedHeaderAction ? (
             <div className="shrink-0 self-start text-right">{resolvedHeaderAction}</div>
-          ) : null}
+          ) : null} */}
         </div>
         {descriptionLines.length && !short ? (
           <div className="flex max-w-[42ch] flex-col gap-2 break-words break-keep leading-[1.45]">

@@ -81,7 +81,7 @@ export default function FabMenu({
             aria-label={t("nav.cart")}
           >
             <img src="/images/cart.png" className="w-12" />
-            {cartCount > 0 ? <span className="mt-2">({cartCount})</span> : null}
+            {/* {cartCount > 0 ? <span className="mt-2">({cartCount})</span> : null} */}
           </Link>
         </nav>
       </div>
@@ -134,7 +134,7 @@ export default function FabMenu({
           aria-label={t("nav.cart")}
         >
           <img src="/images/cart.png" className="w-12" />
-          {cartCount > 0 ? <span className="mt-2">({cartCount})</span> : null}
+          {/* {cartCount > 0 ? <span className="mt-2">({cartCount})</span> : null} */}
         </Link>
       </nav>
     </>
